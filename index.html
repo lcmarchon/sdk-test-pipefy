@@ -2,223 +2,50 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Task Manager Pro - Funcional</title>
+    <title>WhatsApp App - Teste Básico</title>
 </head>
 <body>
     <div style="padding: 20px; text-align: center;">
-        <h2>🚀 Task Manager Pro - Versão Mínima</h2>
-        <p>App funcionando sem erros!</p>
+        <h2>🚀 WhatsApp App - Funcionando!</h2>
+        <p>Se você está vendo isso, o app carregou corretamente.</p>
     </div>
 
-    <!-- Pipefy Client SDK -->
-    <script src="https://s3.amazonaws.com/pipefy-client/pipefy-client.js" async></script>
     <script>
-        console.log('🚀 Iniciando Task Manager Pro - NOVA VERSÃO');
+        console.log('🚀 App WhatsApp carregando...');
 
-        // Função robusta de inicialização
-        function initApp() {
-            console.log('🔍 Verificando APIs disponíveis...');
-            console.log('🔍 window.PipefyApp:', typeof window.PipefyApp);
-            console.log('🔍 Verificando window.xprops:', typeof window.xprops);
-            console.log('🔍 Verificando PipefyApp global:', typeof PipefyApp);
-            
-            // Lista todas as possíveis APIs
-            const apis = [
-                { name: 'window.xprops?.initCall', fn: window.xprops?.initCall },
-                { name: 'window.PipefyApp?.initCall', fn: window.PipefyApp?.initCall },
-                { name: 'PipefyApp?.initCall', fn: (typeof PipefyApp !== 'undefined' ? PipefyApp.initCall : undefined) },
-                { name: 'window.parent.PipefyApp?.initCall', fn: window.parent.PipefyApp?.initCall }
+        // Função simples para botões do card
+        function createCardButtons() {
+            console.log('🎴 Criando botões do card');
+            return [
+                {
+                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
+                    text: 'Notas',
+                    callback: function() {
+                        alert('📝 Notas clicada!');
+                    }
+                }
             ];
-            
-            console.log('📋 APIs encontradas:');
-            apis.forEach(api => {
-                console.log(`  - ${api.name}: ${typeof api.fn}`);
-            });
-            
-            // Procura por qualquer API válida
-            const validApi = apis.find(api => typeof api.fn === 'function');
-            
-            if (!validApi) {
-                console.error('❌ Nenhuma API de inicialização encontrada');
-                console.log('🔍 Tentando novamente em 2 segundos...');
-                setTimeout(initApp, 2000);
-                return;
-            }
-            
-            console.log(`✅ Usando API: ${validApi.name}`);
-            
-            try {
-                validApi.fn({
-                    'card-buttons': function(p, card) {
-                        console.log('🎴 Card buttons chamado');
-                        return [
-                            {
-                                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
-                                text: 'Notas',
-                                callback: function(p) {
-                                    console.log('✅ Notas clicado');
-                                    alert('📝 Notas funcionando!');
-                                }
-                            },
-                            {
-                                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
-                                text: 'Timer',
-                                callback: function(p) {
-                                    console.log('✅ Timer clicado');
-                                    alert('⏱️ Timer funcionando!');
-                                }
-                            }
-                        ];
-                    },
-                
-                    'card-tab': function(p, card) {
-                        console.log('🎯 Card tab chamado! NOVA VERSÃO');
-                        console.log('📋 Card:', card);
-                        
-                        return {
-                            icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
-                            label: 'WhatsApp',
-                            url: './whatsapp-tab.html'
-                        };
-                    }
-                });
-                
-                console.log('✅ App inicializado com sucesso!');
-                
-            } catch (error) {
-                console.error('❌ Erro na inicialização:', error);
-            }
         }
-        
-        // Estratégia robusta de inicialização
-        let attempts = 0;
-        const maxAttempts = 10;
-        
-        function tryInit() {
-            attempts++;
-            console.log(`🔄 Tentativa ${attempts}/${maxAttempts} de inicialização`);
-            
-            if (attempts >= maxAttempts) {
-                console.error('❌ Máximo de tentativas atingido');
-                return;
-            }
-            
-            initApp();
-        }
-        
-        // Múltiplas formas de inicialização
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', tryInit);
-        } else {
-            tryInit();
-        }
-        
-        // Tentativas adicionais
-        setTimeout(tryInit, 500);
-        setTimeout(tryInit, 1000);
-        setTimeout(tryInit, 2000);
-        setTimeout(tryInit, 5000);
-        
-        // Event listener para quando a SDK carregar
-        window.addEventListener('load', function() {
-            console.log('🔄 Window loaded, tentando inicialização...');
-            setTimeout(tryInit, 100);
-        });
-        
-        // Intercepta possíveis erros de script
-        window.addEventListener('error', function(e) {
-            console.error('❌ Erro de script:', e.error);
-        });
-        
-        console.log('📋 Sistema de inicialização configurado');
-    </script>
-</body>
-</html>
-                    
-                    try {
-                        const config = {
-                            icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
-                            label: 'WhatsApp',
-                            url: './whatsapp-tab.html'
-                        };
-                        
-                        console.log('✅ Config da aba:', config);
-                        return config;
-                        
-                    } catch (error) {
-                        console.error('❌ Erro no card-tab:', error);
-                        return null;
-                    }
-                }
-            });
-        }
-        
-        // Inicialização com múltiplos fallbacks
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(initApp, 100);
-            });
-        } else {
-            setTimeout(initApp, 100);
-        }
-        
-        // Fallback adicional
-        setTimeout(initApp, 500);
-        setTimeout(initApp, 1000);
-    </script>
-</body>
-            // APENAS CARD BUTTONS - versão super simplificada
-            'card-buttons': function(p, pipe, card) {
-                console.log('🎨 Botões básicos no card');
-                return [
-                    {
-                        icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
-                        text: 'Notas',
-                        callback: function(p) {
-                            console.log('✅ Notas clicado');
-                            alert('📝 Notas funcionando!');
-                        }
-                    },
-                    {
-                        icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
-                        text: 'Timer',
-                        callback: function(p) {
-                            console.log('✅ Timer clicado');
-                            alert('⏱️ Timer funcionando!');
-                        }
-                    }
-                ];
-            },
-            
-            // DEBUG: ABA WHATSAPP NO CARD (versão simplificada)
-            'card-tab': function(p, card) {
-                console.log('🎯 Card tab chamado! Versão DEBUG');
-                console.log('📋 Card recebido:', card);
-                console.log('🎯 Card tab chamado!');
-                
-                try {
-                    // Objeto super simples para teste
-                    const tabConfig = {
-                        icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
-                        label: 'WhatsApp',
-                        url: './whatsapp-tab.html'
-                    };
-                    
-                    console.log('✅ Retornando config simples:', tabConfig);
-                    return tabConfig;
-                    
-                } catch (error) {
-                    console.error('❌ Erro no card-tab:', error);
-                    return {
-                        icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
-                        label: 'Debug',
-                        url: './whatsapp-tab.html'
-                    };
-                }
-            }
-        });
 
-        console.log('✅ App configurado - aguardando card-tab...');
+        // Função simples para aba do card
+        function createCardTab() {
+            console.log('🎯 Criando aba WhatsApp');
+            
+            return {
+                icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
+                label: 'WhatsApp',
+                url: './whatsapp-tab.html'
+            };
+        }
+
+        // Objeto super simples
+        window.PipefyApp = {
+            'card-buttons': createCardButtons,
+            'card-tab': createCardTab
+        };
+
+        console.log('✅ App WhatsApp carregado!');
+        console.log('📋 PipefyApp:', window.PipefyApp);
     </script>
 </body>
 </html>

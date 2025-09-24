@@ -3,112 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Business</title>
+    <title>WhatsApp</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            background: #25D366;
             color: white;
             text-align: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
-        .whatsapp-container {
-            background: rgba(255, 255, 255, 0.95);
-            color: #333;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .whatsapp-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
-            max-width: 320px;
-            width: 100%;
-        }
-        
-        .whatsapp-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            background: #25D366;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-        }
-        
-        .whatsapp-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #25D366;
-            margin-bottom: 0.5rem;
-        }
-        
-        .whatsapp-description {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.5;
-            font-size: 0.9rem;
         }
         
         .whatsapp-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #25D366, #128C7E);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
+            background: white;
+            color: #25D366;
+            padding: 15px 30px;
             border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        .whatsapp-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-        
-        .card-info {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            font-size: 0.8rem;
-            color: #666;
-            border-left: 3px solid #25D366;
-        }
-        
-        .error-state {
-            color: #e74c3c;
-            font-size: 0.9rem;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="whatsapp-container">
-        <div class="whatsapp-logo">
-            📱
-        </div>
-        
-        <div class="whatsapp-title">DEBUG - WhatsApp Business</div>
-        
-        <div class="whatsapp-description">
-            🚀 FUNCIONOU! A aba está carregando.<br>
-            Versão simplificada para debug.
-        </div>
-
-        <div class="whatsapp-button" style="background: #25D366; padding: 1rem; border-radius: 8px; color: white; margin-top: 1rem;">
-            ✅ Aba WhatsApp funcionando!
-        </div>
+    <div class="whatsapp-content">
+        <h2>📱 WhatsApp Business</h2>
+        <p>Aba WhatsApp funcionando!</p>
+        <button class="whatsapp-button" onclick="abrirWhatsApp()">
+            Abrir WhatsApp
+        </button>
     </div>
+
+    <script>
+        function abrirWhatsApp() {
+            alert('🎉 WhatsApp funcionando!');
+        }
+        
+        console.log('✅ Aba WhatsApp carregada!');
+    </script>
 </body>
 </html>
