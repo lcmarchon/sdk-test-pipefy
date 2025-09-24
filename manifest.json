@@ -11,6 +11,7 @@
   ],
   "features": [
     "card-embed",
-    "card-buttons"
+    "card-buttons",
+    "card-tab"
   ]
 }
