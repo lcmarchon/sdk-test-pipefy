@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #f7fafc;
+            color: #2d3748;
+        }
+        
+        .settings-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .setting-group {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .setting-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4a5568;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Configurações do Projeto</h1>
+        
+        <div class="setting-group">
+            <div class="setting-title">Notificações</div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="email-notifications" checked>
+                <label for="email-notifications">Notificações por email</label>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="push-notifications" checked>
+                <label for="push-notifications">Notificações push</label>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="deadline-alerts">
+                <label for="deadline-alerts">Alertas de prazo</label>
+            </div>
+        </div>
+        
+        <div class="setting-group">
+            <div class="setting-title">Fuso Horário</div>
+            
+            <div class="form-group">
+                <label for="timezone">Selecione seu fuso horário</label>
+                <select id="timezone">
+                    <option value="America/Sao_Paulo" selected>Brasília (GMT-3)</option>
+                    <option value="America/New_York">Nova York (GMT-5)</option>
+                    <option value="Europe/London">Londres (GMT+0)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="setting-group">
+            <div class="setting-title">Preferências de Exibição</div>
+            
+            <div class="form-group">
+                <label for="theme">Tema</label>
+                <select id="theme">
+                    <option value="light" selected>Claro</option>
+                    <option value="dark">Escuro</option>
+                    <option value="auto">Automático</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="cards-per-page">Cards por página</label>
+                <input type="number" id="cards-per-page" value="20" min="10" max="100">
+            </div>
+        </div>
+        
+        <div class="btn-group">
+            <button class="btn" onclick="saveSettings()">Salvar</button>
+            <button class="btn" style="background: #718096;" onclick="resetSettings()">Resetar</button>
+        </div>
+    </div>
+    
+    <script>
+        function saveSettings() {
+            // Simula salvamento das configurações
+            alert('Configurações salvas com sucesso!');
+        }
+        
+        function resetSettings() {
+            if (confirm('Tem certeza que deseja resetar todas as configurações?')) {
+                // Reset form to defaults
+                document.getElementById('email-notifications').checked = true;
+                document.getElementById('push-notifications').checked = true;
+                document.getElementById('deadline-alerts').checked = false;
+                document.getElementById('timezone').value = 'America/Sao_Paulo';
+                document.getElementById('theme').value = 'light';
+                document.getElementById('cards-per-page').value = '20';
+                
+                alert('Configurações resetadas!');
+            }
+        }
+    </script>
+</body>
+</html>
