@@ -1,10 +1,10 @@
-// SDK Test Pipefy - Main App
-console.log('🚀 Iniciando SDK Test Pipefy');
+// SDK Test Pipefy - Seguindo documentação oficial
+console.log('🚀 Iniciando SDK Test Pipefy - Versão Oficial');
 
-// Definição do PipefyApp
+// Definição do PipefyApp seguindo a documentação oficial
 const PipefyApp = {
     'pipe-buttons': function(p, pipe) {
-        console.log('📌 Pipe buttons chamado:', pipe);
+        console.log('📌 Pipe buttons chamado - pipe:', pipe);
         
         return [
             {
@@ -12,12 +12,46 @@ const PipefyApp = {
                 text: 'Dashboard',
                 callback: function(p) {
                     console.log('✅ Dashboard clicado');
-                    if (p && p.showMessage) {
-                        p.showMessage({
-                            type: 'success',
-                            text: '📊 Dashboard ativo!'
-                        });
-                    }
+                    
+                    // Usando dropdown conforme documentação
+                    p.dropdown({
+                        title: 'Dashboard App',
+                        items: [
+                            {
+                                title: 'Métricas',
+                                callback: function(p) {
+                                    console.log('📊 Métricas selecionado');
+                                    p.showMessage({
+                                        type: 'success',
+                                        text: '📊 Abrindo métricas...'
+                                    });
+                                    p.closeDropdown();
+                                }
+                            },
+                            {
+                                title: 'Performance',
+                                callback: function(p) {
+                                    console.log('📈 Performance selecionado');
+                                    p.showMessage({
+                                        type: 'info',
+                                        text: '📈 Carregando performance...'
+                                    });
+                                    p.closeDropdown();
+                                }
+                            },
+                            {
+                                title: 'Exportar Dados',
+                                callback: function(p) {
+                                    console.log('💾 Exportar selecionado');
+                                    p.showMessage({
+                                        type: 'success',
+                                        text: '💾 Exportando dados...'
+                                    });
+                                    p.closeDropdown();
+                                }
+                            }
+                        ]
+                    });
                 }
             },
             {
@@ -25,58 +59,87 @@ const PipefyApp = {
                 text: 'Timer',
                 callback: function(p) {
                     console.log('✅ Timer clicado');
-                    if (p && p.showMessage) {
-                        p.showMessage({
-                            type: 'info',
-                            text: '⏱️ Timer iniciado!'
-                        });
-                    }
+                    
+                    // Usando sidebar conforme documentação
+                    p.sidebar({
+                        title: 'Controle de Tempo',
+                        url: './timer.html'
+                    });
+                }
+            },
+            {
+                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ca.svg',
+                text: 'Relatórios',
+                callback: function(p) {
+                    console.log('✅ Relatórios clicado');
+                    
+                    // Usando modal conforme documentação
+                    p.modal({
+                        title: 'Relatórios Avançados',
+                        url: './relatorios.html'
+                    });
                 }
             }
         ];
     },
     
     'card-buttons': function(p, card) {
-        console.log('🎴 Card buttons chamado:', card);
+        console.log('🎴 Card buttons chamado - card:', card);
         
         return [
             {
                 icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
                 text: 'Notas',
                 callback: function(p) {
-                    console.log('✅ Notas clicado');
-                    if (p && p.showMessage) {
-                        p.showMessage({
-                            type: 'success',
-                            text: '📝 Abrindo notas...'
-                        });
-                    }
+                    console.log('✅ Notas clicado para card:', card.id);
+                    
+                    // Modal para notas do card
+                    p.modal({
+                        title: 'Notas do Card',
+                        url: './notas.html?cardId=' + card.id
+                    });
+                }
+            },
+            {
+                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
+                text: 'Cronômetro',
+                callback: function(p) {
+                    console.log('✅ Cronômetro clicado para card:', card.id);
+                    
+                    p.showMessage({
+                        type: 'info',
+                        text: '⏱️ Cronômetro iniciado para: ' + card.title
+                    });
                 }
             }
         ];
     }
 };
 
-// Exposição segura do PipefyApp
+// Exposição robusta do PipefyApp
 function exposePipefyApp() {
     try {
-        // Global window
+        // Exposição global principal
         window.PipefyApp = PipefyApp;
         
-        // Module exports (se existir)
-        if (typeof module !== 'undefined' && module.exports) {
-            module.exports = PipefyApp;
-        }
-        
-        // Verificação
+        // Verificação e logs
         if (window.PipefyApp) {
             console.log('✅ PipefyApp exposto com sucesso');
             console.log('🔍 Funções disponíveis:', Object.keys(PipefyApp));
             
-            // Update UI
+            // Verificar se as funções estão corretas
+            if (typeof PipefyApp['pipe-buttons'] === 'function') {
+                console.log('✅ pipe-buttons definido corretamente');
+            }
+            
+            if (typeof PipefyApp['card-buttons'] === 'function') {
+                console.log('✅ card-buttons definido corretamente');
+            }
+            
+            // Update UI status
             const statusEl = document.getElementById('status');
             if (statusEl) {
-                statusEl.innerHTML = '✅ SDK carregada com sucesso!';
+                statusEl.innerHTML = '✅ SDK carregada seguindo documentação oficial!';
                 statusEl.style.color = '#10B981';
             }
         }
@@ -92,16 +155,17 @@ function exposePipefyApp() {
     }
 }
 
-// Inicialização
+// Múltiplas formas de inicialização
 document.addEventListener('DOMContentLoaded', exposePipefyApp);
 
-// Fallback
+// Fallback para estados já carregados
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', exposePipefyApp);
 } else {
     exposePipefyApp();
 }
 
+// Fallback adicional com delay
 setTimeout(exposePipefyApp, 100);
 
-console.log('📋 SDK Test Pipefy carregado');
+console.log('📋 SDK Test Pipefy carregado - seguindo documentação oficial');

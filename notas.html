@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas do Card</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #f7fafc;
+            color: #2d3748;
+        }
+        
+        .notes-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .card-info {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .notes-area {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+        }
+        
+        .btn-secondary {
+            background: #718096;
+            margin-left: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: #4a5568;
+        }
+        
+        .notes-history {
+            margin-top: 2rem;
+        }
+        
+        .note-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #667eea;
+            font-size: 0.9rem;
+        }
+        
+        .note-date {
+            color: #718096;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="notes-container">
+        <h1>📝 Notas do Card</h1>
+        
+        <div class="card-info">
+            <strong>Card:</strong> <span id="cardTitle">Carregando...</span><br>
+            <strong>ID:</strong> <span id="cardId">-</span>
+        </div>
+        
+        <div class="notes-area">
+            <label for="noteText"><strong>Nova Nota:</strong></label>
+            <textarea id="noteText" placeholder="Digite sua anotação aqui..."></textarea>
+            
+            <button class="btn" onclick="saveNote()">💾 Salvar Nota</button>
+            <button class="btn btn-secondary" onclick="clearNote()">🗑️ Limpar</button>
+        </div>
+        
+        <div class="notes-history">
+            <h3>📋 Histórico de Notas</h3>
+            
+            <div class="note-item">
+                <div>Reunião com cliente agendada para próxima terça-feira. Revisar documentação antes do encontro.</div>
+                <div class="note-date">15/01/2024 - 14:30</div>
+            </div>
+            
+            <div class="note-item">
+                <div>Bug identificado no módulo de pagamentos. Prioridade alta para correção.</div>
+                <div class="note-date">14/01/2024 - 09:15</div>
+            </div>
+            
+            <div class="note-item">
+                <div>Feedback do usuário: interface confusa na tela de checkout. Avaliar melhorias de UX.</div>
+                <div class="note-date">13/01/2024 - 16:45</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Pega o cardId da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const cardId = urlParams.get('cardId') || 'N/A';
+        
+        document.getElementById('cardId').textContent = cardId;
+        document.getElementById('cardTitle').textContent = 'Card de Exemplo #' + cardId;
+        
+        function saveNote() {
+            const noteText = document.getElementById('noteText').value.trim();
+            
+            if (!noteText) {
+                alert('Por favor, digite uma nota antes de salvar.');
+                return;
+            }
+            
+            // Simula salvamento
+            alert('✅ Nota salva com sucesso!');
+            
+            // Adiciona ao histórico (simulação)
+            const historyDiv = document.querySelector('.notes-history');
+            const newNote = document.createElement('div');
+            newNote.className = 'note-item';
+            newNote.innerHTML = `
+                <div>${noteText}</div>
+                <div class="note-date">${new Date().toLocaleString('pt-BR')}</div>
+            `;
+            
+            // Insere no início do histórico
+            const firstNote = historyDiv.querySelector('.note-item');
+            if (firstNote) {
+                historyDiv.insertBefore(newNote, firstNote);
+            } else {
+                historyDiv.appendChild(newNote);
+            }
+            
+            // Limpa o textarea
+            clearNote();
+        }
+        
+        function clearNote() {
+            document.getElementById('noteText').value = '';
+        }
+    </script>
+</body>
+</html>

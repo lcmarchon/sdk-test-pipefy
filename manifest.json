@@ -1,12 +1,12 @@
 {
-  "name": "SDK Test Pipefy",
-  "short_description": "Testando funcionalidades da SDK do Pipefy",
-  "description": "App de teste para validar integração com pipe-buttons e card-buttons do Pipefy",
+  "name": "Task Manager Pro - Oficial",
+  "short_description": "App seguindo documentação oficial da SDK",
+  "description": "Implementação completa seguindo a documentação oficial do Pipefy com dropdown, sidebar, modal e todas as funcionalidades demonstradas",
   "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2699.svg",
   "author": "Developer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "screenshots": [
-    "https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=SDK+Test"
+    "https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=Task+Manager+Pro"
   ],
   "features": {
     "pipe-buttons": true,
