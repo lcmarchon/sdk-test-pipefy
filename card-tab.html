@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Business</title>
+    <title>WhatsApp Business - Botões</title>
     <style>
         * {
             margin: 0;
@@ -12,218 +12,118 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background: #f0f0f0;
-            height: 100vh;
-            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+            color: #333;
         }
 
         .whatsapp-container {
-            height: 100vh;
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #25D366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        .button-container {
             display: flex;
             flex-direction: column;
-            background: white;
+            gap: 15px;
         }
 
-        .chat-header {
-            background: #25D366;
-            color: white;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .header-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header-info h3 {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .header-info p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .messages-area {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: #f8f9fa;
-        }
-
-        .message {
-            margin-bottom: 16px;
-            display: flex;
-        }
-
-        .message.sent {
-            justify-content: flex-end;
-        }
-
-        .message.received {
-            justify-content: flex-start;
-        }
-
-        .message-bubble {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            position: relative;
-        }
-
-        .message.sent .message-bubble {
-            background: #25D366;
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message.received .message-bubble {
-            background: white;
-            color: #333;
-            border: 1px solid #e1e5e9;
-            border-bottom-left-radius: 4px;
-        }
-
-        .message-time {
-            font-size: 12px;
-            opacity: 0.7;
-            margin-top: 4px;
-            text-align: right;
-        }
-
-        .input-area {
-            background: white;
-            padding: 16px;
-            border-top: 1px solid #e1e5e9;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .message-input {
-            flex: 1;
-            border: 1px solid #e1e5e9;
-            border-radius: 20px;
-            padding: 10px 16px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .send-btn {
+        .whatsapp-button {
             background: #25D366;
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
+            padding: 15px 20px;
+            border-radius: 8px;
             font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background-color 0.3s ease;
         }
 
-        .date-separator {
+        .whatsapp-button:hover {
+            background: #1ea952;
+        }
+
+        .whatsapp-button:active {
+            transform: translateY(1px);
+        }
+
+        .secondary-button {
+            background: #128C7E;
+        }
+
+        .secondary-button:hover {
+            background: #0f7269;
+        }
+
+        .info-text {
             text-align: center;
-            margin: 20px 0;
-        }
-
-        .date-badge {
-            background: #e1e5e9;
             color: #666;
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            display: inline-block;
+            margin-top: 20px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <div class="whatsapp-container">
-        <!-- Header -->
-        <div class="chat-header">
-            <div class="header-avatar">
-                <span style="color: #25D366; font-size: 24px;">📱</span>
-            </div>
-            <div class="header-info">
-                <h3>WhatsApp Business</h3>
-                <p>Online agora</p>
-            </div>
+        <div class="header">
+            <h2>📱 WhatsApp Business</h2>
         </div>
-
-        <!-- Messages -->
-        <div class="messages-area">
-            <div class="date-separator">
-                <span class="date-badge">Hoje</span>
+        
+        <div class="content">
+            <div class="button-container">
+                <button class="whatsapp-button" onclick="abrirWhatsApp()">
+                    📞 Abrir WhatsApp Web
+                </button>
+                
+                <button class="whatsapp-button secondary-button" onclick="enviarMensagem()">
+                    💬 Enviar Mensagem
+                </button>
             </div>
-
-            <div class="message received">
-                <div class="message-bubble">
-                    <div>Olá! Gostaria de saber mais sobre seus produtos.</div>
-                    <div class="message-time">14:30</div>
-                </div>
-            </div>
-
-            <div class="message sent">
-                <div class="message-bubble">
-                    <div>Olá! Claro, ficarei feliz em ajudar. Em que posso te auxiliar?</div>
-                    <div class="message-time">14:32</div>
-                </div>
-            </div>
-
-            <div class="message received">
-                <div class="message-bubble">
-                    <div>Quero saber sobre preços e condições de pagamento.</div>
-                    <div class="message-time">14:35</div>
-                </div>
-            </div>
-
-            <div class="message sent">
-                <div class="message-bubble">
-                    <div>Perfeito! Vou te enviar nossa tabela de preços atualizada.</div>
-                    <div class="message-time">14:36</div>
-                </div>
-            </div>
-
-            <div class="message received">
-                <div class="message-bubble">
-                    <div>📄 Documento recebido</div>
-                    <div class="message-time">14:38</div>
-                </div>
-            </div>
-
-            <div class="message sent">
-                <div class="message-bubble">
-                    <div>Qualquer dúvida, estou aqui para ajudar!</div>
-                    <div class="message-time">14:40</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Input -->
-        <div class="input-area">
-            <input 
-                type="text" 
-                class="message-input" 
-                placeholder="Digite sua mensagem..." 
-                readonly
-                style="cursor: not-allowed; background: #f8f9fa;"
-            >
-            <button class="send-btn" disabled style="opacity: 0.5; cursor: not-allowed;">
-                ➤
-            </button>
+            
+            <p class="info-text">
+                Clique nos botões acima para interagir com o WhatsApp Business
+            </p>
         </div>
     </div>
 
     <script>
-        console.log('✅ WhatsApp Simple Chat carregado');
+        console.log('✅ WhatsApp Business Buttons carregado');
+        
+        function abrirWhatsApp() {
+            console.log('📞 Botão WhatsApp Web clicado');
+            alert('Abrindo WhatsApp Web...');
+        }
+        
+        function enviarMensagem() {
+            console.log('💬 Botão Enviar Mensagem clicado');
+            alert('Enviando mensagem...');
+        }
     </script>
 </body>
 </html>
