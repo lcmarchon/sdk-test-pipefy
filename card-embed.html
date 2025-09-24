@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Card Embed Test</title>
+    <title>Calendar Embed</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -14,95 +14,67 @@
         
         .embed-content {
             background: white;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
         
-        .metric {
+        .calendar-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            background: #f7fafc;
-            border-radius: 6px;
+            justify-content: center;
+            gap: 8px;
         }
         
-        .metric-label {
-            font-weight: 500;
-            color: #4a5568;
-        }
-        
-        .metric-value {
-            font-weight: 700;
-            color: #667eea;
-        }
-        
-        .btn-embed {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            width: 100%;
+        .calendar-widget {
             margin-top: 10px;
         }
         
-        .btn-embed:hover {
-            background: #5a67d8;
+        /* Estilo para o botão do Google Calendar */
+        .calendar-scheduling-button {
+            margin: 10px auto !important;
         }
     </style>
+    <!-- Google Calendar Appointment Scheduling begin -->
+    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 </head>
 <body>
     <div class="embed-content">
-        <h4 style="margin: 0 0 15px 0; color: #2d3748;">📊 Quick Stats</h4>
-        
-        <div class="metric">
-            <span class="metric-label">⏱️ Tempo gasto:</span>
-            <span class="metric-value">2h 15min</span>
+        <div class="calendar-title">
+            📅 Agendamento
         </div>
         
-        <div class="metric">
-            <span class="metric-label">✅ Progresso:</span>
-            <span class="metric-value">75%</span>
+        <div class="calendar-widget">
+            <!-- O widget do Google Calendar vai aparecer aqui -->
+            <script>
+            (function() {
+              var target = document.currentScript;
+              window.addEventListener('load', function() {
+                if (window.calendar && window.calendar.schedulingButton) {
+                  calendar.schedulingButton.load({
+                    url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2J7BGxNV8CuIivvE2KXyk_MgYxVh-CDbVWybTDbrzVdv7d-QFccMoWKjb6jDyMMihS-oTbA0o0?gv=true',
+                    color: '#667eea',
+                    label: '📅 Agendar Compromisso',
+                    target,
+                  });
+                } else {
+                  // Fallback se não carregar
+                  target.innerHTML = '<a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2J7BGxNV8CuIivvE2KXyk_MgYxVh-CDbVWybTDbrzVdv7d-QFccMoWKjb6jDyMMihS-oTbA0o0" target="_blank" style="background:#667eea;color:white;padding:10px 20px;border-radius:8px;text-decoration:none;display:inline-block;">📅 Abrir Calendário</a>';
+                }
+              });
+            })();
+            </script>
         </div>
         
-        <div class="metric">
-            <span class="metric-label">👥 Colaboradores:</span>
-            <span class="metric-value">3 pessoas</span>
+        <div style="margin-top: 15px; font-size: 0.9rem; color: #718096;">
+            👆 Clique para agendar diretamente no card
         </div>
-        
-        <button class="btn-embed" onclick="updateStats()">
-            🔄 Atualizar Stats
-        </button>
     </div>
-    
-    <script>
-        function updateStats() {
-            // Simula atualização das métricas
-            const metrics = document.querySelectorAll('.metric-value');
-            
-            metrics[0].textContent = Math.floor(Math.random() * 5) + 'h ' + Math.floor(Math.random() * 60) + 'min';
-            metrics[1].textContent = Math.floor(Math.random() * 100) + '%';
-            metrics[2].textContent = Math.floor(Math.random() * 10 + 1) + ' pessoas';
-            
-            // Feedback visual
-            const btn = document.querySelector('.btn-embed');
-            btn.style.background = '#48bb78';
-            btn.textContent = '✅ Atualizado!';
-            
-            setTimeout(() => {
-                btn.style.background = '#667eea';
-                btn.textContent = '🔄 Atualizar Stats';
-            }, 2000);
-            
-            console.log('📊 Stats atualizadas!');
-        }
-        
-        console.log('📎 Card embed carregado!');
-    </script>
 </body>
 </html>
