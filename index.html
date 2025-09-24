@@ -11,11 +11,88 @@
     </div>
 
     <!-- Pipefy Client SDK -->
-    <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
+    <script src="https://s3.amazonaws.com/pipefy-client/pipefy-client.js"></script>
     <script>
-        console.log('🚀 Iniciando versão mínima');
+        console.log('🚀 Iniciando com SDK correta');
 
-        PipefyApp.initCall({
+        // Aguarda o SDK carregar completamente
+        function initApp() {
+            console.log('🔍 Verificando PipefyApp:', typeof PipefyApp);
+            console.log('🔍 Verificando window.xprops:', typeof window.xprops);
+            
+            // Tenta ambas as APIs para compatibilidade
+            const initMethod = window.xprops && window.xprops.initCall ? 
+                window.xprops.initCall : 
+                (window.PipefyApp && window.PipefyApp.initCall ? window.PipefyApp.initCall : null);
+                
+            if (!initMethod) {
+                console.error('❌ Nenhuma API de inicialização encontrada');
+                return;
+            }
+            
+            console.log('✅ API encontrada, inicializando...');
+            
+            initMethod({
+                // APENAS CARD BUTTONS - versão super simplificada
+                'card-buttons': function(p, pipe, card) {
+                    console.log('🎨 Botões básicos no card');
+                    return [
+                        {
+                            icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
+                            text: 'Notas',
+                            callback: function(p) {
+                                console.log('✅ Notas clicado');
+                                alert('📝 Notas funcionando!');
+                            }
+                        },
+                        {
+                            icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
+                            text: 'Timer',
+                            callback: function(p) {
+                                console.log('✅ Timer clicado');
+                                alert('⏱️ Timer funcionando!');
+                            }
+                        }
+                    ];
+                },
+                
+                // CARD TAB - versão ultra simplificada
+                'card-tab': function(p, card) {
+                    console.log('🎯 Card tab chamado! SDK CORRETA');
+                    console.log('📋 Parâmetros:', {p, card});
+                    
+                    try {
+                        const config = {
+                            icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
+                            label: 'WhatsApp',
+                            url: './whatsapp-tab.html'
+                        };
+                        
+                        console.log('✅ Config da aba:', config);
+                        return config;
+                        
+                    } catch (error) {
+                        console.error('❌ Erro no card-tab:', error);
+                        return null;
+                    }
+                }
+            });
+        }
+        
+        // Inicialização com múltiplos fallbacks
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(initApp, 100);
+            });
+        } else {
+            setTimeout(initApp, 100);
+        }
+        
+        // Fallback adicional
+        setTimeout(initApp, 500);
+        setTimeout(initApp, 1000);
+    </script>
+</body>
             // APENAS CARD BUTTONS - versão super simplificada
             'card-buttons': function(p, pipe, card) {
                 console.log('🎨 Botões básicos no card');
