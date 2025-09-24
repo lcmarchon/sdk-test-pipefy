@@ -2,10 +2,10 @@
   "name": "Task Manager Pro",
   "description": "Aplicativo para gerenciamento avançado de tarefas",
   "version": "1.0.0",
-  "icon": "./assets/icon.svg",
+  "icon": "https://implementar-pipe-but-sh08.bolt.host/assets/icon.svg",
   "vendor": "ST Solutions",
   "urls": {
-    "app": "./index.html"
+    "app": "https://implementar-pipe-but-sh08.bolt.host/index.html"
   },
   "features": {
     "pipe-buttons": true,

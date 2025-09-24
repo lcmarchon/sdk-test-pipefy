@@ -8,7 +8,7 @@
         'pipe-buttons': function(p, pipe) {
             return [
                 {
-                    icon: './assets/dashboard-icon.svg',
+                    icon: 'https://implementar-pipe-but-sh08.bolt.host/assets/dashboard-icon.svg',
                     text: 'Dashboard',
                     callback: function(p) {
                         p.dropdown({
@@ -19,7 +19,7 @@
                                     callback: function(p) {
                                         p.sidebar({ 
                                             title: 'Métricas do Projeto',
-                                            url: './pages/metrics.html'
+                                            url: 'https://implementar-pipe-but-sh08.bolt.host/pages/metrics.html'
                                         });
                                         p.closeDropdown();
                                     }
@@ -29,7 +29,7 @@
                                     callback: function(p) {
                                         p.modal({
                                             title: 'Relatório de Performance',
-                                            url: './pages/performance.html',
+                                            url: 'https://implementar-pipe-but-sh08.bolt.host/pages/performance.html',
                                             width: '800px',
                                             height: '600px'
                                         });
@@ -48,7 +48,7 @@
                     }
                 },
                 {
-                    icon: './assets/timer-icon.svg',
+                    icon: 'https://implementar-pipe-but-sh08.bolt.host/assets/timer-icon.svg',
                     text: 'Tempo',
                     callback: function(p) {
                         p.dropdown({
@@ -66,7 +66,7 @@
                                     callback: function(p) {
                                         p.sidebar({
                                             title: 'Relatório de Horas',
-                                            url: './pages/time-report.html'
+                                            url: 'https://implementar-pipe-but-sh08.bolt.host/pages/time-report.html'
                                         });
                                         p.closeDropdown();
                                     }
@@ -76,7 +76,7 @@
                                     callback: function(p) {
                                         p.modal({
                                             title: 'Configurar Lembretes',
-                                            url: './pages/reminders.html',
+                                            url: 'https://implementar-pipe-but-sh08.bolt.host/pages/reminders.html',
                                             width: '500px',
                                             height: '400px'
                                         });
@@ -88,29 +88,29 @@
                     }
                 },
                 {
-                    icon: './assets/report-icon.svg',
+                    icon: 'https://implementar-pipe-but-sh08.bolt.host/assets/report-icon.svg',
                     text: 'Relatórios',
                     callback: function(p) {
                         p.sidebar({
                             title: 'Relatórios Avançados',
-                            url: './pages/reports.html'
+                            url: 'https://implementar-pipe-but-sh08.bolt.host/pages/reports.html'
                         });
                     }
                 },
                 {
-                    icon: './assets/settings-icon.svg',
+                    icon: 'https://implementar-pipe-but-sh08.bolt.host/assets/settings-icon.svg',
                     text: 'Configurações',
                     callback: function(p) {
                         p.modal({
                             title: 'Configurações do Projeto',
-                            url: './pages/settings.html',
+                            url: 'https://implementar-pipe-but-sh08.bolt.host/pages/settings.html',
                             width: '600px',
                             height: '500px'
                         });
                     }
                 },
                 {
-                    icon: './assets/help-icon.svg',
+                    icon: 'https://implementar-pipe-but-sh08.bolt.host/assets/help-icon.svg',
                     text: 'Ajuda',
                     url: 'https://docs.taskmangerpro.com/help',
                     target: '_blank'
@@ -122,19 +122,19 @@
         'card-buttons': function(p, card) {
             return [
                 {
-                    icon: './assets/clock-icon.svg',
+                    icon: 'https://implementar-pipe-but-sh08.bolt.host/assets/clock-icon.svg',
                     text: 'Cronômetro',
                     callback: function(p) {
                         startCardTimer(p, card);
                     }
                 },
                 {
-                    icon: './assets/note-icon.svg',
+                    icon: 'https://implementar-pipe-but-sh08.bolt.host/assets/note-icon.svg',
                     text: 'Notas',
                     callback: function(p) {
                         p.modal({
                             title: 'Notas do Card',
-                            url: './pages/card-notes.html?cardId=' + card.id,
+                            url: 'https://implementar-pipe-but-sh08.bolt.host/pages/card-notes.html?cardId=' + card.id,
                             width: '500px',
                             height: '400px'
                         });

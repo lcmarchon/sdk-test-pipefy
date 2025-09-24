@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar Lembretes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #f7fafc;
+            color: #2d3748;
+        }
+        
+        .reminders-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .reminder-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="reminders-container">
+        <h1>Configurar Lembretes</h1>
+        
+        <div class="reminder-form">
+            <div class="form-group">
+                <label for="reminder-type">Tipo de Lembrete</label>
+                <select id="reminder-type">
+                    <option value="deadline">Prazos</option>
+                    <option value="daily">Diário</option>
+                    <option value="weekly">Semanal</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="reminder-time">Horário</label>
+                <input type="time" id="reminder-time" value="09:00">
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="email-reminder" checked>
+                <label for="email-reminder">Enviar por email</label>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="push-reminder">
+                <label for="push-reminder">Notificação push</label>
+            </div>
+            
+            <button class="btn" onclick="saveReminder()">Salvar Lembrete</button>
+        </div>
+    </div>
+    
+    <script>
+        function saveReminder() {
+            alert('Lembrete configurado com sucesso!');
+        }
+    </script>
+</body>
+</html>
