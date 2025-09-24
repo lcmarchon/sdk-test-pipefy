@@ -39,43 +39,35 @@
                 ];
             },
             
-            // NOVA FUNCIONALIDADE: ABA WHATSAPP NO CARD
-            'card-tab': function(p, pipe, card) {
+            // DEBUG: ABA WHATSAPP NO CARD (versão simplificada)
+            'card-tab': function(p, card) {
+                console.log('🎯 Card tab chamado! Versão DEBUG');
+                console.log('📋 Card recebido:', card);
                 console.log('🎯 Card tab chamado!');
-                console.log('📋 Parâmetros recebidos:', { p, pipe, card });
-                console.log('🎴 Card details:', {
-                    id: card?.id,
-                    title: card?.title,
-                    exists: !!card
-                });
                 
-                // 1. Número do WhatsApp (você pode personalizar depois)
-                const numeroWhatsapp = '5511999998888'; // Substitua pelo número real
-                
-                // 2. Mensagem inicial usando dados do card
-                const cardTitle = card?.title || card?.name || `Card ${card?.id || 'Unknown'}`;
-                const cardId = card?.id || 'N/A';
-                const mensagemInicial = `Olá! Gostaria de falar sobre: ${cardTitle} (ID: ${cardId})`;
-                
-                // 3. URL do WhatsApp
-                const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagemInicial)}`;
-                
-                // 4. URL da nossa aba com parâmetro
-                const urlDaAba = `./whatsapp-tab.html?url=${encodeURIComponent(urlWhatsapp)}`;
-                
-                // 5. Objeto de retorno com logs para debug
-                const tabConfig = {
-                    icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
-                    label: 'WhatsApp',
-                    url: urlDaAba
-                };
-                
-                console.log('✅ Retornando config da aba:', tabConfig);
-                return tabConfig;
+                try {
+                    // Objeto super simples para teste
+                    const tabConfig = {
+                        icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
+                        label: 'WhatsApp',
+                        url: './whatsapp-tab.html'
+                    };
+                    
+                    console.log('✅ Retornando config simples:', tabConfig);
+                    return tabConfig;
+                    
+                } catch (error) {
+                    console.error('❌ Erro no card-tab:', error);
+                    return {
+                        icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
+                        label: 'Debug',
+                        url: './whatsapp-tab.html'
+                    };
+                }
             }
         });
 
-        console.log('✅ App mínimo configurado');
+        console.log('✅ App configurado - aguardando card-tab...');
     </script>
 </body>
 </html>

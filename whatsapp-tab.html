@@ -99,75 +99,16 @@
             📱
         </div>
         
-        <div class="whatsapp-title">WhatsApp Business</div>
+        <div class="whatsapp-title">DEBUG - WhatsApp Business</div>
         
         <div class="whatsapp-description">
-            Clique no botão abaixo para iniciar uma conversa sobre este card no WhatsApp Web ou no seu aplicativo.
+            🚀 FUNCIONOU! A aba está carregando.<br>
+            Versão simplificada para debug.
         </div>
-        
-        <div class="card-info" id="cardInfo">
-            <strong>Card:</strong> Carregando informações...
-        </div>
-        
-        <button id="whatsappButton" class="whatsapp-button">
-            📱 Abrir no WhatsApp
-        </button>
-        
-        <div style="margin-top: 1rem; font-size: 0.7rem; color: #999;">
-            💡 A conversa abrirá em uma nova aba
+
+        <div class="whatsapp-button" style="background: #25D366; padding: 1rem; border-radius: 8px; color: white; margin-top: 1rem;">
+            ✅ Aba WhatsApp funcionando!
         </div>
     </div>
-
-    <script>
-        console.log('📱 WhatsApp tab carregada');
-        
-        // Pega os parâmetros da URL
-        const params = new URLSearchParams(window.location.search);
-        const urlWhatsapp = params.get('url');
-        
-        const button = document.getElementById('whatsappButton');
-        const cardInfo = document.getElementById('cardInfo');
-        
-        if (urlWhatsapp) {
-            console.log('✅ URL do WhatsApp encontrada:', urlWhatsapp);
-            
-            // Decodifica a URL para mostrar info do card
-            try {
-                const decodedUrl = decodeURIComponent(urlWhatsapp);
-                const textMatch = decodedUrl.match(/text=([^&]+)/);
-                if (textMatch) {
-                    const messageText = decodeURIComponent(textMatch[1]);
-                    cardInfo.innerHTML = `<strong>Mensagem:</strong> ${messageText.substring(0, 60)}...`;
-                }
-            } catch (e) {
-                console.log('Info do card não disponível');
-            }
-            
-            // Configura o botão para abrir WhatsApp
-            button.onclick = function() {
-                console.log('📱 Abrindo WhatsApp...');
-                
-                // Notificação visual
-                button.innerHTML = '📱 Abrindo WhatsApp...';
-                button.style.background = '#128C7E';
-                
-                // Abre WhatsApp
-                window.open(urlWhatsapp, '_blank');
-                
-                // Restaura botão após 2s
-                setTimeout(() => {
-                    button.innerHTML = '📱 Abrir no WhatsApp';
-                    button.style.background = 'linear-gradient(45deg, #25D366, #128C7E)';
-                }, 2000);
-            };
-            
-        } else {
-            console.error('❌ URL do WhatsApp não encontrada');
-            button.innerHTML = '❌ Erro: URL não encontrada';
-            button.className = 'whatsapp-button error-state';
-            button.disabled = true;
-            cardInfo.innerHTML = '<span class="error-state">Erro ao carregar informações do card</span>';
-        }
-    </script>
 </body>
 </html>
