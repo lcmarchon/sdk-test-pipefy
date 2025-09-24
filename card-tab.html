@@ -37,6 +37,23 @@
             gap: 8px;
         }
         
+        .test-banner {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
         .iframe-container {
             background: white;
             border-radius: 8px;
@@ -63,6 +80,10 @@
     <div class="whatsapp-container">
         <div class="header">
             <h2>📱 WhatsApp Business</h2>
+        </div>
+        
+        <div class="test-banner">
+            🧪 TESTE: Interface sendo manipulada com sucesso!
         </div>
         
         <div class="iframe-container">
