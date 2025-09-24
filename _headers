@@ -1,0 +1,2 @@
+/*
+  Permissions-Policy: autoplay=(self "https://whats.stegia.com.br"), microphone=(self "https://whats.stegia.com.br")
