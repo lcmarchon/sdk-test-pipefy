@@ -2,105 +2,71 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Analytics do Card</title>
+    <title>WhatsApp Tab</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 15px;
+            padding: 16px;
             background: #f8fafc;
             color: #2d3748;
         }
         
-        .analytics {
-            max-width: 100%;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .stat-card {
+        .whatsapp-tab {
             background: white;
-            padding: 1rem;
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .tab-header h2 {
+            color: #25D366;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tab-description {
+            color: #666;
+            margin-bottom: 20px;
             text-align: center;
         }
         
-        .stat-title {
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .stat-value {
-            font-size: 1.3rem;
-            color: #667eea;
-            font-weight: 700;
-        }
-        
-        .calendar-section {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-        
-        .calendar-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .calendar-iframe {
+        .iframe-container {
             border-radius: 8px;
             overflow: hidden;
+            border: 1px solid #e2e8f0;
         }
     </style>
 </head>
 <body>
-    <div class="analytics">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-title">Tempo no Card</div>
-                <div class="stat-value">3h 24min</div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-title">Movimentações</div>
-                <div class="stat-value">7</div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-title">Comentários</div>
-                <div class="stat-value">12</div>
-            </div>
+    <div class="whatsapp-tab">
+        <div class="tab-header">
+            <h2>📱 WhatsApp Business</h2>
+            <p class="tab-description">
+                Conteúdo da aba WhatsApp - sempre disponível nas abas do card
+            </p>
         </div>
         
-        <div class="calendar-section">
-            <div class="calendar-title">
-                📅 Agendar Reunião
-            </div>
-            
-            <!-- Google Calendar Appointment Scheduling begin -->
+        <div class="iframe-container">
             <iframe 
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2J7BGxNV8CuIivvE2KXyk_MgYxVh-CDbVWybTDbrzVdv7d-QFccMoWKjb6jDyMMihS-oTbA0o0?gv=true" 
-                style="border: 0" 
+                name="whatsappTabFrame" 
                 width="100%" 
-                height="400" 
-                frameborder="0"
-                class="calendar-iframe">
+                height="350px" 
+                src="https://www.pipefy.com/pt-br/" 
+                scrolling="no" 
+                marginwidth="0" 
+                marginheight="0"
+                style="border: none;">
             </iframe>
-            <!-- end Google Calendar Appointment Scheduling -->
+        </div>
+        
+        <div style="margin-top: 15px; padding: 10px; background: #f0fdf4; border-radius: 6px; border-left: 3px solid #25D366;">
+            <strong>💡 Dica:</strong> Esta é uma aba fixa que fica sempre disponível no card, junto com Email, Form, etc.
         </div>
     </div>
 </body>
