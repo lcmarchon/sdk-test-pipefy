@@ -45,19 +45,17 @@
         },
         
         // CARD TAB - Nova aba dentro do Card
-        'card-tabs': function(p, pipe, card) {
+        'card-tab': function(p, pipe, card) {
             console.log('📑 Configurando aba WhatsApp do card');
-            return [
-                {
-                    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png?20220228223904',
-                    title: 'WhatsApp',
-                    url: 'card-tab.html',
-                    claimedAttachments: function(attachments) {
-                        // Retorna array vazio conforme documentação
-                        return [];
-                    }
+            return {
+                icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png?20220228223904',
+                title: 'WhatsApp',
+                url: 'card-tab.html',
+                claimedAttachments: function(attachments) {
+                    // Retorna array vazio conforme documentação
+                    return [];
                 }
-            ];
+            };
         }
     });
 
