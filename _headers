@@ -1,2 +1,4 @@
 /*
-  Permissions-Policy: autoplay=(self "https://whats.stegia.com.br"), microphone=(self "https://whats.stegia.com.br")
+  Permissions-Policy: autoplay=(self "https://whats.stegia.com.br" "https://*.whats.stegia.com.br" "https://app.pipefy.com" "https://*.pipefy.com"), microphone=(self "https://whats.stegia.com.br" "https://*.whats.stegia.com.br" "https://app.pipefy.com" "https://*.pipefy.com")
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'self' https://app.pipefy.com https://*.pipefy.com https://whats.stegia.com.br
