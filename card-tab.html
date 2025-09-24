@@ -3,13 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>WhatsApp</title>
+    <style>
+        body {
+            background: red; /* Fundo vermelho para fácil identificação */
+            color: white;
+            padding: 20px;
+            margin: 0; /* Remover margem padrão do body */
+            min-height: 100vh; /* Ocupar 100% da altura do iframe */
+            display: flex; /* Usar flexbox para centralizar */
+            justify-content: center; /* Centralizar horizontalmente */
+            align-items: center; /* Centralizar verticalmente */
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: yellow;
+            font-size: 50px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para o H1 */
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 0;
+        }
+    </style>
 </head>
-<body style="background: red; color: white; padding: 20px;">
-    <h1 style="color: yellow; font-size: 50px;">FUNCIONOU!</h1>
+<body>
+    <h1>FUNCIONOU!</h1>
     
     <script>
-        console.log('🔥 CARD-TAB CARREGADO!');
-        alert('🔥 CARD-TAB FUNCIONANDO!');
+        console.log('🔥 CARD-TAB CARREGADO E RENDERIZADO!');
+        // alert removido para não bloquear a visualização do conteúdo
     </script>
 </body>
 </html>
