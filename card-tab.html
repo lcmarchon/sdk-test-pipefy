@@ -7,71 +7,100 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 20px;
-            background: #f7fafc;
+            padding: 15px;
+            background: #f8fafc;
             color: #2d3748;
         }
         
         .analytics {
-            max-width: 500px;
-            margin: 0 auto;
+            max-width: 100%;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .stat-card {
             background: white;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
         
         .stat-title {
             font-weight: 600;
             color: #4a5568;
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
         
         .stat-value {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #667eea;
             font-weight: 700;
         }
         
-        .chart-placeholder {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            height: 100px;
+        .calendar-section {
+            background: white;
+            padding: 1rem;
             border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .calendar-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
+            gap: 8px;
+        }
+        
+        .calendar-iframe {
+            border-radius: 8px;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
     <div class="analytics">
-        <h2>📊 Analytics do Card</h2>
-        
-        <div class="stat-card">
-            <div class="stat-title">Tempo no Card</div>
-            <div class="stat-value">3h 24min</div>
-        </div>
-        
-        <div class="stat-card">
-            <div class="stat-title">Movimentações</div>
-            <div class="stat-value">7 vezes</div>
-        </div>
-        
-        <div class="stat-card">
-            <div class="stat-title">Comentários</div>
-            <div class="stat-value">12 comentários</div>
-        </div>
-        
-        <div class="stat-card">
-            <div class="chart-placeholder">
-                📈 Gráfico de Atividade
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-title">Tempo no Card</div>
+                <div class="stat-value">3h 24min</div>
             </div>
+            
+            <div class="stat-card">
+                <div class="stat-title">Movimentações</div>
+                <div class="stat-value">7</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-title">Comentários</div>
+                <div class="stat-value">12</div>
+            </div>
+        </div>
+        
+        <div class="calendar-section">
+            <div class="calendar-title">
+                📅 Agendar Reunião
+            </div>
+            
+            <!-- Google Calendar Appointment Scheduling begin -->
+            <iframe 
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2J7BGxNV8CuIivvE2KXyk_MgYxVh-CDbVWybTDbrzVdv7d-QFccMoWKjb6jDyMMihS-oTbA0o0?gv=true" 
+                style="border: 0" 
+                width="100%" 
+                height="400" 
+                frameborder="0"
+                class="calendar-iframe">
+            </iframe>
+            <!-- end Google Calendar Appointment Scheduling -->
         </div>
     </div>
 </body>
