@@ -91,6 +91,42 @@
             font-size: 12px;
             opacity: 0.9;
         }
+        
+        .whatsapp-iframe-container {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp-iframe-container h2 {
+            text-align: center;
+            color: #25D366;
+            margin-bottom: 20px;
+        }
+        
+        .iframe-wrapper {
+            border: 1px solid #ccd1d7;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            position: relative;
+        }
+        
+        .loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-style: italic;
+            z-index: 10;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -123,7 +159,7 @@
         </div>
         
         <div class="stats-panel">
-            <h2>📈 Estatísticas do Pipe</h2>
+            <h2>📱 WhatsApp Business Central</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">24</div>
@@ -140,6 +176,26 @@
                 <div class="stat-item">
                     <div class="stat-number">12</div>
                     <div class="stat-label">Chamadas realizadas</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="whatsapp-iframe-container">
+            <h2>💬 Central WhatsApp Business</h2>
+            <div class="iframe-wrapper">
+                <iframe
+                    src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
+                    width="100%"
+                    height="600"
+                    style="display:block; border:0;"
+                    scrolling="yes"
+                    allow="microphone; autoplay"
+                    onload="hideLoadingPipe()"
+                    onerror="showErrorPipe()"
+                ></iframe>
+                
+                <div id="loading-pipe" class="loading-message">
+                    📱 Carregando WhatsApp Business...
                 </div>
             </div>
         </div>
@@ -162,6 +218,31 @@
         }
         
         setInterval(updateStats, 10000); // A cada 10 segundos
+        
+        function hideLoadingPipe() {
+            const loading = document.getElementById('loading-pipe');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+            console.log('📱 WhatsApp iframe carregado com sucesso no Pipe View');
+        }
+        
+        function showErrorPipe() {
+            const loading = document.getElementById('loading-pipe');
+            if (loading) {
+                loading.innerHTML = '❌ Erro ao carregar WhatsApp Business';
+                loading.style.color = '#e74c3c';
+            }
+            console.log('❌ Erro ao carregar WhatsApp iframe no Pipe View');
+        }
+        
+        // Verificar se iframe carregou após 5 segundos
+        setTimeout(() => {
+            const loading = document.getElementById('loading-pipe');
+            if (loading && loading.style.display !== 'none') {
+                hideLoadingPipe();
+            }
+        }, 5000);
     </script>
 </body>
 </html>
