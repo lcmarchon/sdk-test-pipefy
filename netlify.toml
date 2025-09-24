@@ -1,15 +1,18 @@
 [build]
-  publish = "."
-  
+publish = "dist"
+command = "npx vite build"
+
 [[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type, Authorization"
-    
+for = "/*"
+
+[headers.values]
+Access-Control-Allow-Origin = "*"
+Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+Access-Control-Allow-Headers = "Content-Type, Authorization"
+
 [[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Content-Type = "application/json"
+for = "/manifest.json"
+
+[headers.values]
+Access-Control-Allow-Origin = "*"
+Content-Type = "application/json"
