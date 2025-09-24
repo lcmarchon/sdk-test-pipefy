@@ -2,21 +2,31 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Task Manager Pro - SDK Test</title>
+    <title>Task Manager Pro - WhatsApp Embed</title>
 </head>
 <body>
     <div style="padding: 20px; text-align: center;">
-        <h2>🚀 Task Manager Pro - Versão Limpa</h2>
-        <p>SDK funcionando sem erros!</p>
+        <h2>🚀 Task Manager Pro - WhatsApp Embed</h2>
+        <p>WhatsApp embebido no card!</p>
     </div>
 
     <!-- Pipefy Client SDK -->
     <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
     <script>
-        console.log('🚀 Iniciando Task Manager Pro - Versão Limpa');
+        console.log('🚀 Iniciando Task Manager Pro - WhatsApp Embed');
 
         PipefyApp.initCall({
-            // APENAS CARD BUTTONS - sem outras funcionalidades que causam erro
+            // CARD EMBED - WhatsApp embebido no card
+            'card-embed': function(p, pipe, card) {
+                console.log('📎 Configurando WhatsApp embebido no card');
+                return {
+                    title: '📱 WhatsApp Business',
+                    url: 'whatsapp-modal.html',
+                    height: 400
+                };
+            },
+            
+            // CARD BUTTONS - Botões adicionais
             'card-buttons': function(p, pipe, card) {
                 console.log('🎨 Adicionando botões ao card');
                 return [
@@ -50,29 +60,12 @@
                             document.body.appendChild(notification);
                             setTimeout(() => notification.remove(), 3000);
                         }
-                    },
-                    {
-                        icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
-                        text: 'WhatsApp',
-                        callback: function(p) {
-                            console.log('✅ Botão WhatsApp clicado - abrindo modal');
-                            
-                            // Abre diretamente em nova janela (mais confiável)
-                            window.open('whatsapp-modal.html', 'whatsapp', 'width=700,height=500,scrollbars=yes,resizable=yes');
-                            
-                            // Notificação visual
-                            const notification = document.createElement('div');
-                            notification.innerHTML = '📱 WhatsApp Business aberto!';
-                            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:8px;z-index:9999;font-family:Arial;box-shadow:0 4px 12px rgba(0,0,0,0.2);';
-                            document.body.appendChild(notification);
-                            setTimeout(() => notification.remove(), 3000);
-                        }
                     }
                 ];
             }
         });
 
-        console.log('✅ Task Manager Pro configurado - versão limpa!');
+        console.log('✅ Task Manager Pro configurado - WhatsApp embebido!');
     </script>
 </body>
 </html>

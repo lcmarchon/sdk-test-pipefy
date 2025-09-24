@@ -10,6 +10,7 @@
     "https://placehold.co/600x400?text=Demo%202"
   ],
   "features": [
+    "card-embed",
     "card-buttons"
   ]
 }
