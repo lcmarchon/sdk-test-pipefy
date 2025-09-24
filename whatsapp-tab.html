@@ -6,7 +6,7 @@
     <title>WhatsApp</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
             background: #25D366;
@@ -16,9 +16,13 @@
         
         .whatsapp-content {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 30px;
             border-radius: 12px;
             backdrop-filter: blur(10px);
+        }
+        
+        h2 {
+            margin-bottom: 20px;
         }
         
         .whatsapp-button {
@@ -30,25 +34,38 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
+            margin: 10px;
+        }
+        
+        .whatsapp-button:hover {
+            background: #f0f0f0;
         }
     </style>
 </head>
 <body>
     <div class="whatsapp-content">
         <h2>📱 WhatsApp Business</h2>
-        <p>Aba WhatsApp funcionando!</p>
-        <button class="whatsapp-button" onclick="abrirWhatsApp()">
-            Abrir WhatsApp
+        <p>Aba WhatsApp carregada com sucesso!</p>
+        
+        <button class="whatsapp-button" onclick="openWhatsApp()">
+            💬 Abrir WhatsApp
+        </button>
+        
+        <button class="whatsapp-button" onclick="sendMessage()">
+            📩 Enviar Mensagem
         </button>
     </div>
 
     <script>
-        function abrirWhatsApp() {
-            alert('🎉 WhatsApp funcionando!');
+        console.log('✅ Aba WhatsApp carregada');
+        
+        function openWhatsApp() {
+            alert('📱 Abrindo WhatsApp...');
         }
         
-        console.log('✅ Aba WhatsApp carregada!');
+        function sendMessage() {
+            alert('📩 Enviando mensagem via WhatsApp...');
+        }
     </script>
 </body>
 </html>

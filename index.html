@@ -1,92 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <title>WhatsApp App - DEBUG TOTAL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Business App</title>
     <style>
         body {
-            padding: 20px;
             font-family: Arial, sans-serif;
-            background: #f0f0f0;
-        }
-        .debug-box {
-            background: white;
             padding: 20px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border: 2px solid #25D366;
+            background: #25D366;
+            color: white;
+            text-align: center;
         }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
         .status {
             font-size: 18px;
             font-weight: bold;
-            color: #25D366;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <div class="debug-box">
-        <h1>🚨 DEBUG TOTAL - WhatsApp App</h1>
+    <div class="container">
+        <h1>📱 WhatsApp Business</h1>
         <div class="status" id="status">Carregando...</div>
-        <div id="info"></div>
+        <p>App simples para Pipefy</p>
     </div>
 
     <script>
-        console.log('🚨 INÍCIO DEBUG TOTAL');
+        console.log('🚀 WhatsApp App iniciado');
         
-        // Log TUDO que conseguimos
-        console.log('📍 URL atual:', window.location.href);
-        console.log('📍 Referrer:', document.referrer);
-        console.log('📍 User Agent:', navigator.userAgent);
-        console.log('📍 Timestamp:', new Date().toISOString());
-        
-        // Atualiza HTML
-        document.getElementById('status').textContent = '✅ ARQUIVO CARREGADO!';
-        document.getElementById('info').innerHTML = `
-            <p><strong>URL:</strong> ${window.location.href}</p>
-            <p><strong>Referrer:</strong> ${document.referrer}</p>
-            <p><strong>Hora:</strong> ${new Date().toLocaleString()}</p>
-        `;
-
-        // Função SUPER simples para botões
-        function createCardButtons() {
-            console.log('🎴 createCardButtons CHAMADA!');
-            return [
-                {
-                    icon: '📝',
-                    text: 'DEBUG',
-                    callback: function() {
-                        console.log('📝 BOTÃO DEBUG CLICADO!');
-                        alert('📝 BOTÃO FUNCIONANDO!');
-                    }
-                }
-            ];
-        }
-
-        // Função SUPER simples para aba
-        function createCardTab() {
-            console.log('🎯 createCardTab CHAMADA!');
+        // Função para criar aba WhatsApp
+        function createCardTab(p, card) {
+            console.log('📱 Criando aba WhatsApp para card:', card?.id);
+            
             return {
-                icon: '💬',
-                label: 'DEBUG',
+                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
+                label: 'WhatsApp',
                 url: './whatsapp-tab.html'
             };
         }
 
-        // Expor no window IMEDIATAMENTE
+        // Expor PipefyApp
         window.PipefyApp = {
-            'card-buttons': createCardButtons,
             'card-tab': createCardTab
         };
-        
-        console.log('✅ PipefyApp exposto:', window.PipefyApp);
-        console.log('✅ Funções disponíveis:', Object.keys(window.PipefyApp));
-        
-        // Log a cada 2 segundos para monitorar
-        setInterval(function() {
-            console.log('⏰ App ainda ativo, aguardando Pipefy...');
-        }, 2000);
-        
-        console.log('🚨 FIM DEBUG TOTAL');
+
+        console.log('✅ PipefyApp criado:', window.PipefyApp);
+        document.getElementById('status').textContent = '✅ App carregado!';
     </script>
 </body>
 </html>

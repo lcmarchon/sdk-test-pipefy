@@ -1,16 +1,11 @@
 {
-  "name": "WhatsApp Business + Task Manager",
-  "short_description": "DEBUG TOTAL - Teste básico",
-  "description": "DEBUG: App de teste para verificar integração básica com Pipefy SDK",
-  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg",
-  "author": "DEBUG Test",
+  "name": "WhatsApp Business App",
+  "short_description": "Integração WhatsApp com Pipefy",
+  "description": "App simples para adicionar aba WhatsApp aos cards do Pipefy",
+  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg",
+  "author": "WhatsApp Team",
   "init_url": "./",
-  "screenshots": [
-    "https://placehold.co/600x400?text=DEBUG%201",
-    "https://placehold.co/600x400?text=DEBUG%202"
-  ],
   "features": [
-    "card-buttons",
     "card-tab"
   ]
 }
