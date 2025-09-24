@@ -1,18 +1,15 @@
 {
-  "name": "Task Manager Pro v5",
-  "short_description": "App para gerenciamento avançado de tarefas",
-  "description": "App v6 corrigido para eliminar erros undefined. Gestão avançada de tarefas e projetos! 🚀",
+  "name": "SDK Test Pipefy",
+  "short_description": "Testando funcionalidades da SDK do Pipefy",
+  "description": "App de teste para validar integração com pipe-buttons e card-buttons do Pipefy",
   "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2699.svg",
-  "author": "ST Solutions", 
-  "version": "1.0.6",
+  "author": "Developer",
+  "version": "1.0.0",
   "screenshots": [
-    "https://placehold.co/600x400?text=Dashboard",
-    "https://placehold.co/600x400?text=Timer"
+    "https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=SDK+Test"
   ],
   "features": {
     "pipe-buttons": true,
-    "card-buttons": true,
-    "sidebar": true,
-    "modal": true
+    "card-buttons": true
   }
 }

@@ -3,70 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager Pro</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <title>SDK Test Pipefy</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div id="app">
-        <div class="container">
-            <header class="app-header">
-                <div class="header-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 11l3 3l8-8"/>
-                        <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.33 0 2.57.29 3.69.82"/>
-                    </svg>
+    <div class="container">
+        <header class="app-header">
+            <h1>🚀 SDK Test Pipefy</h1>
+            <p>Testando integração com Pipefy SDK</p>
+        </header>
+        
+        <main class="app-content">
+            <div class="status-card">
+                <h2>Status da Integração</h2>
+                <p id="status">⏳ Carregando...</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📊 Dashboard</h3>
+                    <p>Botão no pipe para dashboard</p>
                 </div>
-                <div class="header-content">
-                    <h1>Task Manager Pro v6</h1>
-                    <p>Gerenciamento avançado de tarefas e projetos</p>
+                <div class="feature-card">
+                    <h3>⏱️ Timer</h3>
+                    <p>Botão no pipe para controle de tempo</p>
                 </div>
-            </header>
-
-            <main class="app-main">
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Dashboard Avançado</h3>
-                        <p>Visualize métricas e KPIs em tempo real</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">⏱️</div>
-                        <h3>Controle de Tempo</h3>
-                        <p>Monitore tempo gasto em cada tarefa</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h3>Relatórios</h3>
-                        <p>Gere relatórios detalhados de produtividade</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Metas e Objetivos</h3>
-                        <p>Defina e acompanhe metas da equipe</p>
-                    </div>
+                <div class="feature-card">
+                    <h3>📝 Notas</h3>
+                    <p>Botão nos cards para anotações</p>
                 </div>
-
-                <div class="status-section">
-                    <h2>Status do Projeto</h2>
-                    <div class="status-bar">
-                        <div class="status-progress" style="width: 75%"></div>
-                    </div>
-                    <p>75% concluído - App v6 ativo - Erros corrigidos!</p>
-                </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
-
-    <script src="./scripts/main.js"></script>
-    <script>
-        console.log('🚀 Task Manager Pro v6 - Carregado');
-        console.log('🔍 PipefyApp disponível:', typeof window.PipefyApp);
-        if (window.PipefyApp) {
-            console.log('✅ Funções PipefyApp:', Object.keys(window.PipefyApp));
-        }
-    </script>
+    
+    <script src="./app.js"></script>
 </body>
 </html>
