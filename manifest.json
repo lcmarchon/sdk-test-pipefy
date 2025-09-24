@@ -1,12 +1,18 @@
 {
-  "name": "Task Manager Pro - GitHub",
-  "short_description": "App para gerenciamento avançado de tarefas",
-  "description": "Implementação completa da SDK do Pipefy com pipe-buttons e card-buttons funcionais",
-  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2699.svg",
-  "author": "Developer",
+  "name": "Task Manager Pro - SDK Test",
+  "short_description": "App demonstrativo com todos os recursos Pipefy",
+  "description": "Este app demonstra todas as funcionalidades disponíveis do Pipefy. Perfeito para aprender! 🚀",
+  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ca.svg",
+  "author": "SDK Test",
   "init_url": "./",
+  "screenshots": [
+    "https://placehold.co/600x400?text=Demo%201",
+    "https://placehold.co/600x400?text=Demo%202"
+  ],
   "features": [
-    "pipe-buttons",
-    "card-buttons"
+    "pipe-view",
+    "card-buttons",
+    "card-badges",
+    "card-tab"
   ]
 }
