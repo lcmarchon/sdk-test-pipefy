@@ -1,10 +1,10 @@
 {
   "name": "Task Manager Pro v5",
   "short_description": "App para gerenciamento avançado de tarefas",
-  "description": "Este app demonstra funcionalidades avançadas do Pipefy para gestão de tarefas e projetos. Perfeito para produtividade! 🚀",
+  "description": "App v6 corrigido para eliminar erros undefined. Gestão avançada de tarefas e projetos! 🚀",
   "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2699.svg",
   "author": "ST Solutions", 
-  "version": "1.0.5",
+  "version": "1.0.6",
   "screenshots": [
     "https://placehold.co/600x400?text=Dashboard",
     "https://placehold.co/600x400?text=Timer"

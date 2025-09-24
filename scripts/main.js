@@ -1,101 +1,105 @@
-// 🚀 Pipefy SDK - Task Manager Pro v5
-(function() {
-    'use strict';
+// Pipefy App - Task Manager Pro v6
+// Versão corrigida para erros undefined
 
-    console.log('🔄 Carregando PipefyApp...');
+console.log('🚀 Iniciando Task Manager Pro v6');
 
-    // Configuração do aplicativo
+// Aguarda DOM estar pronto
+function initPipefyApp() {
+    console.log('🔄 Inicializando PipefyApp...');
+    
+    // Definição mais robusta do PipefyApp
     const PipefyApp = {
-        // Pipe Buttons - Botões no cabeçalho do pipe
         'pipe-buttons': function(p, pipe) {
-            console.log('🔘 Pipe buttons executado para:', pipe.name);
+            console.log('📌 Pipe buttons chamado para:', pipe?.name || 'pipe desconhecido');
             
+            // Retorna array de botões válidos
             return [
                 {
                     icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ca.svg',
-                    text: 'Dashboard',
+                    text: 'Dashboard v6',
                     callback: function(p) {
-                        console.log('📊 Dashboard clicado');
-                        p.showMessage({
-                            type: 'success',
-                            text: '📊 Dashboard v5 funcionando!',
-                            timeout: 3000
-                        });
+                        console.log('✅ Dashboard v6 clicado');
+                        if (p && p.showMessage) {
+                            p.showMessage({
+                                type: 'success',
+                                text: '📊 Dashboard v6 funcionando!',
+                                timeout: 3000
+                            });
+                        }
                     }
                 },
                 {
                     icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
-                    text: 'Timer',
+                    text: 'Timer v6',
                     callback: function(p) {
-                        console.log('⏱️ Timer clicado');
-                        p.showMessage({
-                            type: 'info',
-                            text: '⏱️ Timer v5 ativo!',
-                            timeout: 3000
-                        });
-                    }
-                },
-                {
-                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4c8.svg',
-                    text: 'Relatórios',
-                    callback: function(p) {
-                        console.log('📈 Relatórios clicado');
-                        p.showMessage({
-                            type: 'warning',
-                            text: '📈 Relatórios v5 carregados!',
-                            timeout: 3000
-                        });
+                        console.log('✅ Timer v6 clicado');
+                        if (p && p.showMessage) {
+                            p.showMessage({
+                                type: 'info',
+                                text: '⏱️ Timer v6 ativo!',
+                                timeout: 3000
+                            });
+                        }
                     }
                 }
             ];
         },
-
-        // Card Buttons - Botões nos cards
+        
         'card-buttons': function(p, card) {
-            console.log('🎴 Card buttons executado para:', card.title);
+            console.log('🎴 Card buttons chamado para:', card?.title || 'card desconhecido');
             
+            // Retorna array de botões válidos
             return [
                 {
                     icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
-                    text: 'Notas',
+                    text: 'Notas v6',
                     callback: function(p) {
-                        console.log('📝 Notas clicada para:', card.title);
-                        p.showMessage({
-                            type: 'success',
-                            text: `📝 Notas v5 para "${card.title}"`,
-                            timeout: 3000
-                        });
-                    }
-                },
-                {
-                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f0.svg',
-                    text: 'Cronômetro',
-                    callback: function(p) {
-                        console.log('⏰ Cronômetro clicado para:', card.title);
-                        p.showMessage({
-                            type: 'info',
-                            text: `⏰ Cronômetro v5 iniciado para "${card.title}"`,
-                            timeout: 3000
-                        });
+                        console.log('✅ Notas v6 clicado');
+                        if (p && p.showMessage) {
+                            p.showMessage({
+                                type: 'success',
+                                text: '📝 Notas v6 funcionando!',
+                                timeout: 3000
+                            });
+                        }
                     }
                 }
             ];
         }
     };
 
-    // Exposição global - CRÍTICO!
-    window.PipefyApp = PipefyApp;
-    
-    // Debug
-    console.log('✅ PipefyApp v5 exposto globalmente');
-    console.log('🔍 Funções disponíveis:', Object.keys(PipefyApp));
-    
-    // Fallbacks para diferentes ambientes
-    if (typeof global !== 'undefined') {
-        global.PipefyApp = PipefyApp;
+    // Exposição global mais robusta
+    try {
+        window.PipefyApp = PipefyApp;
+        console.log('✅ PipefyApp exposto no window');
+        
+        // Backup para diferentes contextos
+        if (typeof global !== 'undefined') {
+            global.PipefyApp = PipefyApp;
+            console.log('✅ PipefyApp exposto no global');
+        }
+        
+        // Verificação final
+        if (window.PipefyApp) {
+            console.log('🎯 PipefyApp disponível:', typeof window.PipefyApp);
+            console.log('🔍 Funções:', Object.keys(window.PipefyApp));
+        } else {
+            console.error('❌ Erro: PipefyApp não foi exposto!');
+        }
+        
+    } catch (error) {
+        console.error('❌ Erro ao expor PipefyApp:', error);
     }
-    if (typeof module !== 'undefined' && module.exports) {
-        module.exports = PipefyApp;
-    }
+}
 
-})();
+// Inicialização imediata e com fallbacks
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPipefyApp);
+} else {
+    initPipefyApp();
+}
+
+// Fallback adicional
+setTimeout(initPipefyApp, 100);
+
+console.log('📋 Script carregado - aguardando inicialização');
