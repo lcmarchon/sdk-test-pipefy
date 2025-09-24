@@ -4,12 +4,12 @@
   "description": "Implementação completa da SDK do Pipefy com pipe-buttons e card-buttons funcionais",
   "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2699.svg",
   "author": "Developer",
-  "version": "1.0.0",
+  "init_url": "./",
   "screenshots": [
     "https://via.placeholder.com/600x400/4F46E5/FFFFFF?text=Task+Manager+Pro"
   ],
-  "features": {
-    "pipe-buttons": true,
-    "card-buttons": true
-  }
+  "features": [
+    "pipe-buttons",
+    "card-buttons"
+  ]
 }
