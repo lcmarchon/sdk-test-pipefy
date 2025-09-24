@@ -67,12 +67,8 @@
                         icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
                         text: 'WhatsApp',
                         callback: function(p) {
-                            // Abre WhatsApp Web para contato
-                            const phoneNumber = '5511999999999'; // Substitua pelo número desejado
-                            const message = encodeURIComponent('Olá! Vim através do card do Pipefy. Preciso de ajuda com: ' + card.title);
-                            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-                            
-                            window.open(whatsappUrl, '_blank');
+                            // Abre WhatsApp Web simples
+                            window.open('https://wa.me/5511999999999', '_blank');
                             
                             // Notificação de confirmação
                             const notification = document.createElement('div');
@@ -80,8 +76,6 @@
                             notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
                             document.body.appendChild(notification);
                             setTimeout(() => notification.remove(), 3000);
-                            
-                            console.log('✅ WhatsApp aberto para card:', card);
                         }
                     }
                 ];
