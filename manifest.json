@@ -1,12 +1,14 @@
 {
-  "name": "Task Manager Pro",
-  "description": "Aplicativo para gerenciamento avançado de tarefas",
-  "version": "1.0.0",
-  "icon": "./assets/icon.svg",
-  "vendor": "ST Solutions",
-  "urls": {
-    "app": "./index.html"
-  },
+  "name": "Task Manager Pro v5",
+  "short_description": "App para gerenciamento avançado de tarefas",
+  "description": "Este app demonstra funcionalidades avançadas do Pipefy para gestão de tarefas e projetos. Perfeito para produtividade! 🚀",
+  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2699.svg",
+  "author": "ST Solutions", 
+  "version": "1.0.5",
+  "screenshots": [
+    "https://placehold.co/600x400?text=Dashboard",
+    "https://placehold.co/600x400?text=Timer"
+  ],
   "features": {
     "pipe-buttons": true,
     "card-buttons": true,

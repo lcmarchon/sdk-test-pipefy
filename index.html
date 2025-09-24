@@ -17,7 +17,7 @@
                     </svg>
                 </div>
                 <div class="header-content">
-                    <h1>Task Manager Pro</h1>
+                    <h1>Task Manager Pro v5</h1>
                     <p>Gerenciamento avançado de tarefas e projetos</p>
                 </div>
             </header>
@@ -52,14 +52,21 @@
                 <div class="status-section">
                     <h2>Status do Projeto</h2>
                     <div class="status-bar">
-                        <div class="status-progress" style="width: 65%"></div>
+                        <div class="status-progress" style="width: 75%"></div>
                     </div>
-                    <p>65% concluído</p>
+                    <p>75% concluído - App v5 ativo!</p>
                 </div>
             </main>
         </div>
     </div>
 
     <script src="./scripts/main.js"></script>
+    <script>
+        console.log('🚀 Task Manager Pro v5 - Carregado');
+        console.log('🔍 PipefyApp disponível:', typeof window.PipefyApp);
+        if (window.PipefyApp) {
+            console.log('✅ Funções PipefyApp:', Object.keys(window.PipefyApp));
+        }
+    </script>
 </body>
 </html>
