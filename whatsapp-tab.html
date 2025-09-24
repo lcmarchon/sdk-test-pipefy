@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Business</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatsapp-container {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 320px;
+            width: 100%;
+        }
+        
+        .whatsapp-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: #25D366;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .whatsapp-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #25D366;
+            margin-bottom: 0.5rem;
+        }
+        
+        .whatsapp-description {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+        
+        .whatsapp-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .card-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            color: #666;
+            border-left: 3px solid #25D366;
+        }
+        
+        .error-state {
+            color: #e74c3c;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="whatsapp-container">
+        <div class="whatsapp-logo">
+            📱
+        </div>
+        
+        <div class="whatsapp-title">WhatsApp Business</div>
+        
+        <div class="whatsapp-description">
+            Clique no botão abaixo para iniciar uma conversa sobre este card no WhatsApp Web ou no seu aplicativo.
+        </div>
+        
+        <div class="card-info" id="cardInfo">
+            <strong>Card:</strong> Carregando informações...
+        </div>
+        
+        <button id="whatsappButton" class="whatsapp-button">
+            📱 Abrir no WhatsApp
+        </button>
+        
+        <div style="margin-top: 1rem; font-size: 0.7rem; color: #999;">
+            💡 A conversa abrirá em uma nova aba
+        </div>
+    </div>
+
+    <script>
+        console.log('📱 WhatsApp tab carregada');
+        
+        // Pega os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
+        const urlWhatsapp = params.get('url');
+        
+        const button = document.getElementById('whatsappButton');
+        const cardInfo = document.getElementById('cardInfo');
+        
+        if (urlWhatsapp) {
+            console.log('✅ URL do WhatsApp encontrada:', urlWhatsapp);
+            
+            // Decodifica a URL para mostrar info do card
+            try {
+                const decodedUrl = decodeURIComponent(urlWhatsapp);
+                const textMatch = decodedUrl.match(/text=([^&]+)/);
+                if (textMatch) {
+                    const messageText = decodeURIComponent(textMatch[1]);
+                    cardInfo.innerHTML = `<strong>Mensagem:</strong> ${messageText.substring(0, 60)}...`;
+                }
+            } catch (e) {
+                console.log('Info do card não disponível');
+            }
+            
+            // Configura o botão para abrir WhatsApp
+            button.onclick = function() {
+                console.log('📱 Abrindo WhatsApp...');
+                
+                // Notificação visual
+                button.innerHTML = '📱 Abrindo WhatsApp...';
+                button.style.background = '#128C7E';
+                
+                // Abre WhatsApp
+                window.open(urlWhatsapp, '_blank');
+                
+                // Restaura botão após 2s
+                setTimeout(() => {
+                    button.innerHTML = '📱 Abrir no WhatsApp';
+                    button.style.background = 'linear-gradient(45deg, #25D366, #128C7E)';
+                }, 2000);
+            };
+            
+        } else {
+            console.error('❌ URL do WhatsApp não encontrada');
+            button.innerHTML = '❌ Erro: URL não encontrada';
+            button.className = 'whatsapp-button error-state';
+            button.disabled = true;
+            cardInfo.innerHTML = '<span class="error-state">Erro ao carregar informações do card</span>';
+        }
+    </script>
+</body>
+</html>

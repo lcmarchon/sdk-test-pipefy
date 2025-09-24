@@ -1,8 +1,8 @@
 {
-  "name": "Task Manager Pro - Mínimo",
-  "short_description": "Versão mínima funcionando",
-  "description": "App básico com apenas botões funcionais - sem erros 🚀",
-  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2705.svg",
+  "name": "WhatsApp Business + Task Manager",
+  "short_description": "WhatsApp integrado + ferramentas de produtividade",
+  "description": "Gerencie conversas do WhatsApp diretamente no Pipefy. Mantenha todo o histórico de mensagens organizado em cada card.",
+  "icon": "https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png",
   "author": "SDK Test",
   "init_url": "./",
   "screenshots": [
@@ -10,6 +10,7 @@
     "https://placehold.co/600x400?text=Funcional%202"
   ],
   "features": [
-    "card-buttons"
+    "card-buttons",
+    "card-tab"
   ]
 }
