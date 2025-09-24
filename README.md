@@ -1,32 +1,19 @@
-# Task Manager Pro - Pipefy SDK
+# WhatsApp Pipefy App - Ultra Simples
 
-App de exemplo para integração com Pipefy usando SDK oficial.
+App básico para adicionar aba WhatsApp aos cards do Pipefy.
 
-## 🚀 Como usar no Pipefy:
+## 📁 Arquivos:
+- `manifest.json` - Configuração do app
+- `index.html` - App principal 
+- `whatsapp-tab.html` - Conteúdo da aba WhatsApp
 
-1. **URL do Manifest:** `https://seuusuario.github.io/sdk-test-pipefy/manifest.json`
-2. **Registre no Pipefy** usando essa URL
-3. **Ative o app** no pipe desejado
+## 🚀 Para usar:
+1. Faça deploy no GitHub Pages
+2. Use a URL: `https://seuusuario.github.io/seurepo/manifest.json`
+3. Registre no Pipefy
+4. Ative em um pipe
+5. Abra um card e veja a aba WhatsApp
 
 ## ✅ Funcionalidades:
-
-### Pipe Buttons:
-- **📊 Dashboard** - Dropdown com opções
-- **⏱️ Timer** - Mensagem de timer
-
-### Card Buttons:
-- **📝 Notas** - Para anotações
-
-## 🔧 Para personalizar:
-
-1. Faça fork deste repositório
-2. Modifique os arquivos
-3. Ative GitHub Pages
-4. Use sua URL no Pipefy
-
-## 📋 Arquivos importantes:
-
-- `manifest.json` - Configuração do app
-- `app.js` - Lógica da SDK
-- `index.html` - Página principal
-- `styles.css` - Visual do app
+- Aba WhatsApp em todos os cards
+- Interface simples e limpa
