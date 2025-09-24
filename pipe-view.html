@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Business - Pipe View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .pipe-container {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            color: #25D366;
+            font-size: 32px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #25D366;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h3 {
+            margin-top: 0;
+            color: #25D366;
+        }
+        
+        .stats-panel {
+            background: #25D366;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="pipe-container">
+        <div class="header">
+            <h1>📱 WhatsApp Business</h1>
+            <p>Central de comunicação para seu pipe</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>📩 Mensagens Automáticas</h3>
+                <p>Envie mensagens automaticamente quando cards mudarem de fase ou receberem atualizações.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📞 Integração de Chamadas</h3>
+                <p>Inicie chamadas WhatsApp diretamente dos cards com um clique.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>👥 Gestão de Contatos</h3>
+                <p>Sincronize e gerencie contatos WhatsApp conectados aos seus cards.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📊 Relatórios de Comunicação</h3>
+                <p>Acompanhe o histórico e performance das suas comunicações via WhatsApp.</p>
+            </div>
+        </div>
+        
+        <div class="stats-panel">
+            <h2>📈 Estatísticas do Pipe</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Mensagens hoje</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Contatos ativos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Taxa de resposta</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Chamadas realizadas</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('✅ WhatsApp Pipe View carregada');
+        
+        // Simular atualizações em tempo real
+        function updateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                if (stat.textContent !== '89%') {
+                    const current = parseInt(stat.textContent);
+                    if (Math.random() > 0.7) { // 30% chance de atualizar
+                        stat.textContent = current + Math.floor(Math.random() * 3);
+                    }
+                }
+            });
+        }
+        
+        setInterval(updateStats, 10000); // A cada 10 segundos
+    </script>
+</body>
+</html>

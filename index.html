@@ -1,65 +1,111 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>WhatsApp Business App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background: #25D366;
-            color: white;
-            text-align: center;
-        }
-        
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            margin-bottom: 20px;
-        }
-        
-        .status {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📱 WhatsApp Business</h1>
-        <div class="status" id="status">Carregando...</div>
-        <p>App simples para Pipefy</p>
+    <div style="padding: 20px; text-align: center; background: #25D366; color: white; font-family: Arial;">
+        <h2>📱 Inicializando WhatsApp Business...</h2>
+        <p>Conectando com Pipefy...</p>
     </div>
 
-    <script>
-        console.log('🚀 WhatsApp App iniciado');
-        
-        // Função para criar aba WhatsApp
-        function createCardTab(p, card) {
-            console.log('📱 Criando aba WhatsApp para card:', card?.id);
-            
+<!-- Pipefy Client SDK -->
+<script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
+<script>
+    console.log('🚀 Iniciando WhatsApp Business App...');
+
+    PipefyApp.initCall({
+        // PIPE VIEW - Botão e página no Pipe
+        'pipe-view': function(p, pipe) {
+            console.log('📍 Configurando pipe-view WhatsApp para pipe:', pipe);
             return {
                 icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
-                label: 'WhatsApp',
-                url: './whatsapp-tab.html'
+                text: 'WhatsApp',
+                url: 'pipe-view.html',
+                hide_create_button: false
+            };
+        },
+        
+        // CARD BUTTONS - Botões no Card
+        'card-buttons': function(p, pipe, card) {
+            console.log('📱 Adicionando botão WhatsApp ao card');
+            return [
+                {
+                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ac.svg',
+                    text: 'Enviar WhatsApp',
+                    callback: function(p) {
+                        // Criar notificação WhatsApp
+                        const notification = document.createElement('div');
+                        notification.innerHTML = '📱 Enviando via WhatsApp...';
+                        notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:8px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3)';
+                        document.body.appendChild(notification);
+                        setTimeout(() => notification.remove(), 3000);
+                        
+                        console.log('WhatsApp enviado para card:', card);
+                    }
+                },
+                {
+                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4de.svg',
+                    text: 'Ligar WhatsApp',
+                    callback: function(p) {
+                        const notification = document.createElement('div');
+                        notification.innerHTML = '📞 Iniciando chamada WhatsApp...';
+                        notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#128C7E;color:white;padding:15px;border-radius:8px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3)';
+                        document.body.appendChild(notification);
+                        setTimeout(() => notification.remove(), 3000);
+                        
+                        console.log('Ligação WhatsApp iniciada para card:', card);
+                    }
+                }
+            ];
+        },
+        
+        // CARD BADGES - Etiquetas que aparecem NA LISTAGEM dos cards
+        'card-badges': function(p, pipe, card) {
+            console.log('🏷️ Adicionando badges WhatsApp ao card');
+            return [
+                {
+                    text: '📱 WhatsApp',
+                    color: '#25D366',
+                    title: 'Contato WhatsApp Business disponível'
+                },
+                {
+                    text: '✅ Online',
+                    color: '#128C7E',
+                    title: 'Status WhatsApp: Online'
+                }
+            ];
+        },
+        
+        // CARD TAB - Nova aba dentro do Card
+        'card-tab': function(p, pipe, card) {
+            console.log('📑 Configurando aba WhatsApp do card');
+            return {
+                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
+                title: 'WhatsApp',
+                url: 'card-tab.html',
+                buttons: [
+                    {
+                        text: 'Nova Mensagem',
+                        callback: function(p) {
+                            console.log('Nova mensagem WhatsApp!');
+                            alert('📱 Abrindo nova mensagem WhatsApp...');
+                        }
+                    },
+                    {
+                        text: 'Histórico',
+                        callback: function(p) {
+                            console.log('Histórico WhatsApp solicitado!');
+                            alert('📋 Carregando histórico de mensagens...');
+                        }
+                    }
+                ]
             };
         }
+    });
 
-        // Expor PipefyApp
-        window.PipefyApp = {
-            'card-tab': createCardTab
-        };
-
-        console.log('✅ PipefyApp criado:', window.PipefyApp);
-        document.getElementById('status').textContent = '✅ App carregado!';
-    </script>
+    console.log('✅ WhatsApp Business App configurado com sucesso!');
+</script>
 </body>
 </html>

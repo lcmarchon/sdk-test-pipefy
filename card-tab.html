@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Business</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .whatsapp-container {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #25D366;
+        }
+        
+        .header h2 {
+            margin: 0;
+            color: #25D366;
+            font-size: 24px;
+        }
+        
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .action-btn {
+            background: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .action-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .action-btn.secondary {
+            background: #128C7E;
+        }
+        
+        .action-btn.secondary:hover {
+            background: #0e6b5e;
+        }
+        
+        .status-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #25D366;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .status-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .status-value {
+            font-weight: bold;
+            color: #25D366;
+        }
+    </style>
+</head>
+<body>
+    <div class="whatsapp-container">
+        <div class="header">
+            <h2>📱 WhatsApp Business</h2>
+            <p>Gerencie suas comunicações diretamente no Pipefy</p>
+        </div>
+        
+        <div class="actions-grid">
+            <button class="action-btn" onclick="sendMessage()">
+                📩 Enviar Mensagem
+            </button>
+            
+            <button class="action-btn" onclick="makeCall()">
+                📞 Fazer Ligação
+            </button>
+            
+            <button class="action-btn secondary" onclick="viewHistory()">
+                📋 Ver Histórico
+            </button>
+            
+            <button class="action-btn secondary" onclick="manageContacts()">
+                👥 Contatos
+            </button>
+        </div>
+        
+        <div class="status-panel">
+            <h3 style="margin-top: 0; color: #333;">Status da Integração</h3>
+            <div class="status-item">
+                <span>Status WhatsApp:</span>
+                <span class="status-value">✅ Conectado</span>
+            </div>
+            <div class="status-item">
+                <span>Mensagens pendentes:</span>
+                <span class="status-value">0</span>
+            </div>
+            <div class="status-item">
+                <span>Última sincronização:</span>
+                <span class="status-value" id="lastSync">Agora</span>
+            </div>
+            <div class="status-item">
+                <span>API Status:</span>
+                <span class="status-value">🟢 Ativo</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('✅ Aba WhatsApp carregada');
+        
+        function sendMessage() {
+            alert('📩 Funcionalidade: Enviar mensagem WhatsApp\n\nEm desenvolvimento...');
+            console.log('Enviando mensagem WhatsApp...');
+        }
+        
+        function makeCall() {
+            alert('📞 Funcionalidade: Fazer ligação WhatsApp\n\nEm desenvolvimento...');
+            console.log('Fazendo ligação WhatsApp...');
+        }
+        
+        function viewHistory() {
+            alert('📋 Funcionalidade: Ver histórico de mensagens\n\nEm desenvolvimento...');
+            console.log('Visualizando histórico...');
+        }
+        
+        function manageContacts() {
+            alert('👥 Funcionalidade: Gerenciar contatos\n\nEm desenvolvimento...');
+            console.log('Gerenciando contatos...');
+        }
+        
+        // Atualizar timestamp
+        function updateLastSync() {
+            const now = new Date().toLocaleTimeString('pt-BR');
+            document.getElementById('lastSync').textContent = now;
+        }
+        
+        setInterval(updateLastSync, 30000); // A cada 30 segundos
+    </script>
+</body>
+</html>

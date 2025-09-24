@@ -1,11 +1,18 @@
 {
   "name": "WhatsApp Business App",
-  "short_description": "Integração WhatsApp com Pipefy",
-  "description": "App simples para adicionar aba WhatsApp aos cards do Pipefy",
+  "short_description": "Integração WhatsApp Business com Pipefy",
+  "description": "App completo para gerenciar WhatsApp Business diretamente no Pipefy. Envie mensagens, gerencie contatos e automatize comunicações! 📱",
   "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg",
   "author": "WhatsApp Team",
   "init_url": "./",
+  "screenshots": [
+    "https://placehold.co/600x400/25D366/white?text=WhatsApp%20Integration",
+    "https://placehold.co/600x400/128C7E/white?text=Business%20Messaging"
+  ],
   "features": [
+    "pipe-view",
+    "card-buttons", 
+    "card-badges",
     "card-tab"
   ]
 }
