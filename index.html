@@ -41,13 +41,21 @@
             
             // NOVA FUNCIONALIDADE: ABA WHATSAPP NO CARD
             'card-tab': function(p, pipe, card) {
-                console.log('🎯 Card tab chamado para card:', card?.title || card?.id);
+                console.log('🎯 Card tab chamado!');
+                console.log('📋 Parâmetros recebidos:', { p, pipe, card });
+                console.log('🎴 Card details:', {
+                    id: card?.id,
+                    title: card?.title,
+                    exists: !!card
+                });
                 
                 // 1. Número do WhatsApp (você pode personalizar depois)
                 const numeroWhatsapp = '5511999998888'; // Substitua pelo número real
                 
                 // 2. Mensagem inicial usando dados do card
-                const mensagemInicial = `Olá! Gostaria de falar sobre a tarefa: "${card?.title || 'Card #' + card?.id}" (ID: ${card?.id})`;
+                const cardTitle = card?.title || card?.name || `Card ${card?.id || 'Unknown'}`;
+                const cardId = card?.id || 'N/A';
+                const mensagemInicial = `Olá! Gostaria de falar sobre: ${cardTitle} (ID: ${cardId})`;
                 
                 // 3. URL do WhatsApp
                 const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagemInicial)}`;
@@ -55,12 +63,15 @@
                 // 4. URL da nossa aba com parâmetro
                 const urlDaAba = `./whatsapp-tab.html?url=${encodeURIComponent(urlWhatsapp)}`;
                 
-                // 5. Retorna configuração da aba
-                return {
+                // 5. Objeto de retorno com logs para debug
+                const tabConfig = {
                     icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
                     label: 'WhatsApp',
                     url: urlDaAba
                 };
+                
+                console.log('✅ Retornando config da aba:', tabConfig);
+                return tabConfig;
             }
         });
 
