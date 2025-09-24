@@ -50,7 +50,16 @@
             return {
                 icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png?20220228223904',
                 title: 'WhatsApp',
-                url: 'card-tab.html'
+                url: 'card-tab.html',
+                buttons: [
+                    {
+                        text: 'Botão Teste',
+                        callback: function(p) {
+                            console.log('Botão da aba clicado!');
+                            alert('✅ Botão da aba funcionando!');
+                        }
+                    }
+                ]
             };
         }
     });
