@@ -49,13 +49,17 @@
                         icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
                         text: 'Timer',
                         callback: function(p) {
+                            // Abre o calendário do Google em nova janela
+                            window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3eI5FttD_0iVZ_KU38Y8fOk0oi132aBDyKAcOam0bNyyd_bdNRbJmDT_ysekP5FAske0CFVM9X', '_blank');
+                            
+                            // Notificação de confirmação
                             const notification = document.createElement('div');
-                            notification.innerHTML = '⏱️ Timer iniciado!';
+                            notification.innerHTML = '📅 Abrindo seu calendário...';
                             notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#2196F3;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
                             document.body.appendChild(notification);
                             setTimeout(() => notification.remove(), 3000);
                             
-                            console.log('✅ Botão Timer clicado');
+                            console.log('✅ Calendário aberto:', 'Google Calendar');
                         }
                     }
                 ];
