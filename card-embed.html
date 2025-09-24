@@ -17,7 +17,6 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            text-align: center;
         }
         
         .calendar-title {
@@ -31,50 +30,28 @@
             gap: 8px;
         }
         
-        .calendar-widget {
-            margin-top: 10px;
-        }
-        
-        /* Estilo para o botão do Google Calendar */
-        .calendar-scheduling-button {
-            margin: 10px auto !important;
+        .calendar-iframe {
+            border-radius: 8px;
+            overflow: hidden;
         }
     </style>
-    <!-- Google Calendar Appointment Scheduling begin -->
-    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 </head>
 <body>
     <div class="embed-content">
         <div class="calendar-title">
-            📅 Agendamento
+            📅 Agendar Compromisso
         </div>
         
-        <div class="calendar-widget">
-            <!-- O widget do Google Calendar vai aparecer aqui -->
-            <script>
-            (function() {
-              var target = document.currentScript;
-              window.addEventListener('load', function() {
-                if (window.calendar && window.calendar.schedulingButton) {
-                  calendar.schedulingButton.load({
-                    url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2J7BGxNV8CuIivvE2KXyk_MgYxVh-CDbVWybTDbrzVdv7d-QFccMoWKjb6jDyMMihS-oTbA0o0?gv=true',
-                    color: '#667eea',
-                    label: '📅 Agendar Compromisso',
-                    target,
-                  });
-                } else {
-                  // Fallback se não carregar
-                  target.innerHTML = '<a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2J7BGxNV8CuIivvE2KXyk_MgYxVh-CDbVWybTDbrzVdv7d-QFccMoWKjb6jDyMMihS-oTbA0o0" target="_blank" style="background:#667eea;color:white;padding:10px 20px;border-radius:8px;text-decoration:none;display:inline-block;">📅 Abrir Calendário</a>';
-                }
-              });
-            })();
-            </script>
-        </div>
-        
-        <div style="margin-top: 15px; font-size: 0.9rem; color: #718096;">
-            👆 Clique para agendar diretamente no card
-        </div>
+        <!-- Google Calendar Appointment Scheduling begin -->
+        <iframe 
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2J7BGxNV8CuIivvE2KXyk_MgYxVh-CDbVWybTDbrzVdv7d-QFccMoWKjb6jDyMMihS-oTbA0o0?gv=true" 
+            style="border: 0" 
+            width="100%" 
+            height="400" 
+            frameborder="0"
+            class="calendar-iframe">
+        </iframe>
+        <!-- end Google Calendar Appointment Scheduling -->
     </div>
 </body>
 </html>
