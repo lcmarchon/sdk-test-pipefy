@@ -51,11 +51,15 @@
                 icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png?20220228223904',
                 title: 'WhatsApp',
                 url: 'card-tab.html',
-                claimedAttachments: function(attachments) {
-                    // Retorna um array vazio para satisfazer a API do Pipefy
-                    // e evitar o erro 'map' quando não há anexos a serem gerenciados
-                    return [];
-                }
+                buttons: [
+                    {
+                        text: 'Botão Teste',
+                        callback: function(p) {
+                            console.log('Botão da aba clicado!');
+                            alert('✅ Botão da aba funcionando!');
+                        }
+                    }
+                ]
             };
         }
     });
