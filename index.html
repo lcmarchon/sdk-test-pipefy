@@ -2,80 +2,45 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Task Manager Pro - WhatsApp Embed</title>
+    <title>Task Manager Pro - Funcional</title>
 </head>
 <body>
     <div style="padding: 20px; text-align: center;">
-        <h2>🚀 Task Manager Pro - WhatsApp Embed</h2>
-        <p>WhatsApp embebido no card!</p>
+        <h2>🚀 Task Manager Pro - Versão Mínima</h2>
+        <p>App funcionando sem erros!</p>
     </div>
 
     <!-- Pipefy Client SDK -->
     <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
     <script>
-        console.log('🚀 Iniciando Task Manager Pro - WhatsApp Embed');
+        console.log('🚀 Iniciando versão mínima');
 
         PipefyApp.initCall({
-            // CARD EMBED - WhatsApp embebido no card
-            'card-embed': function(p, pipe, card) {
-                console.log('📎 Configurando WhatsApp embebido no card');
-                return {
-                    title: '📱 WhatsApp Business',
-                    url: 'whatsapp-modal.html',
-                    height: 400
-                };
-            },
-            
-            // CARD TAB - Nova aba WhatsApp (alternativa)
-            'card-tab': function(p, pipe, card) {
-                console.log('📑 Configurando aba WhatsApp no card');
-                return {
-                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
-                    label: 'WhatsApp',
-                    url: 'card-tab.html'
-                };
-            },
-            
-            // CARD BUTTONS - Botões adicionais
+            // APENAS CARD BUTTONS - versão super simplificada
             'card-buttons': function(p, pipe, card) {
-                console.log('🎨 Adicionando botões ao card');
+                console.log('🎨 Botões básicos no card');
                 return [
                     {
                         icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
                         text: 'Notas',
                         callback: function(p) {
-                            console.log('✅ Botão Notas clicado');
-                            
-                            // Notificação simples
-                            const notification = document.createElement('div');
-                            notification.innerHTML = '📝 Notas abertas!';
-                            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#4CAF50;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
-                            document.body.appendChild(notification);
-                            setTimeout(() => notification.remove(), 3000);
+                            console.log('✅ Notas clicado');
+                            alert('📝 Notas funcionando!');
                         }
                     },
                     {
                         icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
                         text: 'Timer',
                         callback: function(p) {
-                            console.log('✅ Botão Timer clicado');
-                            
-                            // Abre calendário
-                            window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3eI5FttD_0iVZ_KU38Y8fOk0oi132aBDyKAcOam0bNyyd_bdNRbJmDT_ysekP5FAske0CFVM9X', '_blank');
-                            
-                            // Notificação
-                            const notification = document.createElement('div');
-                            notification.innerHTML = '📅 Calendário aberto!';
-                            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#2196F3;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
-                            document.body.appendChild(notification);
-                            setTimeout(() => notification.remove(), 3000);
+                            console.log('✅ Timer clicado');
+                            alert('⏱️ Timer funcionando!');
                         }
                     }
                 ];
             }
         });
 
-        console.log('✅ Task Manager Pro configurado - WhatsApp embebido!');
+        console.log('✅ App mínimo configurado');
     </script>
 </body>
 </html>

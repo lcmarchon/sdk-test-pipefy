@@ -1,17 +1,15 @@
 {
-  "name": "Task Manager Pro - Limpo",
-  "short_description": "App limpo apenas com botões no card",
-  "description": "Versão simplificada focada apenas em card-buttons funcionais 🚀",
-  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ca.svg",
+  "name": "Task Manager Pro - Mínimo",
+  "short_description": "Versão mínima funcionando",
+  "description": "App básico com apenas botões funcionais - sem erros 🚀",
+  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/2705.svg",
   "author": "SDK Test",
   "init_url": "./",
   "screenshots": [
-    "https://placehold.co/600x400?text=Demo%201",
-    "https://placehold.co/600x400?text=Demo%202"
+    "https://placehold.co/600x400?text=Funcional%201",
+    "https://placehold.co/600x400?text=Funcional%202"
   ],
   "features": [
-    "card-embed",
-    "card-buttons",
-    "card-tab"
+    "card-buttons"
   ]
 }
