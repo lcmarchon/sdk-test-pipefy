@@ -6,28 +6,17 @@
 </head>
 <body>
     <div style="padding: 20px; text-align: center;">
-        <h2>🚀 Inicializando Task Manager Pro...</h2>
-        <p>SDK Test funcionando!</p>
+        <h2>🚀 Task Manager Pro - Versão Limpa</h2>
+        <p>SDK funcionando sem erros!</p>
     </div>
 
     <!-- Pipefy Client SDK -->
     <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
     <script>
-        console.log('🚀 Iniciando Task Manager Pro...');
+        console.log('🚀 Iniciando Task Manager Pro - Versão Limpa');
 
         PipefyApp.initCall({
-            // PIPE VIEW - Botão e página no Pipe
-            'pipe-view': function(p, pipe) {
-                console.log('📍 Configurando pipe-view para pipe:', pipe);
-                return {
-                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ca.svg',
-                    text: 'Dashboard',
-                    url: 'pipe-view.html',
-                    hide_create_button: false
-                };
-            },
-            
-            // CARD BUTTONS - Botões no Card
+            // APENAS CARD BUTTONS - sem outras funcionalidades que causam erro
             'card-buttons': function(p, pipe, card) {
                 console.log('🎨 Adicionando botões ao card');
                 return [
@@ -35,90 +24,65 @@
                         icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
                         text: 'Notas',
                         callback: function(p) {
-                            // Criar uma notificação
+                            console.log('✅ Botão Notas clicado');
+                            
+                            // Notificação simples
                             const notification = document.createElement('div');
-                            notification.innerHTML = '📝 Abrindo notas do card!';
+                            notification.innerHTML = '📝 Notas abertas!';
                             notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#4CAF50;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
                             document.body.appendChild(notification);
                             setTimeout(() => notification.remove(), 3000);
-                            
-                            console.log('✅ Botão Notas clicado para card:', card);
                         }
                     },
                     {
                         icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
                         text: 'Timer',
                         callback: function(p) {
-                            // Abre o calendário do Google em nova janela
+                            console.log('✅ Botão Timer clicado');
+                            
+                            // Abre calendário
                             window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3eI5FttD_0iVZ_KU38Y8fOk0oi132aBDyKAcOam0bNyyd_bdNRbJmDT_ysekP5FAske0CFVM9X', '_blank');
                             
-                            // Notificação de confirmação
+                            // Notificação
                             const notification = document.createElement('div');
-                            notification.innerHTML = '📅 Abrindo seu calendário...';
+                            notification.innerHTML = '📅 Calendário aberto!';
                             notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#2196F3;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
                             document.body.appendChild(notification);
                             setTimeout(() => notification.remove(), 3000);
-                            
-                            console.log('✅ Calendário aberto:', 'Google Calendar');
                         }
                     },
                     {
                         icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
                         text: 'WhatsApp',
                         callback: function(p) {
-                            console.log('✅ Botão WhatsApp clicado - abrindo iframe');
+                            console.log('✅ Botão WhatsApp clicado - abrindo modal');
                             
-                            // Abre modal com iframe igual ao Email nativo
-                            p.modal({
-                                title: '💬 WhatsApp Business',
-                                url: 'whatsapp-modal.html',
-                                width: '700px',
-                                height: '500px'
-                            });
+                            // Verificação se p.modal existe
+                            if (p && p.modal) {
+                                p.modal({
+                                    title: '💬 WhatsApp Business',
+                                    url: 'whatsapp-modal.html',
+                                    width: '700px',
+                                    height: '500px'
+                                });
+                            } else {
+                                // Fallback - abre em nova janela
+                                window.open('whatsapp-modal.html', 'whatsapp', 'width=700,height=500,scrollbars=yes,resizable=yes');
+                                
+                                // Notificação
+                                const notification = document.createElement('div');
+                                notification.innerHTML = '📱 WhatsApp aberto!';
+                                notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
+                                document.body.appendChild(notification);
+                                setTimeout(() => notification.remove(), 3000);
+                            }
                         }
                     }
                 ];
-            },
-            
-            // CARD BADGES - Etiquetas na listagem dos cards
-            'card-badges': function(p, pipe, card) {
-                console.log('🏷️ Adicionando badges ao card');
-                return [
-                    {
-                        text: 'Pro',
-                        color: '#4CAF50',
-                        title: 'Task Manager Pro'
-                    },
-                    {
-                        text: '🎯',
-                        color: '#FF9800',
-                        title: 'Produtividade'
-                    }
-                ];
-            },
-            
-            // CARD TAB - Nova aba dentro do Card
-            'card-tab': function(p, pipe, card) {
-                console.log('📑 Configurando aba do card');
-                return {
-                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ca.svg',
-                    title: 'Analytics',
-                    url: 'card-tab.html'
-                };
-            },
-            
-            // CARD EMBED - Conteúdo embebido direto no card
-            'card-embed': function(p, pipe, card) {
-                console.log('📎 Configurando embed do card');
-                return {
-                    title: '📅 Agendamento',
-                    url: 'card-embed.html',
-                    height: 450 // Altura suficiente para o iframe do calendário
-                };
             }
         });
 
-        console.log('✅ Task Manager Pro configurado com sucesso!');
+        console.log('✅ Task Manager Pro configurado - versão limpa!');
     </script>
 </body>
 </html>
