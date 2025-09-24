@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Business</title>
     <style>
-        :root {
-            --primary: 220 100% 50%;
-            --background: 0 0% 100%;
-            --card: 0 0% 100%;
-            --muted: 0 0% 96%;
-            --muted-foreground: 0 0% 45%;
-            --border: 0 0% 90%;
-            --message-sent: 220 100% 50%;
-            --message-received: 0 0% 96%;
-            --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -25,8 +13,7 @@
 
         body {
             font-family: system-ui, -apple-system, sans-serif;
-            background: hsl(var(--background));
-            color: #333;
+            background: #f0f0f0;
             height: 100vh;
             overflow: hidden;
         }
@@ -35,32 +22,26 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background: hsl(var(--background));
+            background: white;
         }
 
         .chat-header {
-            background: hsl(var(--primary));
+            background: #25D366;
             color: white;
-            padding: 12px 16px;
+            padding: 16px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .header-avatar {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-        }
-        
-        .header-avatar img {
-            width: 24px;
-            height: 24px;
         }
 
         .header-info h3 {
@@ -69,251 +50,107 @@
         }
 
         .header-info p {
-            font-size: 12px;
-            opacity: 0.8;
+            font-size: 14px;
+            opacity: 0.9;
         }
 
         .messages-area {
             flex: 1;
+            padding: 20px;
             overflow-y: auto;
-            padding: 16px 0;
-            background: hsl(var(--background));
+            background: #f8f9fa;
         }
 
-        .date-separator {
+        .message {
+            margin-bottom: 16px;
             display: flex;
-            justify-content: center;
-            margin: 16px 0;
         }
 
-        .date-badge {
-            background: hsl(var(--muted));
-            color: hsl(var(--muted-foreground));
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .message-group {
-            margin-bottom: 12px;
-            padding: 0 16px;
-        }
-
-        .message-group.sent {
-            display: flex;
+        .message.sent {
             justify-content: flex-end;
         }
 
-        .message-group.received {
-            display: flex;
+        .message.received {
             justify-content: flex-start;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .message-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: hsl(var(--muted));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .message-content {
-            max-width: 75%;
-        }
-
-        .sender-name {
-            font-size: 12px;
-            color: hsl(var(--muted-foreground));
-            margin-bottom: 4px;
-            max-width: 150px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
         }
 
         .message-bubble {
-            border-radius: 16px;
+            max-width: 70%;
             padding: 12px 16px;
+            border-radius: 18px;
             position: relative;
-            word-wrap: break-word;
         }
 
-        .message-group.sent .message-bubble {
-            background: hsl(var(--message-sent));
+        .message.sent .message-bubble {
+            background: #25D366;
             color: white;
-            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
         }
 
-        .message-group.received .message-bubble {
-            background: hsl(var(--message-received));
-            color: black;
-            border: 1px solid hsl(var(--border) / 0.3);
-            border-top-left-radius: 4px;
-        }
-
-        .message-media {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-            font-size: 12px;
-        }
-
-        .message-group.sent .message-media {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .message-group.received .message-media {
-            color: hsl(var(--muted-foreground));
-        }
-
-        .message-footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 4px;
-            margin-top: 4px;
-            min-width: 50px;
+        .message.received .message-bubble {
+            background: white;
+            color: #333;
+            border: 1px solid #e1e5e9;
+            border-bottom-left-radius: 4px;
         }
 
         .message-time {
             font-size: 12px;
-            user-select: none;
-        }
-
-        .message-group.sent .message-time {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .message-group.received .message-time {
-            color: hsl(var(--muted-foreground));
-        }
-
-        .message-status {
-            width: 14px;
-            height: 14px;
             opacity: 0.7;
+            margin-top: 4px;
+            text-align: right;
         }
-
-        .status-sent { color: #9ca3af; }
-        .status-delivered { color: #9ca3af; }
-        .status-read { color: #3b82f6; }
 
         .input-area {
-            background: hsl(var(--background));
+            background: white;
             padding: 16px;
+            border-top: 1px solid #e1e5e9;
             display: flex;
-            align-items: flex-end;
             gap: 12px;
-            border-top: 1px solid hsl(var(--border));
-        }
-
-        .input-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: hsl(var(--muted));
-            flex-shrink: 0;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 14px;
-        }
-
-        .input-container {
-            flex: 1;
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
         }
 
         .message-input {
             flex: 1;
-            border: 1px solid hsl(var(--border));
-            background: hsl(var(--background));
-            border-radius: 6px;
-            padding: 8px 12px;
-            resize: none;
-            min-height: 40px;
-            max-height: 128px;
-            font-family: inherit;
+            border: 1px solid #e1e5e9;
+            border-radius: 20px;
+            padding: 10px 16px;
             font-size: 14px;
-            transition: var(--transition-smooth);
-        }
-
-        .message-input:focus {
             outline: none;
-            border-color: hsl(var(--primary));
-            box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2);
-        }
-
-        .message-input::placeholder {
-            color: hsl(var(--muted-foreground));
-        }
-
-        .input-buttons {
-            display: flex;
-            gap: 4px;
-        }
-
-        .input-btn {
-            padding: 8px;
-            background: transparent;
-            border: none;
-            color: hsl(var(--muted-foreground));
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            border-radius: 4px;
-        }
-
-        .input-btn:hover {
-            color: hsl(var(--primary));
-            background: hsl(var(--muted));
         }
 
         .send-btn {
-            background: hsl(var(--primary));
+            background: #25D366;
             color: white;
-            padding: 8px 12px;
             border: none;
-            border-radius: 6px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            font-size: 16px;
         }
 
-        .send-btn:hover {
-            opacity: 0.9;
+        .date-separator {
+            text-align: center;
+            margin: 20px 0;
         }
 
-        .send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .recording {
-            color: hsl(0 85% 60%);
-            animation: pulse 1s infinite;
+        .date-badge {
+            background: #e1e5e9;
+            color: #666;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
     <div class="whatsapp-container">
-        <!-- Header do Chat -->
+        <!-- Header -->
         <div class="chat-header">
             <div class="header-avatar">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png?20220228223904" alt="WhatsApp" />
+                <span style="color: #25D366; font-size: 24px;">📱</span>
             </div>
             <div class="header-info">
                 <h3>WhatsApp Business</h3>
@@ -321,247 +158,72 @@
             </div>
         </div>
 
-        <!-- Área de Mensagens -->
-        <div class="messages-area" id="messagesArea">
-            <!-- Separador de Data -->
+        <!-- Messages -->
+        <div class="messages-area">
             <div class="date-separator">
-                <div class="date-badge">Hoje</div>
+                <span class="date-badge">Hoje</span>
             </div>
 
-            <!-- Mensagem Recebida -->
-            <div class="message-group received">
-                <div class="message-avatar">👤</div>
-                <div class="message-content">
-                    <div class="sender-name">João Silva</div>
-                    <div class="message-bubble">
-                        <div class="message-text">Olá! Gostaria de saber mais informações sobre o produto.</div>
-                        <div class="message-footer">
-                            <span class="message-time">09:15</span>
-                        </div>
-                    </div>
+            <div class="message received">
+                <div class="message-bubble">
+                    <div>Olá! Gostaria de saber mais sobre seus produtos.</div>
+                    <div class="message-time">14:30</div>
                 </div>
             </div>
 
-            <!-- Mensagem Enviada -->
-            <div class="message-group sent">
-                <div class="message-content">
-                    <div class="message-bubble">
-                        <div class="message-text">Olá João! Claro, ficarei feliz em ajudar. Qual produto você tem interesse?</div>
-                        <div class="message-footer">
-                            <span class="message-time">09:16</span>
-                            <span class="message-status status-read">✓✓</span>
-                        </div>
-                    </div>
+            <div class="message sent">
+                <div class="message-bubble">
+                    <div>Olá! Claro, ficarei feliz em ajudar. Em que posso te auxiliar?</div>
+                    <div class="message-time">14:32</div>
                 </div>
             </div>
 
-            <!-- Mensagem com Mídia -->
-            <div class="message-group received">
-                <div class="message-avatar">👤</div>
-                <div class="message-content">
-                    <div class="message-bubble">
-                        <div class="message-media">
-                            <span>🖼️</span>
-                            <span>Imagem</span>
-                        </div>
-                        <div class="message-text">Este aqui que eu vi no site de vocês</div>
-                        <div class="message-footer">
-                            <span class="message-time">09:18</span>
-                        </div>
-                    </div>
+            <div class="message received">
+                <div class="message-bubble">
+                    <div>Quero saber sobre preços e condições de pagamento.</div>
+                    <div class="message-time">14:35</div>
                 </div>
             </div>
 
-            <!-- Mensagem de Resposta -->
-            <div class="message-group sent">
-                <div class="message-content">
-                    <div class="message-bubble">
-                        <div class="message-text">Perfeita escolha! Este é um dos nossos produtos mais populares. Vou te enviar mais detalhes e o melhor preço.</div>
-                        <div class="message-footer">
-                            <span class="message-time">09:20</span>
-                            <span class="message-status status-read">✓✓</span>
-                        </div>
-                    </div>
+            <div class="message sent">
+                <div class="message-bubble">
+                    <div>Perfeito! Vou te enviar nossa tabela de preços atualizada.</div>
+                    <div class="message-time">14:36</div>
                 </div>
             </div>
 
-            <!-- Documento -->
-            <div class="message-group sent">
-                <div class="message-content">
-                    <div class="message-bubble">
-                        <div class="message-media">
-                            <span>📄</span>
-                            <span>Documento</span>
-                        </div>
-                        <div class="message-text">Catálogo_Produtos_2024.pdf</div>
-                        <div class="message-footer">
-                            <span class="message-time">09:21</span>
-                            <span class="message-status status-delivered">✓✓</span>
-                        </div>
-                    </div>
+            <div class="message received">
+                <div class="message-bubble">
+                    <div>📄 Documento recebido</div>
+                    <div class="message-time">14:38</div>
                 </div>
             </div>
 
-            <!-- Mensagem Recente -->
-            <div class="message-group received">
-                <div class="message-avatar">👤</div>
-                <div class="message-content">
-                    <div class="message-bubble">
-                        <div class="message-text">Muito obrigado! Vou dar uma olhada e te retorno em breve.</div>
-                        <div class="message-footer">
-                            <span class="message-time">09:25</span>
-                        </div>
-                    </div>
+            <div class="message sent">
+                <div class="message-bubble">
+                    <div>Qualquer dúvida, estou aqui para ajudar!</div>
+                    <div class="message-time">14:40</div>
                 </div>
             </div>
         </div>
 
-        <!-- Campo de Input -->
+        <!-- Input -->
         <div class="input-area">
-            <div class="input-avatar">🏢</div>
-            <div class="input-container">
-                <textarea 
-                    class="message-input" 
-                    placeholder="Escreva seu comentário aqui..."
-                    rows="1"
-                    id="messageInput"
-                ></textarea>
-                <div class="input-buttons">
-                    <button class="input-btn" title="Anexar arquivo">📎</button>
-                    <button class="input-btn" title="Gravar áudio" id="micBtn">🎤</button>
-                </div>
-                <button class="send-btn" id="sendBtn" disabled>Enviar</button>
-            </div>
+            <input 
+                type="text" 
+                class="message-input" 
+                placeholder="Digite sua mensagem..." 
+                readonly
+                style="cursor: not-allowed; background: #f8f9fa;"
+            >
+            <button class="send-btn" disabled style="opacity: 0.5; cursor: not-allowed;">
+                ➤
+            </button>
         </div>
     </div>
 
     <script>
-        console.log('✅ WhatsApp Mock Chat carregado');
-        
-        const messageInput = document.getElementById('messageInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const messagesArea = document.getElementById('messagesArea');
-        const micBtn = document.getElementById('micBtn');
-        
-        let isRecording = false;
-
-        // Auto-resize do textarea - com verificação de segurança
-        messageInput.addEventListener('input', function() {
-            if (!this) return;
-            this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 128) + 'px';
-            
-            // Habilitar/desabilitar botão enviar
-            if (sendBtn) {
-                sendBtn.disabled = this.value.trim() === '';
-            }
-        });
-
-        // Enviar mensagem
-        function sendMessage() {
-            if (!messageInput || !messagesArea || !sendBtn) return;
-            
-            const text = messageInput.value.trim();
-            if (!text) return;
-
-            // Criar nova mensagem
-            const messageGroup = document.createElement('div');
-            messageGroup.className = 'message-group sent';
-            messageGroup.innerHTML = `
-                <div class="message-content">
-                    <div class="message-bubble">
-                        <div class="message-text">${text}</div>
-                        <div class="message-footer">
-                            <span class="message-time">${getCurrentTime()}</span>
-                            <span class="message-status status-sent">⏳</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            messagesArea.appendChild(messageGroup);
-            if (messagesArea.scrollTop !== undefined) {
-                messagesArea.scrollTop = messagesArea.scrollHeight;
-            }
-
-            // Limpar input
-            messageInput.value = '';
-            messageInput.style.height = 'auto';
-            sendBtn.disabled = true;
-
-            // Simular entrega da mensagem
-            setTimeout(() => {
-                const status = messageGroup.querySelector('.message-status');
-                if (status) {
-                    status.textContent = '✓';
-                    status.className = 'message-status status-sent';
-                }
-            }, 1000);
-
-            setTimeout(() => {
-                const status = messageGroup.querySelector('.message-status');
-                if (status) {
-                    status.textContent = '✓✓';
-                    status.className = 'message-status status-delivered';
-                }
-            }, 2000);
-
-            setTimeout(() => {
-                const status = messageGroup.querySelector('.message-status');
-                if (status) {
-                    status.className = 'message-status status-read';
-                }
-            }, 3000);
-
-            console.log('📤 Mensagem enviada:', text);
-        }
-
-        // Event listeners
-        if (sendBtn) {
-            sendBtn.addEventListener('click', sendMessage);
-        }
-
-        if (messageInput) {
-            messageInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-        }
-
-        // Microfone (mock)
-        if (micBtn) {
-            micBtn.addEventListener('click', function() {
-                if (!isRecording) {
-                    isRecording = true;
-                    this.textContent = '⏹️';
-                    this.classList.add('recording');
-                    console.log('🎤 Iniciando gravação...');
-                } else {
-                    isRecording = false;
-                    this.textContent = '🎤';
-                    this.classList.remove('recording');
-                    console.log('⏹️ Parando gravação...');
-                }
-            });
-        }
-
-        // Função auxiliar para horário atual
-        function getCurrentTime() {
-            const now = new Date();
-            return now.toLocaleTimeString('pt-BR', { 
-                hour: '2-digit', 
-                minute: '2-digit' 
-            });
-        }
-
-        // Scroll automático para o final
-        setTimeout(() => {
-            if (messagesArea && messagesArea.scrollTop !== undefined) {
-                messagesArea.scrollTop = messagesArea.scrollHeight;
-            }
-        }, 100);
+        console.log('✅ WhatsApp Simple Chat carregado');
     </script>
 </body>
 </html>
