@@ -57,25 +57,15 @@
                         callback: function(p) {
                             console.log('✅ Botão WhatsApp clicado - abrindo modal');
                             
-                            // Verificação se p.modal existe
-                            if (p && p.modal) {
-                                p.modal({
-                                    title: '💬 WhatsApp Business',
-                                    url: 'whatsapp-modal.html',
-                                    width: '700px',
-                                    height: '500px'
-                                });
-                            } else {
-                                // Fallback - abre em nova janela
-                                window.open('whatsapp-modal.html', 'whatsapp', 'width=700,height=500,scrollbars=yes,resizable=yes');
-                                
-                                // Notificação
-                                const notification = document.createElement('div');
-                                notification.innerHTML = '📱 WhatsApp aberto!';
-                                notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:5px;z-index:9999;font-family:Arial;';
-                                document.body.appendChild(notification);
-                                setTimeout(() => notification.remove(), 3000);
-                            }
+                            // Abre diretamente em nova janela (mais confiável)
+                            window.open('whatsapp-modal.html', 'whatsapp', 'width=700,height=500,scrollbars=yes,resizable=yes');
+                            
+                            // Notificação visual
+                            const notification = document.createElement('div');
+                            notification.innerHTML = '📱 WhatsApp Business aberto!';
+                            notification.style.cssText = 'position:fixed;top:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:8px;z-index:9999;font-family:Arial;box-shadow:0 4px 12px rgba(0,0,0,0.2);';
+                            document.body.appendChild(notification);
+                            setTimeout(() => notification.remove(), 3000);
                         }
                     }
                 ];
