@@ -2,50 +2,91 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>WhatsApp App - Teste Básico</title>
+    <title>WhatsApp App - DEBUG TOTAL</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        .debug-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 2px solid #25D366;
+        }
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+            color: #25D366;
+        }
+    </style>
 </head>
 <body>
-    <div style="padding: 20px; text-align: center;">
-        <h2>🚀 WhatsApp App - Funcionando!</h2>
-        <p>Se você está vendo isso, o app carregou corretamente.</p>
+    <div class="debug-box">
+        <h1>🚨 DEBUG TOTAL - WhatsApp App</h1>
+        <div class="status" id="status">Carregando...</div>
+        <div id="info"></div>
     </div>
 
     <script>
-        console.log('🚀 App WhatsApp carregando...');
+        console.log('🚨 INÍCIO DEBUG TOTAL');
+        
+        // Log TUDO que conseguimos
+        console.log('📍 URL atual:', window.location.href);
+        console.log('📍 Referrer:', document.referrer);
+        console.log('📍 User Agent:', navigator.userAgent);
+        console.log('📍 Timestamp:', new Date().toISOString());
+        
+        // Atualiza HTML
+        document.getElementById('status').textContent = '✅ ARQUIVO CARREGADO!';
+        document.getElementById('info').innerHTML = `
+            <p><strong>URL:</strong> ${window.location.href}</p>
+            <p><strong>Referrer:</strong> ${document.referrer}</p>
+            <p><strong>Hora:</strong> ${new Date().toLocaleString()}</p>
+        `;
 
-        // Função simples para botões do card
+        // Função SUPER simples para botões
         function createCardButtons() {
-            console.log('🎴 Criando botões do card');
+            console.log('🎴 createCardButtons CHAMADA!');
             return [
                 {
-                    icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
-                    text: 'Notas',
+                    icon: '📝',
+                    text: 'DEBUG',
                     callback: function() {
-                        alert('📝 Notas clicada!');
+                        console.log('📝 BOTÃO DEBUG CLICADO!');
+                        alert('📝 BOTÃO FUNCIONANDO!');
                     }
                 }
             ];
         }
 
-        // Função simples para aba do card
+        // Função SUPER simples para aba
         function createCardTab() {
-            console.log('🎯 Criando aba WhatsApp');
-            
+            console.log('🎯 createCardTab CHAMADA!');
             return {
-                icon: 'https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png',
-                label: 'WhatsApp',
+                icon: '💬',
+                label: 'DEBUG',
                 url: './whatsapp-tab.html'
             };
         }
 
-        // Objeto super simples
+        // Expor no window IMEDIATAMENTE
         window.PipefyApp = {
             'card-buttons': createCardButtons,
             'card-tab': createCardTab
         };
-
-        console.log('✅ App WhatsApp carregado!');
-        console.log('📋 PipefyApp:', window.PipefyApp);
+        
+        console.log('✅ PipefyApp exposto:', window.PipefyApp);
+        console.log('✅ Funções disponíveis:', Object.keys(window.PipefyApp));
+        
+        // Log a cada 2 segundos para monitorar
+        setInterval(function() {
+            console.log('⏰ App ainda ativo, aguardando Pipefy...');
+        }, 2000);
+        
+        console.log('🚨 FIM DEBUG TOTAL');
     </script>
 </body>
 </html>

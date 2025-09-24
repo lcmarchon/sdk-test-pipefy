@@ -1,13 +1,13 @@
 {
   "name": "WhatsApp Business + Task Manager",
-  "short_description": "WhatsApp integrado + ferramentas de produtividade",
-  "description": "Gerencie conversas do WhatsApp diretamente no Pipefy. Mantenha todo o histórico de mensagens organizado em cada card.",
-  "icon": "https://cdn.icon-icons.com/icons2/2428/PNG/512/whatsapp_logo_icon_147205.png",
-  "author": "SDK Test",
+  "short_description": "DEBUG TOTAL - Teste básico",
+  "description": "DEBUG: App de teste para verificar integração básica com Pipefy SDK",
+  "icon": "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg",
+  "author": "DEBUG Test",
   "init_url": "./",
   "screenshots": [
-    "https://placehold.co/600x400?text=Funcional%201",
-    "https://placehold.co/600x400?text=Funcional%202"
+    "https://placehold.co/600x400?text=DEBUG%201",
+    "https://placehold.co/600x400?text=DEBUG%202"
   ],
   "features": [
     "card-buttons",
