@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WhatsApp Business</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+            color: #2d3748;
+        }
+        
+        .whatsapp-container {
+            text-align: center;
+        }
+        
+        .whatsapp-header {
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-header h2 {
+            color: #25D366;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .whatsapp-description {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .iframe-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 10px;
+        }
+        
+        iframe {
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="whatsapp-container">
+        <div class="whatsapp-header">
+            <h2>📱 WhatsApp Business</h2>
+            <p class="whatsapp-description">
+                Gerencie suas conversas do WhatsApp diretamente no Pipefy.<br>
+                Mantenha todo o histórico de mensagens organizado em cada card.
+            </p>
+        </div>
+        
+        <div class="iframe-container">
+            <iframe 
+                name="whatsappFrame" 
+                width="600px" 
+                height="400px" 
+                src="https://www.pipefy.com/pt-br/" 
+                scrolling="no" 
+                marginwidth="0" 
+                marginheight="0">
+            </iframe>
+        </div>
+    </div>
+</body>
+</html>
