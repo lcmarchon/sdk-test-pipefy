@@ -13,6 +13,7 @@
     "pipe-view",
     "card-buttons",
     "card-badges",
-    "card-tab"
+    "card-tab",
+    "card-embed"
   ]
 }

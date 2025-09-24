@@ -95,6 +95,16 @@
                         }
                     ]
                 };
+            },
+            
+            // CARD EMBED - Conteúdo embebido direto no card
+            'card-embed': function(p, pipe, card) {
+                console.log('📎 Configurando embed do card');
+                return {
+                    title: '📊 Embed Test',
+                    url: 'card-embed.html',
+                    height: 200 // Altura em pixels
+                };
             }
         });
 
