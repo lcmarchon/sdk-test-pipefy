@@ -60,6 +60,19 @@
         </div>
     </div>
 
+    <script>
+        console.log('Loading Task Manager Pro...');
+    </script>
     <script src="./scripts/main.js"></script>
+    <script>
+        // Verificação final
+        window.addEventListener('load', function() {
+            console.log('Window loaded');
+            console.log('PipefyApp available:', typeof window.PipefyApp);
+            if (window.PipefyApp) {
+                console.log('PipefyApp functions:', Object.keys(window.PipefyApp));
+            }
+        });
+    </script>
 </body>
 </html>
