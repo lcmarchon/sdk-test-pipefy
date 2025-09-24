@@ -1,7 +1,7 @@
-// SDK Test Pipefy - Seguindo documentação oficial
-console.log('🚀 Iniciando SDK Test Pipefy - Versão Oficial');
+// Task Manager Pro - GitHub Pages
+console.log('🚀 Iniciando Task Manager Pro - GitHub Pages');
 
-// Definição do PipefyApp seguindo a documentação oficial
+// Definição do PipefyApp seguindo documentação oficial
 const PipefyApp = {
     'pipe-buttons': function(p, pipe) {
         console.log('📌 Pipe buttons chamado - pipe:', pipe);
@@ -13,7 +13,6 @@ const PipefyApp = {
                 callback: function(p) {
                     console.log('✅ Dashboard clicado');
                     
-                    // Usando dropdown conforme documentação
                     p.dropdown({
                         title: 'Dashboard App',
                         items: [
@@ -40,7 +39,7 @@ const PipefyApp = {
                                 }
                             },
                             {
-                                title: 'Exportar Dados',
+                                title: 'Exportar',
                                 callback: function(p) {
                                     console.log('💾 Exportar selecionado');
                                     p.showMessage({
@@ -59,24 +58,9 @@ const PipefyApp = {
                 text: 'Timer',
                 callback: function(p) {
                     console.log('✅ Timer clicado');
-                    
-                    // Usando sidebar conforme documentação
-                    p.sidebar({
-                        title: 'Controle de Tempo',
-                        url: './timer.html'
-                    });
-                }
-            },
-            {
-                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ca.svg',
-                text: 'Relatórios',
-                callback: function(p) {
-                    console.log('✅ Relatórios clicado');
-                    
-                    // Usando modal conforme documentação
-                    p.modal({
-                        title: 'Relatórios Avançados',
-                        url: './relatorios.html'
+                    p.showMessage({
+                        type: 'info',
+                        text: '⏱️ Timer iniciado!'
                     });
                 }
             }
@@ -91,24 +75,10 @@ const PipefyApp = {
                 icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4dd.svg',
                 text: 'Notas',
                 callback: function(p) {
-                    console.log('✅ Notas clicado para card:', card.id);
-                    
-                    // Modal para notas do card
-                    p.modal({
-                        title: 'Notas do Card',
-                        url: './notas.html?cardId=' + card.id
-                    });
-                }
-            },
-            {
-                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/23f1.svg',
-                text: 'Cronômetro',
-                callback: function(p) {
-                    console.log('✅ Cronômetro clicado para card:', card.id);
-                    
+                    console.log('✅ Notas clicado para card:', card?.id);
                     p.showMessage({
-                        type: 'info',
-                        text: '⏱️ Cronômetro iniciado para: ' + card.title
+                        type: 'success',
+                        text: '📝 Abrindo notas do card!'
                     });
                 }
             }
@@ -119,53 +89,35 @@ const PipefyApp = {
 // Exposição robusta do PipefyApp
 function exposePipefyApp() {
     try {
-        // Exposição global principal
+        // Exposição principal
         window.PipefyApp = PipefyApp;
         
-        // Verificação e logs
+        // Verificação
         if (window.PipefyApp) {
-            console.log('✅ PipefyApp exposto com sucesso');
-            console.log('🔍 Funções disponíveis:', Object.keys(PipefyApp));
+            console.log('✅ PipefyApp exposto no window');
+            console.log('🔍 Funções:', Object.keys(PipefyApp));
             
-            // Verificar se as funções estão corretas
-            if (typeof PipefyApp['pipe-buttons'] === 'function') {
-                console.log('✅ pipe-buttons definido corretamente');
-            }
-            
-            if (typeof PipefyApp['card-buttons'] === 'function') {
-                console.log('✅ card-buttons definido corretamente');
-            }
-            
-            // Update UI status
+            // Update UI se existir
             const statusEl = document.getElementById('status');
             if (statusEl) {
-                statusEl.innerHTML = '✅ SDK carregada seguindo documentação oficial!';
+                statusEl.innerHTML = '✅ SDK carregada - GitHub Pages!';
                 statusEl.style.color = '#10B981';
             }
         }
         
     } catch (error) {
         console.error('❌ Erro ao expor PipefyApp:', error);
-        
-        const statusEl = document.getElementById('status');
-        if (statusEl) {
-            statusEl.innerHTML = '❌ Erro ao carregar SDK';
-            statusEl.style.color = '#EF4444';
-        }
     }
 }
 
-// Múltiplas formas de inicialização
-document.addEventListener('DOMContentLoaded', exposePipefyApp);
-
-// Fallback para estados já carregados
+// Inicialização
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', exposePipefyApp);
 } else {
     exposePipefyApp();
 }
 
-// Fallback adicional com delay
+// Fallback
 setTimeout(exposePipefyApp, 100);
 
-console.log('📋 SDK Test Pipefy carregado - seguindo documentação oficial');
+console.log('📋 App carregado para GitHub Pages');
