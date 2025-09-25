@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
     <style>
-        /* FOCO: Apenas corrigir position dos elementos problemáticos */
+        /* FOCO: Apenas CSS para corrigir position dos elementos problemáticos */
         
         /* Forçar spinner com position static */
         .spinner,
         .spinner * {
             position: static !important;
-            display: none !important;
         }
         
         /* Forçar todos os iframes com position static */
@@ -23,7 +22,7 @@
             left: auto !important;
         }
         
-        /* Garantir visibilidade do container */
+        /* Layout básico */
         html, body {
             margin: 0;
             padding: 20px;
@@ -54,15 +53,6 @@
             color: #2e7d32;
             margin: 0 0 10px 0;
         }
-        
-        .correction {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            padding: 10px;
-            border-radius: 4px;
-            margin: 10px 0;
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
@@ -71,52 +61,14 @@
         <p>Aba do WhatsApp no Pipefy</p>
         
         <div class="status">
-            <h3>🎯 Status das Correções</h3>
-            <div class="correction">
-                ✅ Spinner: position → static
-            </div>
-            <div class="correction">
-                ✅ Iframe: position → static
-            </div>
+            <h3>🎯 Correções Aplicadas</h3>
+            <p>✅ Spinner: position → static</p>
+            <p>✅ Iframe: position → static</p>
         </div>
         
-        <p><strong>📋 Objetivo:</strong> Corrigir apenas os position dos elementos problemáticos</p>
+        <p><strong>📋 Objetivo:</strong> Corrigir position via CSS apenas</p>
     </div>
 
-    <script>
-        console.log('🚀 WhatsApp Card Tab - versão limpa');
-        
-        // Função simples para aplicar correções de position
-        function applyPositionFixes() {
-            try {
-                // Corrigir spinners
-                const spinners = document.querySelectorAll('.spinner');
-                spinners.forEach(spinner => {
-                    spinner.style.position = 'static';
-                        spinner.style.position = "static";
-                });
-                
-                // Corrigir iframes
-                const iframes = document.querySelectorAll('iframe');
-                iframes.forEach(iframe => {
-                    iframe.style.position = 'static';
-                    iframe.style.top = 'auto';
-                    iframe.style.left = 'auto';
-                });
-                
-                console.log('✅ Correções position aplicadas');
-            } catch (error) {
-                console.log('⚠️ Erro nas correções:', error);
-            }
-                        iframe.style.position = "static";
-        
-        // Aplicar correções imediatamente
-        applyPositionFixes();
-        
-        // Aplicar novamente após um delay
-        setTimeout(applyPositionFixes, 1000);
-        
-        console.log('✅ Card Tab carregado - foco em position fixes');
-    </script>
+    <!-- SEM JAVASCRIPT - Apenas CSS para não interferir com Pipefy -->
 </body>
 </html>
