@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
     <style>
-        /* FORÇAR POSICIONAMENTO E VISIBILIDADE EXTREMA */
-        * {
+        /* SOBRESCREVER TODO CSS DO PIPEFY COM !important */
+        *, *::before, *::after {
             position: static !important;
             visibility: visible !important;
             display: block !important;
             opacity: 1 !important;
+            overflow: visible !important;
+            max-height: none !important;
+            max-width: none !important;
         }
         
         html, body {
@@ -18,7 +21,7 @@
             margin: 0 !important;
             padding: 20px !important;
             height: auto !important;
-            min-height: 400px !important;
+            min-height: 500px !important;
             max-height: none !important;
             overflow: visible !important;
             visibility: visible !important;
@@ -28,6 +31,7 @@
             color: var(--text-base, #101820) !important;
             font-family: var(--font-family, Inter, sans-serif) !important;
             box-sizing: border-box !important;
+            width: 100% !important;
         }
         
         .container {
@@ -37,10 +41,11 @@
             opacity: 1 !important;
             width: 100% !important;
             height: auto !important;
-            min-height: 360px !important;
+            min-height: 460px !important;
             max-width: 600px;
             margin: 0 auto;
             padding: 0 !important;
+            overflow: visible !important;
         }
         
         .header {
@@ -50,6 +55,10 @@
             background: linear-gradient(135deg, var(--green-base, #00bfa5) 0%, var(--green-900, #33ccb7) 100%);
             color: var(--white, #fff);
             border-radius: var(--radius-medium, 8px);
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .header h2 {
@@ -72,10 +81,14 @@
             text-align: center;
             margin: 20px 0;
             box-shadow: var(--lt-shadowDefault, 0 2px 6px -1px rgba(0, 0, 0, 0.16));
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .status-badge {
-            display: inline-block;
+            display: inline-block !important;
             background: var(--green-base, #00bfa5);
             color: var(--white, #fff);
             padding: 6px 16px;
@@ -84,6 +97,9 @@
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            position: static !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .status-text {
@@ -94,10 +110,13 @@
         }
         
         .features-grid {
-            display: grid;
+            display: grid !important;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
             margin: 20px 0;
+            position: static !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .feature-card {
@@ -107,6 +126,10 @@
             padding: 16px;
             text-align: center;
             transition: all var(--productive, 0.125s) var(--ease-out, cubic-bezier(.2, 0, .38, .9));
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .feature-card:hover {
@@ -117,7 +140,7 @@
         
         .feature-emoji {
             font-size: 24px;
-            display: block;
+            display: block !important;
             margin-bottom: 8px;
         }
         
@@ -140,6 +163,10 @@
             padding: 20px;
             text-align: center;
             margin: 20px 0;
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .action-title {
@@ -163,9 +190,12 @@
             font: var(--font-9, 600 14px/20px Inter);
             cursor: pointer;
             transition: all var(--productive, 0.125s) var(--ease-out, cubic-bezier(.2, 0, .38, .9));
-            display: inline-flex;
+            display: inline-flex !important;
             align-items: center;
             gap: 8px;
+            position: static !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .action-button:hover {
@@ -176,6 +206,49 @@
         
         .action-button:active {
             transform: translateY(0);
+        }
+        
+        .whatsapp-embed {
+            width: 100% !important;
+            max-width: 510px !important;
+            margin: 20px auto !important;
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .whatsapp-embed h3 {
+            text-align: center;
+            color: var(--green-base, #00bfa5);
+            margin-bottom: 16px;
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .iframe-wrapper {
+            border: 1px solid #ccd1d7 !important;
+            border-radius: 5px !important;
+            overflow: visible !important;
+            box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            height: 650px !important;
+            width: 100% !important;
+        }
+        
+        .iframe-wrapper iframe {
+            display: block !important;
+            border: 0 !important;
+            width: 100% !important;
+            height: 650px !important;
+            position: static !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         @media (max-width: 480px) {
@@ -236,19 +309,13 @@
         </div>
         
         <!-- WhatsApp Embed -->
-        <div style="width: 510px; margin: 20px auto;">
-            <h3 style="text-align: center; color: var(--green-base); margin-bottom: 16px;">💬 WhatsApp Business Integrado</h3>
-            <div style="
-                border: 1px solid #ccd1d7;
-                border-radius: 5px;
-                overflow: hidden;
-                box-shadow: 0 0 0 rgba(0,0,0,0);
-            ">
+        <div class="whatsapp-embed">
+            <h3>💬 WhatsApp Business Integrado</h3>
+            <div class="iframe-wrapper">
                 <iframe
                     src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
                     width="100%"
                     height="650"
-                    style="display:block; border:0;"
                     scrolling="yes"
                     allow="camera; microphone"
                     onload="console.log('✅ WhatsApp iframe carregado')"
@@ -259,39 +326,49 @@
     </div>
 
     <script>
-        console.log('✅ WhatsApp Card Tab carregado com CSS EXTREMO');
+        console.log('✅ WhatsApp Card Tab carregado com CSS EXTREMO SOBRESCRITO');
         
-        // FORÇAR POSICIONAMENTO VIA JAVASCRIPT
-        function forcePosition() {
-            const elements = [document.documentElement, document.body];
+        // FUNÇÃO EXTREMA DE FORÇAR POSICIONAMENTO
+        function forcePositionAggressive() {
+            // Forçar no HTML e BODY
+            const elements = [document.documentElement, document.body, ...document.querySelectorAll('*')];
             elements.forEach(el => {
-                if (el) {
-                    el.style.position = 'static';
-                    el.style.display = 'block';
-                    el.style.visibility = 'visible';
-                    el.style.opacity = '1';
-                    el.style.height = 'auto';
-                    el.style.minHeight = '400px';
-                    el.style.overflow = 'visible';
-                    el.style.zIndex = '999999';
+                if (el && el.style) {
+                    el.style.setProperty('position', 'static', 'important');
+                    el.style.setProperty('display', 'block', 'important');
+                    el.style.setProperty('visibility', 'visible', 'important');
+                    el.style.setProperty('opacity', '1', 'important');
+                    el.style.setProperty('overflow', 'visible', 'important');
                 }
             });
             
-            console.log('🔧 Posicionamento forçado via JavaScript');
+            // Forçar altura específica no body
+            document.body.style.setProperty('height', 'auto', 'important');
+            document.body.style.setProperty('min-height', '500px', 'important');
+            document.body.style.setProperty('max-height', 'none', 'important');
+            
+            console.log('🔧 Posicionamento AGRESSIVO forçado via JavaScript');
             console.log('📏 Altura do body:', document.body.offsetHeight + 'px');
         }
         
-        // Forçar múltiplas vezes
-        forcePosition();
-        setTimeout(forcePosition, 100);
-        setTimeout(forcePosition, 500);
-        setTimeout(forcePosition, 1000);
+        // Forçar IMEDIATAMENTE e múltiplas vezes
+        forcePositionAggressive();
+        setTimeout(forcePositionAggressive, 50);
+        setTimeout(forcePositionAggressive, 100);
+        setTimeout(forcePositionAggressive, 250);
+        setTimeout(forcePositionAggressive, 500);
+        setTimeout(forcePositionAggressive, 1000);
+        setTimeout(forcePositionAggressive, 2000);
         
-        // Monitorar mudanças e reforçar
-        const observer = new MutationObserver(forcePosition);
+        // Monitorar mudanças e reforçar AGRESSIVAMENTE
+        const observer = new MutationObserver(() => {
+            setTimeout(forcePositionAggressive, 10);
+        });
         observer.observe(document.documentElement, {
             attributes: true,
-            attributeFilter: ['style']
+            childList: true,
+            subtree: true,
+            attributeFilter: ['style', 'class']
         });
         
         function openWhatsApp() {
@@ -308,8 +385,15 @@
             }
         }
         
-        // Log para debug do iframe
-        console.log('📱 WhatsApp Card Tab com iframe integrado carregado');
+        // Verificar carregamento final
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                forcePositionAggressive();
+                console.log('🎯 Carregamento final - altura body:', document.body.offsetHeight + 'px');
+            }, 100);
+        });
+        
+        console.log('📱 WhatsApp Card Tab com OVERRIDE COMPLETO do CSS Pipefy carregado');
     </script>
 </body>
 </html>
