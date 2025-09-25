@@ -1,49 +1,67 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="position: static !important; height: auto !important; min-height: 400px !important; overflow: visible !important; margin: 0 !important; padding: 0 !important;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
     <style>
-        /* FORÇAR POSICIONAMENTO CORRETO NO PIPEFY */
+        /* FORÇAR POSICIONAMENTO E VISIBILIDADE EXTREMA */
+        * {
+            position: static !important;
+            visibility: visible !important;
+            display: block !important;
+            opacity: 1 !important;
+        }
+        
         html, body {
+            position: static !important;
             margin: 0 !important;
             padding: 20px !important;
             height: auto !important;
             min-height: 400px !important;
-            position: static !important;
-            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
             visibility: visible !important;
             opacity: 1 !important;
-            font-family: var(--font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+            z-index: 999999 !important;
             background: var(--white, #fff) !important;
             color: var(--text-base, #101820) !important;
-            overflow: visible !important;
+            font-family: var(--font-family, Inter, sans-serif) !important;
             box-sizing: border-box !important;
         }
         
         .container {
-            max-width: 600px;
-            margin: 0 auto;
             position: static !important;
             display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            height: auto !important;
+            min-height: 360px !important;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 !important;
         }
         
         .header {
             text-align: center;
             margin-bottom: var(--open-card-spacing-default, 24px);
+            padding: 20px 0;
+            background: linear-gradient(135deg, var(--green-base, #00bfa5) 0%, var(--green-900, #33ccb7) 100%);
+            color: var(--white, #fff);
+            border-radius: var(--radius-medium, 8px);
         }
         
         .header h2 {
-            color: var(--green-base, #00bfa5);
-            font: var(--font-2, bold 18px/24px Inter);
             margin: 0 0 8px 0;
+            font: var(--font-2, bold 18px/24px Inter);
+            color: var(--white, #fff);
         }
         
         .header p {
-            color: var(--text-500, #48626f);
-            font: var(--font-7, 14px/20px Inter);
             margin: 0;
+            font: var(--font-7, 14px/20px Inter);
+            opacity: 0.9;
         }
         
         .status-card {
@@ -52,7 +70,7 @@
             border-radius: var(--radius-medium, 8px);
             padding: 20px;
             text-align: center;
-            margin-bottom: var(--open-card-spacing-default, 24px);
+            margin: 20px 0;
             box-shadow: var(--lt-shadowDefault, 0 2px 6px -1px rgba(0, 0, 0, 0.16));
         }
         
@@ -60,11 +78,12 @@
             display: inline-block;
             background: var(--green-base, #00bfa5);
             color: var(--white, #fff);
-            padding: 4px 12px;
+            padding: 6px 16px;
             border-radius: 100px;
             font: var(--font-10, bold 10px/12px Inter);
             margin-bottom: 12px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .status-text {
@@ -78,13 +97,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
-            margin-bottom: var(--open-card-spacing-default, 24px);
-        }
-        
-        @media (max-width: 480px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+            margin: 20px 0;
         }
         
         .feature-card {
@@ -126,6 +139,7 @@
             border-radius: var(--radius-medium, 8px);
             padding: 20px;
             text-align: center;
+            margin: 20px 0;
         }
         
         .action-title {
@@ -163,6 +177,12 @@
         .action-button:active {
             transform: translateY(0);
         }
+        
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -170,13 +190,13 @@
         <!-- Header -->
         <div class="header">
             <h2>📱 WhatsApp Business</h2>
-            <p>Integração ativa com Pipefy</p>
+            <p>Integração funcionando perfeitamente!</p>
         </div>
         
         <!-- Status Card -->
         <div class="status-card">
             <div class="status-badge">✅ Conectado</div>
-            <p class="status-text">WhatsApp Business configurado e funcionando</p>
+            <p class="status-text">WhatsApp Business ativo no Pipefy</p>
         </div>
         
         <!-- Features Grid -->
@@ -217,7 +237,40 @@
     </div>
 
     <script>
-        console.log('✅ WhatsApp Card Tab carregado - CORRIGIDO position: static');
+        console.log('✅ WhatsApp Card Tab carregado com CSS EXTREMO');
+        
+        // FORÇAR POSICIONAMENTO VIA JAVASCRIPT
+        function forcePosition() {
+            const elements = [document.documentElement, document.body];
+            elements.forEach(el => {
+                if (el) {
+                    el.style.position = 'static';
+                    el.style.display = 'block';
+                    el.style.visibility = 'visible';
+                    el.style.opacity = '1';
+                    el.style.height = 'auto';
+                    el.style.minHeight = '400px';
+                    el.style.overflow = 'visible';
+                    el.style.zIndex = '999999';
+                }
+            });
+            
+            console.log('🔧 Posicionamento forçado via JavaScript');
+            console.log('📏 Altura do body:', document.body.offsetHeight + 'px');
+        }
+        
+        // Forçar múltiplas vezes
+        forcePosition();
+        setTimeout(forcePosition, 100);
+        setTimeout(forcePosition, 500);
+        setTimeout(forcePosition, 1000);
+        
+        // Monitorar mudanças e reforçar
+        const observer = new MutationObserver(forcePosition);
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
         
         function openWhatsApp() {
             console.log('🚀 Abrindo WhatsApp Business da aba');
@@ -232,18 +285,6 @@
                 alert('📱 WhatsApp Business\n\n✅ Integração funcionando!\n\nPor favor, permita pop-ups para abrir o WhatsApp em nova janela.');
             }
         }
-        
-        // Forçar posicionamento e visibilidade
-        document.documentElement.style.position = 'static';
-        document.body.style.position = 'static';
-        document.body.style.display = 'block';
-        document.body.style.visibility = 'visible';
-        document.body.style.opacity = '1';
-        document.body.style.height = 'auto';
-        document.body.style.minHeight = '400px';
-        
-        console.log('📏 CSS forçado - position: static aplicado');
-        console.log('📐 Altura do body:', document.body.offsetHeight + 'px');
     </script>
 </body>
 </html>
