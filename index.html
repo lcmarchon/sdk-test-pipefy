@@ -1,70 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <title>WhatsApp Business App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Card Tab</title>
+    <style>
+        /* CORREÇÃO CRÍTICA: position static */
+        .spinner,
+        .spinner * {
+            position: static !important;
+            display: none !important;
+        }
+        
+        iframe,
+        .xcomponent-outlet iframe,
+        [class*="xcomponent"] iframe {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            height: auto !important;
+            min-height: 400px !important;
+            width: 100% !important;
+        }
+        
+        /* Layout limpo */
+        html, body {
+            margin: 0;
+            padding: 20px;
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .action-button {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font: bold 14px Arial;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div style="padding: 20px; text-align: center; background: #25D366; color: white; font-family: Arial;">
-        <h2>📱 Inicializando WhatsApp Business...</h2>
-        <p>Conectando com Pipefy...</p>
+    <div class="container">
+        <div class="header">
+            <h2>📱 WhatsApp Business</h2>
+            <p>Integração ativa!</p>
+        </div>
+        
+        <button onclick="openWhatsApp()" class="action-button">
+            🚀 Abrir WhatsApp Business
+        </button>
     </div>
 
-<!-- Pipefy Client SDK -->
-<script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
-<script>
-    console.log('🚀 Iniciando WhatsApp Business App...');
-
-    PipefyApp.initCall({
-        // PIPE VIEW - Botão e página no Pipe
-        'pipe-view': function(p, pipe) {
-            console.log('📍 Configurando pipe-view WhatsApp para pipe:', pipe);
-            return {
-                icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
-                text: 'WhatsApp',
-                url: 'pipe-view.html',
-                hide_create_button: false
-            };
-        },
-        
-        // CARD BADGES - Etiquetas que aparecem NA LISTAGEM dos cards
-        'card-badges': function(p, pipe, card) {
-            console.log('🏷️ Adicionando badges WhatsApp ao card');
-            return [
-                {
-                    text: '📱 WhatsApp',
-                    color: '#25D366',
-                    title: 'Contato WhatsApp Business disponível'
-                },
-                {
-                    text: '✅ Online',
-                    color: '#128C7E',
-                    title: 'Status WhatsApp: Online'
-                }
-            ];
-        },
-        
-        // CARD TAB - Nova aba dentro do Card
-        'card-tab': function(p, pipe, card) {
-            console.log('📑 Configurando aba WhatsApp do card');
-            return {
-                icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png?20220228223904',
-                title: 'WhatsApp',
-                url: 'card-tab.html',
-                buttons: [
-                    {
-                        text: '📱 Enviar WhatsApp',
-                        callback: function(p) {
-                            console.log('🚀 Botão WhatsApp clicado!');
-                            alert('📱 Abrindo WhatsApp Business!\n\n✅ Integração funcionando perfeitamente!');
-                        }
-                    }
-                ]
-            };
+    <script>
+        // Aplicar correção testada no console
+        function fixPositions() {
+            // Corrigir pusher-loader
+            const pusherLoader = document.querySelector('div.pusher-loader');
+            if (pusherLoader) {
+                pusherLoader.style.position = 'static';
+                console.log('✅ pusher-loader corrigido para static');
+            }
+            
+            // Corrigir outros elementos problemáticos
+            const problematicElements = document.querySelectorAll('[class*="pusher"], [class*="loader"], [class*="spinner"]');
+            problematicElements.forEach(element => {
+                element.style.position = 'static';
+            });
         }
-    });
-
-    console.log('✅ WhatsApp Business App configurado com sucesso!');
-</script>
+        
+        // Executar correção quando carregar
+        document.addEventListener('DOMContentLoaded', fixPositions);
+        
+        // Executar correção novamente após um tempo (caso elementos sejam criados dinamicamente)
+        setTimeout(fixPositions, 1000);
+        setTimeout(fixPositions, 3000);
+        
+        function openWhatsApp() {
+            console.log('🚀 Abrindo WhatsApp Business');
+            
+            // Aplicar correção antes de abrir
+            fixPositions();
+            
+            const whatsappWindow = window.open(
+                'https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633',
+                'whatsapp-business',
+                'width=1200,height=800,scrollbars=yes,resizable=yes'
+            );
+        }
+        
+        console.log('✅ WhatsApp Card Tab - versão limpa carregada!');
+    </script>
 </body>
 </html>
