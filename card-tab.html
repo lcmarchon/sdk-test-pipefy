@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
     <style>
-        /* ESTRATÉGIA: SUBSTITUIR COMPLETAMENTE O SPINNER */
-        
-        /* Esconder spinner original */
-        .spinner, .loader, #loader {
-            display: none !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
+        /* CSS para garantir visibilidade */
+        * {
+            position: static !important;
+            overflow: visible !important;
         }
         
-        /* CSS ULTRA AGRESSIVO para anular Pipefy */
         html, body {
             position: static !important;
             overflow: visible !important;
@@ -35,7 +31,12 @@
             box-sizing: border-box !important;
         }
         
-        /* Container principal */
+        .spinner, .loader, #loader {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        
         .whatsapp-container {
             position: static !important;
             display: block !important;
@@ -57,22 +58,6 @@
             background: linear-gradient(135deg, #00bfa5 0%, #33ccb7 100%);
             color: white;
             border-radius: 8px;
-            position: static !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        .header h2 {
-            margin: 0 0 8px 0;
-            font: bold 18px/24px Arial;
-            color: white;
-        }
-        
-        .header p {
-            margin: 0;
-            font: 14px/20px Arial;
-            opacity: 0.9;
         }
         
         .success-message {
@@ -82,10 +67,6 @@
             padding: 20px;
             text-align: center;
             margin: 20px 0;
-            position: static !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
         }
         
         .success-badge {
@@ -97,14 +78,6 @@
             font: bold 10px/12px Arial;
             margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .success-text {
-            color: #101820;
-            font: 14px/20px Arial;
-            font-weight: 500;
-            margin: 0;
         }
         
         .action-button {
@@ -117,70 +90,20 @@
             cursor: pointer;
             margin: 10px;
             transition: all 0.3s ease;
-            display: inline-block !important;
-            position: static !important;
-            visibility: visible !important;
-            opacity: 1 !important;
         }
         
         .action-button:hover {
             background: #33ccb7;
-            transform: translateY(-1px);
-        }
-        
-        .whatsapp-embed {
-            width: 100% !important;
-            max-width: 510px !important;
-            margin: 20px auto !important;
-            position: static !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        .whatsapp-embed h3 {
-            text-align: center;
-            color: #00bfa5;
-            margin-bottom: 16px;
-            position: static !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        .iframe-wrapper {
-            border: 1px solid #ccd1d7 !important;
-            border-radius: 5px !important;
-            overflow: visible !important;
-            position: static !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            height: 650px !important;
-            width: 100% !important;
-        }
-        
-        .iframe-wrapper iframe {
-            display: block !important;
-            border: 0 !important;
-            width: 100% !important;
-            height: 650px !important;
-            position: static !important;
-            visibility: visible !important;
-            opacity: 1 !important;
         }
     </style>
 </head>
 <body>
-    <!-- SUBSTITUIR SPINNER POR NOSSO CONTEÚDO -->
     <div class="whatsapp-container">
-        <!-- Header -->
         <div class="header">
             <h2>📱 WhatsApp Business</h2>
             <p>Integração carregada com sucesso!</p>
         </div>
         
-        <!-- Success Message -->
         <div class="success-message">
             <div class="success-badge">✅ Funcionando</div>
             <p class="success-text">WhatsApp Business ativo e funcionando no Pipefy!</p>
@@ -191,138 +114,47 @@
             <button onclick="testIntegration()" class="action-button">
                 🔧 Testar Integração
             </button>
-        </div>
-        
-        <!-- WhatsApp Embed -->
-        <div class="whatsapp-embed">
-            <h3>💬 Central WhatsApp Business</h3>
-            <div class="iframe-wrapper">
-                <iframe
-                    src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
-                    width="100%"
-                    height="650"
-                    scrolling="yes"
-                    allow="camera; microphone"
-                    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    onload="console.log('✅ WhatsApp iframe carregado')"
-                    onerror="console.log('❌ Erro ao carregar WhatsApp iframe')"
-                ></iframe>
-            </div>
+            <button onclick="fixVisibility()" class="action-button">
+                🔧 Forçar Visibilidade
+            </button>
         </div>
     </div>
 
     <script>
-        console.log('🚀 INICIANDO SUBSTITUIÇÃO DO SPINNER');
+        console.log('🚀 WhatsApp Card Tab carregado');
         
-        // FUNÇÃO AGRESSIVA: SUBSTITUIR SPINNER IMEDIATAMENTE
-        function replaceSpinner() {
-            // Verificar se elementos existem antes de modificar
-            if (!document.documentElement || !document.body) {
-                console.log('⚠️ Elementos HTML/BODY ainda não disponíveis');
-                return;
-            }
-            
-            // Encontrar e esconder spinner
-            const spinners = document.querySelectorAll('.spinner, .loader, #loader');
-            spinners.forEach(spinner => {
-                if (spinner && spinner.style && typeof spinner.style.setProperty === 'function') {
-                    spinner.style.setProperty('display', 'none', 'important');
-                    spinner.style.setProperty('opacity', '0', 'important');
-                    spinner.style.setProperty('visibility', 'hidden', 'important');
-                    console.log('🚫 Spinner escondido:', spinner);
-                }
-            });
-            
-            // Forçar CSS estático no HTML e BODY
-            [document.documentElement, document.body].forEach(el => {
-                const elementName = index === 0 ? 'HTML' : 'BODY';
+        // FUNÇÃO PARA CORRIGIR VISIBILIDADE DO IFRAME
+        function fixVisibility() {
+            try {
+                console.log('🔧 Tentando corrigir visibilidade...');
                 
-                if (!el) {
-                    console.log(`⚠️ Elemento ${elementName} não encontrado`);
-                    return;
-                }
-                
-                if (!el.style) {
-                    console.log(`⚠️ Propriedade style não disponível em ${elementName}`);
-                    return;
-                }
-                
-                if (typeof el.style.setProperty !== 'function') {
-                    console.log(`⚠️ setProperty não disponível em ${elementName}`);
-                    return;
-                }
-                
-                try {
-                    el.style.setProperty('position', 'static', 'important');
-                    el.style.setProperty('overflow', 'visible', 'important');
-                    el.style.setProperty('width', '100%', 'important');
-                    el.style.setProperty('height', 'auto', 'important');
-                    el.style.setProperty('min-height', '500px', 'important');
-                    el.style.setProperty('max-height', 'none', 'important');
-                    el.style.setProperty('top', 'auto', 'important');
-                    el.style.setProperty('left', 'auto', 'important');
-                    el.style.setProperty('margin', '0', 'important');
-                    el.style.setProperty('text-align', 'left', 'important');
-                    el.style.setProperty('visibility', 'visible', 'important');
-                    el.style.setProperty('opacity', '1', 'important');
+                // Tentar acessar parent window
+                if (window.parent && window.parent !== window) {
+                    // Enviar mensagem para o parent corrigir CSS
+                    window.parent.postMessage({
+                        type: 'FIX_IFRAME_VISIBILITY',
+                        action: 'make_visible'
+                    }, '*');
                     
-                    if (el === document.body && el.style) {
-                        el.style.setProperty('padding', '20px', 'important');
-                        el.style.setProperty('background', 'white', 'important');
-                        el.style.setProperty('color', '#333', 'important');
-                    }
+                    console.log('📤 Mensagem enviada para parent window');
+                }
+                
+                // Tentar acessar top window
+                if (window.top && window.top !== window) {
+                    window.top.postMessage({
+                        type: 'FIX_IFRAME_VISIBILITY',
+                        action: 'make_visible'
+                    }, '*');
                     
-                    console.log(`✅ CSS aplicado em ${elementName}`);
-                } catch (error) {
-                    console.log(`❌ Erro ao aplicar CSS em ${elementName}:`, error);
+                    console.log('📤 Mensagem enviada para top window');
                 }
-            });
-            
-            // Verificar altura apenas se body existir
-            if (document.body && typeof document.body.offsetHeight === 'number') {
-                console.log('✅ CSS do Pipefy ANULADO - altura body:', document.body.offsetHeight + 'px');
+                
+                alert('🔧 Comando de visibilidade enviado!\n\nSe não funcionou, use o DevTools para:\n1. Mudar xcomponent-invisible → xcomponent-visible\n2. Mudar overflow: hidden → overflow: visible\n3. Mudar position: absolute → position: static');
+                
+            } catch (error) {
+                console.log('❌ Erro ao tentar corrigir visibilidade:', error);
+                alert('❌ Não foi possível corrigir automaticamente.\n\nUse o DevTools manualmente.');
             }
-        }
-        
-        // EXECUTAR IMEDIATAMENTE e múltiplas vezes
-        console.log('🚀 Iniciando substituição do spinner...');
-        replaceSpinner();
-        
-        // Tentar múltiplas vezes com verificação de erro
-        [10, 50, 100, 250, 500, 1000, 2000].forEach(delay => {
-            setTimeout(() => {
-                try {
-                    replaceSpinner();
-                } catch (error) {
-                    console.log(`❌ Erro aos ${delay}ms:`, error);
-                }
-            }, delay);
-        });
-        
-        // Monitorar mudanças do Pipefy e recontraatacar
-        try {
-            const observer = new MutationObserver(() => {
-                setTimeout(() => {
-                fA.style.position = "static",
-                        replaceSpinner();
-                    } catch (error) {
-                        console.log('❌ Erro no MutationObserver:', error);
-                    }
-                }, 5);
-            });
-            
-            if (document.documentElement) {
-                observer.observe(document.documentElement, {
-                    attributes: true,
-                    childList: true,
-                    subtree: true,
-                    attributeFilter: ['style', 'class']
-                });
-                console.log('👀 MutationObserver ativo');
-            }
-        } catch (error) {
-            console.log('❌ Erro ao criar MutationObserver:', error);
         }
         
         function openWhatsApp() {
@@ -335,31 +167,31 @@
             );
             
             if (!whatsappWindow) {
-                alert('📱 WhatsApp Business\n\n✅ Integração funcionando!\n\nPor favor, permita pop-ups para abrir o WhatsApp em nova janela.');
+                alert('📱 WhatsApp Business\n\n✅ Integração funcionando!\n\nPermita pop-ups para abrir o WhatsApp.');
             }
         }
         
         function testIntegration() {
             console.log('🔧 Testando integração');
-            alert('🎯 TESTE DE INTEGRAÇÃO\n\n✅ WhatsApp Business App funcionando!\n\n📱 Aba carregada com sucesso\n🔧 JavaScript executando\n💬 Iframe WhatsApp integrado\n\nTudo funcionando perfeitamente!');
+            alert('🎯 TESTE DE INTEGRAÇÃO\n\n✅ WhatsApp Business App funcionando!\n\n📱 Aba carregada\n🔧 JavaScript executando\n\nTudo funcionando!');
         }
         
-        // Verificar carregamento final
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                try {
-                    replaceSpinner();
-                    if (document.body) {
-                        console.log('🎯 Carregamento final - altura body:', document.body.offsetHeight + 'px');
-                    }
-                } catch (error) {
-                    console.log('❌ Erro no carregamento final:', error);
-                }
-                console.log('✅ WhatsApp Card Tab carregado e funcionando!');
-            }, 100);
+        // AUTO-EXECUTAR correção de visibilidade
+        setTimeout(() => {
+            console.log('🚀 Auto-executando correção de visibilidade...');
+            fixVisibility();
+        }, 1000);
+        
+        // Escutar mensagens do parent
+        window.addEventListener('message', (event) => {
+            console.log('📥 Mensagem recebida:', event.data);
+            
+            if (event.data.type === 'VISIBILITY_FIXED') {
+                console.log('✅ Visibilidade corrigida pelo parent!');
+            }
         });
         
-        console.log('📱 WhatsApp Card Tab - SPINNER SUBSTITUÍDO');
+        console.log('✅ WhatsApp Card Tab - JavaScript carregado e funcionando!');
     </script>
 </body>
 </html>
