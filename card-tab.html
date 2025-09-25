@@ -34,20 +34,29 @@
     <script>
         console.log('🔥 CARD-TAB CARREGADO E RENDERIZADO!');
         
-        // Redimensionar o iframe para o tamanho do body
-        if (typeof PipefyApp !== 'undefined') {
-            PipefyApp.resizeTo('#card-tab-title');
-            console.log('✅ PipefyApp.resizeTo aplicado!');
-        } else {
-            console.log('⚠️ PipefyApp não encontrado - pode estar carregando...');
-            // Tentar novamente após um pequeno delay
-            setTimeout(() => {
-                if (typeof PipefyApp !== 'undefined') {
+        // Função para tentar redimensionar com verificação de dependências
+        function tryResize() {
+            if (typeof PipefyApp !== 'undefined' && window.xchild && window.xprops) {
+                try {
                     PipefyApp.resizeTo('#card-tab-title');
-                    console.log('✅ PipefyApp.resizeTo aplicado (segunda tentativa)!');
+                    console.log('✅ PipefyApp.resizeTo aplicado após verificação de xchild/xprops!');
+                } catch (error) {
+                    console.error('❌ Erro ao chamar PipefyApp.resizeTo:', error);
+                    // Tentar novamente após 500ms se der erro
+                    setTimeout(tryResize, 500);
                 }
-            }, 1000);
+            } else {
+                console.log('⚠️ Aguardando PipefyApp, xchild ou xprops...', {
+                    PipefyApp: typeof PipefyApp !== 'undefined',
+                    xchild: !!window.xchild,
+                    xprops: !!window.xprops
+                });
+                setTimeout(tryResize, 100); // Tentar novamente após 100ms
+            }
         }
+        
+        // Iniciar a tentativa de redimensionamento
+        tryResize();
     </script>
 </body>
 </html>
