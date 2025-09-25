@@ -36,14 +36,14 @@
         
         // Redimensionar o iframe para o tamanho do body
         if (typeof PipefyApp !== 'undefined') {
-            PipefyApp.resizeTo('body');
+            PipefyApp.resizeTo(document.body);
             console.log('✅ PipefyApp.resizeTo aplicado!');
         } else {
             console.log('⚠️ PipefyApp não encontrado - pode estar carregando...');
             // Tentar novamente após um pequeno delay
             setTimeout(() => {
                 if (typeof PipefyApp !== 'undefined') {
-                    PipefyApp.resizeTo('body');
+                    PipefyApp.resizeTo(document.body);
                     console.log('✅ PipefyApp.resizeTo aplicado (segunda tentativa)!');
                 }
             }, 1000);
