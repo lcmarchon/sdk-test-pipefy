@@ -217,10 +217,16 @@
         
         // FUNÇÃO AGRESSIVA: SUBSTITUIR SPINNER IMEDIATAMENTE
         function replaceSpinner() {
+            // Verificar se elementos existem antes de modificar
+            if (!document.documentElement || !document.body) {
+                console.log('⚠️ Elementos HTML/BODY ainda não disponíveis');
+                return;
+            }
+            
             // Encontrar e esconder spinner
             const spinners = document.querySelectorAll('.spinner, .loader, #loader');
             spinners.forEach(spinner => {
-                if (spinner && spinner.style) {
+                if (spinner && spinner.style && typeof spinner.style.setProperty === 'function') {
                     spinner.style.setProperty('display', 'none', 'important');
                     spinner.style.setProperty('opacity', '0', 'important');
                     spinner.style.setProperty('visibility', 'hidden', 'important');
@@ -230,7 +236,24 @@
             
             // Forçar CSS estático no HTML e BODY
             [document.documentElement, document.body].forEach(el => {
-                if (el && el.style) {
+                const elementName = index === 0 ? 'HTML' : 'BODY';
+                
+                if (!el) {
+                    console.log(`⚠️ Elemento ${elementName} não encontrado`);
+                    return;
+                }
+                
+                if (!el.style) {
+                    console.log(`⚠️ Propriedade style não disponível em ${elementName}`);
+                    return;
+                }
+                
+                if (typeof el.style.setProperty !== 'function') {
+                    console.log(`⚠️ setProperty não disponível em ${elementName}`);
+                    return;
+                }
+                
+                try {
                     el.style.setProperty('position', 'static', 'important');
                     el.style.setProperty('overflow', 'visible', 'important');
                     el.style.setProperty('width', '100%', 'important');
@@ -244,37 +267,63 @@
                     el.style.setProperty('visibility', 'visible', 'important');
                     el.style.setProperty('opacity', '1', 'important');
                     
-                    if (el === document.body) {
+                    if (el === document.body && el.style) {
                         el.style.setProperty('padding', '20px', 'important');
                         el.style.setProperty('background', 'white', 'important');
                         el.style.setProperty('color', '#333', 'important');
                     }
+                    
+                    console.log(`✅ CSS aplicado em ${elementName}`);
+                } catch (error) {
+                    console.log(`❌ Erro ao aplicar CSS em ${elementName}:`, error);
                 }
             });
             
-            console.log('✅ CSS do Pipefy ANULADO - altura body:', document.body.offsetHeight + 'px');
+            // Verificar altura apenas se body existir
+            if (document.body && typeof document.body.offsetHeight === 'number') {
+                console.log('✅ CSS do Pipefy ANULADO - altura body:', document.body.offsetHeight + 'px');
+            }
         }
         
         // EXECUTAR IMEDIATAMENTE e múltiplas vezes
+        console.log('🚀 Iniciando substituição do spinner...');
         replaceSpinner();
-        setTimeout(replaceSpinner, 10);
-        setTimeout(replaceSpinner, 50);
-        setTimeout(replaceSpinner, 100);
-        setTimeout(replaceSpinner, 250);
-        setTimeout(replaceSpinner, 500);
-        setTimeout(replaceSpinner, 1000);
-        setTimeout(replaceSpinner, 2000);
+        
+        // Tentar múltiplas vezes com verificação de erro
+        [10, 50, 100, 250, 500, 1000, 2000].forEach(delay => {
+            setTimeout(() => {
+                try {
+                    replaceSpinner();
+                } catch (error) {
+                    console.log(`❌ Erro aos ${delay}ms:`, error);
+                }
+            }, delay);
+        });
         
         // Monitorar mudanças do Pipefy e recontraatacar
-        const observer = new MutationObserver(() => {
-            setTimeout(replaceSpinner, 5);
-        });
-        observer.observe(document.documentElement, {
-            attributes: true,
-            childList: true,
-            subtree: true,
-            attributeFilter: ['style', 'class']
-        });
+        try {
+            const observer = new MutationObserver(() => {
+                setTimeout(() => {
+                    try {
+                        replaceSpinner();
+                    } catch (error) {
+                        console.log('❌ Erro no MutationObserver:', error);
+                    }
+                }, 5);
+            });
+            
+            if (document.documentElement) {
+                observer.observe(document.documentElement, {
+                    attributes: true,
+                    childList: true,
+                    subtree: true,
+                    attributeFilter: ['style', 'class']
+                });
+                console.log('👀 MutationObserver ativo');
+            }
+        } catch (error) {
+            console.log('❌ Erro ao criar MutationObserver:', error);
+        }
         
         function openWhatsApp() {
             console.log('🚀 Abrindo WhatsApp Business');
@@ -298,8 +347,14 @@
         // Verificar carregamento final
         window.addEventListener('load', () => {
             setTimeout(() => {
-                replaceSpinner();
-                console.log('🎯 Carregamento final - altura body:', document.body.offsetHeight + 'px');
+                try {
+                    replaceSpinner();
+                    if (document.body) {
+                        console.log('🎯 Carregamento final - altura body:', document.body.offsetHeight + 'px');
+                    }
+                } catch (error) {
+                    console.log('❌ Erro no carregamento final:', error);
+                }
                 console.log('✅ WhatsApp Card Tab carregado e funcionando!');
             }, 100);
         });
