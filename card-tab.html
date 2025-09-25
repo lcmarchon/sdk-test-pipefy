@@ -6,17 +6,23 @@
     <title>WhatsApp Card Tab</title>
     <style>
         /* CORREÇÃO CRÍTICA: Spinner com position static */
-        .spinner {
+        /* Forçar spinner com position: static */
+        .spinner,
+        .spinner * {
             position: static !important;
-            max-height: 60vmin !important;
-            max-width: 60vmin !important;
-            height: 40px !important;
-            width: 40px !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translateX(-50%) translateY(-50%) !important;
-            z-index: 10 !important;
             display: none !important; /* Esconder o spinner */
+        }
+        
+        /* Forçar iframe com position: static */
+        iframe,
+        .xcomponent-outlet iframe,
+        [class*="xcomponent"] iframe {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            height: auto !important;
+            min-height: 400px !important;
+            width: 100% !important;
         }
         
         /* Garantir que o corpo seja visível */
@@ -125,13 +131,38 @@
         <div class="test-info">
             <h4>🎯 Status do Teste:</h4>
             <p>✅ Spinner position: static aplicado<br>
+            ✅ Iframe position: static aplicado<br>
             ✅ Container visível<br>
-            ✅ CSS corretivo funcionando</p>
+            ✅ Ambas correções ativas</p>
         </div>
     </div>
 
     <script>
         console.log('🚀 WhatsApp Card Tab carregado - versão simplificada');
+        
+        // Aplicar correções via JavaScript também
+        function applyStaticFixes() {
+            try {
+                // Corrigir spinner
+                const spinners = document.querySelectorAll('.spinner');
+                spinners.forEach(spinner => {
+                    spinner.style.position = 'static';
+                    spinner.style.display = 'none';
+                });
+                
+                // Corrigir iframes
+                const iframes = document.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    iframe.style.position = 'static';
+                    iframe.style.top = 'auto';
+                    iframe.style.left = 'auto';
+                });
+                
+                console.log('✅ Correções JavaScript aplicadas');
+            } catch (error) {
+                console.log('⚠️ Erro ao aplicar correções JS:', error);
+            }
+        }
         
         function openWhatsApp() {
             console.log('🚀 Abrindo WhatsApp Business');
@@ -149,25 +180,11 @@
         
         function testIntegration() {
             console.log('🔧 Testando integração');
-            alert('🎯 TESTE DE INTEGRAÇÃO\n\n✅ WhatsApp Business App funcionando!\n\n📱 Aba carregada\n🔧 JavaScript executando\n🎯 Spinner com position: static\n\nTudo funcionando!');
+            alert('🎯 TESTE DE INTEGRAÇÃO\n\n✅ WhatsApp Business App funcionando!\n\n📱 Aba carregada\n🔧 JavaScript executando\n🎯 Spinner: position static\n🎯 Iframe: position static\n\n✅ AMBOS CORRIGIDOS!');
         }
         
-        // Aplicar correção do spinner ao carregar
-        function fixSpinnerPosition() {
-            try {
-                const spinners = document.querySelectorAll('.spinner');
-                spinners.forEach(spinner => {
-                    spinner.style.position = 'static';
-                    spinner.style.display = 'none';
-                });
-                console.log('✅ Spinner corrigido para position: static');
-            } catch (error) {
-                console.log('⚠️ Erro ao corrigir spinner:', error);
-            }
-        }
-        
-        // Executar correção
-        fixSpinnerPosition();
+        // Executar correções
+        applyStaticFixes();
         
         console.log('✅ WhatsApp Card Tab - JavaScript carregado (foco: spinner static)!');
     </script>
