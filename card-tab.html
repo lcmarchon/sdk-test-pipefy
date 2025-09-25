@@ -4,131 +4,220 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
+    <style>
+        /* FORÇAR POSICIONAMENTO CORRETO NO PIPEFY */
+        html, body {
+            margin: 0 !important;
+            padding: 20px !important;
+            height: auto !important;
+            min-height: 400px !important;
+            position: static !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            font-family: var(--font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+            background: var(--white, #fff) !important;
+            color: var(--text-base, #101820) !important;
+            overflow: visible !important;
+            box-sizing: border-box !important;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: static !important;
+            display: block !important;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: var(--open-card-spacing-default, 24px);
+        }
+        
+        .header h2 {
+            color: var(--green-base, #00bfa5);
+            font: var(--font-2, bold 18px/24px Inter);
+            margin: 0 0 8px 0;
+        }
+        
+        .header p {
+            color: var(--text-500, #48626f);
+            font: var(--font-7, 14px/20px Inter);
+            margin: 0;
+        }
+        
+        .status-card {
+            background: var(--gray-100, #f9fcfe);
+            border: 1px solid var(--neutral-400, #e8e8e8);
+            border-radius: var(--radius-medium, 8px);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: var(--open-card-spacing-default, 24px);
+            box-shadow: var(--lt-shadowDefault, 0 2px 6px -1px rgba(0, 0, 0, 0.16));
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: var(--green-base, #00bfa5);
+            color: var(--white, #fff);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font: var(--font-10, bold 10px/12px Inter);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        
+        .status-text {
+            color: var(--text-base, #101820);
+            font: var(--font-7, 14px/20px Inter);
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: var(--open-card-spacing-default, 24px);
+        }
+        
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .feature-card {
+            background: var(--white, #fff);
+            border: 1px solid var(--neutral-300, #eff0f1);
+            border-radius: var(--radius-default, 4px);
+            padding: 16px;
+            text-align: center;
+            transition: all var(--productive, 0.125s) var(--ease-out, cubic-bezier(.2, 0, .38, .9));
+        }
+        
+        .feature-card:hover {
+            box-shadow: var(--lt-shadowDefault, 0 2px 6px -1px rgba(0, 0, 0, 0.16));
+            transform: translateY(-2px);
+            border-color: var(--green-base, #00bfa5);
+        }
+        
+        .feature-emoji {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .feature-title {
+            color: var(--text-base, #101820);
+            font: var(--font-5, 600 13px/16px Inter);
+            margin: 0 0 4px 0;
+        }
+        
+        .feature-desc {
+            color: var(--text-500, #48626f);
+            font: var(--font-8, 12px/16px Inter);
+            margin: 0;
+        }
+        
+        .action-panel {
+            background: var(--green-100, #f2fcfa);
+            border: 1px solid var(--green-300, #ccf2ed);
+            border-radius: var(--radius-medium, 8px);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .action-title {
+            color: var(--green-base, #00bfa5);
+            font: var(--font-3, bold 16px/24px Inter);
+            margin: 0 0 8px 0;
+        }
+        
+        .action-desc {
+            color: var(--text-500, #48626f);
+            font: var(--font-7, 14px/20px Inter);
+            margin: 0 0 16px 0;
+        }
+        
+        .action-button {
+            background: var(--green-base, #00bfa5);
+            color: var(--white, #fff);
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius-default, 4px);
+            font: var(--font-9, 600 14px/20px Inter);
+            cursor: pointer;
+            transition: all var(--productive, 0.125s) var(--ease-out, cubic-bezier(.2, 0, .38, .9));
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .action-button:hover {
+            background: var(--green-900, #33ccb7);
+            transform: translateY(-1px);
+            box-shadow: var(--lt-shadowActive, 0 0 8px -2px rgba(0, 0, 0, 0.1));
+        }
+        
+        .action-button:active {
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body style="
-    margin: 0;
-    padding: 20px;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #fff;
-    color: #101820;
-    min-height: 400px;
-    height: auto;
-    overflow: visible;
-">
-    <div style="max-width: 600px; margin: 0 auto;">
+<body>
+    <div class="container">
         <!-- Header -->
-        <div style="text-align: center; margin-bottom: 24px;">
-            <h2 style="color: #00bfa5; font-size: 18px; font-weight: bold; margin: 0 0 8px 0;">📱 WhatsApp Business</h2>
-            <p style="color: #48626f; font-size: 14px; margin: 0;">Integração ativa com Pipefy</p>
+        <div class="header">
+            <h2>📱 WhatsApp Business</h2>
+            <p>Integração ativa com Pipefy</p>
         </div>
         
         <!-- Status Card -->
-        <div style="
-            background: #f9fcfe;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.16);
-        ">
-            <div style="
-                display: inline-block;
-                background: #00bfa5;
-                color: #fff;
-                padding: 4px 12px;
-                border-radius: 100px;
-                font-size: 12px;
-                font-weight: 600;
-                margin-bottom: 12px;
-            ">✅ Conectado</div>
-            <p style="color: #101820; font-size: 14px; font-weight: 500; margin: 0;">WhatsApp Business configurado e funcionando</p>
+        <div class="status-card">
+            <div class="status-badge">✅ Conectado</div>
+            <p class="status-text">WhatsApp Business configurado e funcionando</p>
         </div>
         
         <!-- Features Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-            <div style="
-                background: #fff;
-                border: 1px solid #eff0f1;
-                border-radius: 4px;
-                padding: 16px;
-                text-align: center;
-                transition: all 0.125s ease;
-            ">
-                <span style="font-size: 24px; display: block; margin-bottom: 8px;">💬</span>
-                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Mensagens</h3>
-                <p style="color: #48626f; font-size: 12px; margin: 0;">Envie mensagens automáticas</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-emoji">💬</span>
+                <h3 class="feature-title">Mensagens</h3>
+                <p class="feature-desc">Envie mensagens automáticas</p>
             </div>
             
-            <div style="
-                background: #fff;
-                border: 1px solid #eff0f1;
-                border-radius: 4px;
-                padding: 16px;
-                text-align: center;
-                transition: all 0.125s ease;
-            ">
-                <span style="font-size: 24px; display: block; margin-bottom: 8px;">📞</span>
-                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Chamadas</h3>
-                <p style="color: #48626f; font-size: 12px; margin: 0;">Inicie chamadas diretas</p>
+            <div class="feature-card">
+                <span class="feature-emoji">📞</span>
+                <h3 class="feature-title">Chamadas</h3>
+                <p class="feature-desc">Inicie chamadas diretas</p>
             </div>
             
-            <div style="
-                background: #fff;
-                border: 1px solid #eff0f1;
-                border-radius: 4px;
-                padding: 16px;
-                text-align: center;
-                transition: all 0.125s ease;
-            ">
-                <span style="font-size: 24px; display: block; margin-bottom: 8px;">👥</span>
-                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Contatos</h3>
-                <p style="color: #48626f; font-size: 12px; margin: 0;">Gerencie seus contatos</p>
+            <div class="feature-card">
+                <span class="feature-emoji">👥</span>
+                <h3 class="feature-title">Contatos</h3>
+                <p class="feature-desc">Gerencie seus contatos</p>
             </div>
             
-            <div style="
-                background: #fff;
-                border: 1px solid #eff0f1;
-                border-radius: 4px;
-                padding: 16px;
-                text-align: center;
-                transition: all 0.125s ease;
-            ">
-                <span style="font-size: 24px; display: block; margin-bottom: 8px;">📊</span>
-                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Relatórios</h3>
-                <p style="color: #48626f; font-size: 12px; margin: 0;">Analise conversas</p>
+            <div class="feature-card">
+                <span class="feature-emoji">📊</span>
+                <h3 class="feature-title">Relatórios</h3>
+                <p class="feature-desc">Analise conversas</p>
             </div>
         </div>
         
         <!-- Action Panel -->
-        <div style="
-            background: #f2fcfa;
-            border: 1px solid #ccf2ed;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        ">
-            <h3 style="color: #00bfa5; font-size: 16px; font-weight: bold; margin: 0 0 8px 0;">Central WhatsApp</h3>
-            <p style="color: #48626f; font-size: 14px; margin: 0 0 16px 0;">Acesse sua central de mensagens completa</p>
-            <button onclick="openWhatsApp()" style="
-                background: #00bfa5;
-                color: #fff;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 4px;
-                font-size: 14px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.125s ease;
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-            ">🚀 Abrir WhatsApp Business</button>
+        <div class="action-panel">
+            <h3 class="action-title">Central WhatsApp</h3>
+            <p class="action-desc">Acesse sua central de mensagens completa</p>
+            <button onclick="openWhatsApp()" class="action-button">
+                🚀 Abrir WhatsApp Business
+            </button>
         </div>
     </div>
 
     <script>
-        console.log('✅ WhatsApp Card Tab carregado - versão simplificada inline');
+        console.log('✅ WhatsApp Card Tab carregado - CORRIGIDO position: static');
         
         function openWhatsApp() {
             console.log('🚀 Abrindo WhatsApp Business da aba');
@@ -144,11 +233,17 @@
             }
         }
         
-        // Forçar altura mínima
-        document.body.style.height = '400px';
+        // Forçar posicionamento e visibilidade
+        document.documentElement.style.position = 'static';
+        document.body.style.position = 'static';
+        document.body.style.display = 'block';
+        document.body.style.visibility = 'visible';
+        document.body.style.opacity = '1';
+        document.body.style.height = 'auto';
         document.body.style.minHeight = '400px';
         
-        console.log('📏 Altura do body definida:', document.body.offsetHeight);
+        console.log('📏 CSS forçado - position: static aplicado');
+        console.log('📐 Altura do body:', document.body.offsetHeight + 'px');
     </script>
 </body>
 </html>
