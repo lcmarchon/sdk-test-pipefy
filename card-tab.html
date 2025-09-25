@@ -70,8 +70,34 @@
     </div>
 
     <script>
+        // Aplicar correção testada no console
+        function fixPositions() {
+            // Corrigir pusher-loader
+            const pusherLoader = document.querySelector('div.pusher-loader');
+            if (pusherLoader) {
+                pusherLoader.style.position = 'static';
+                console.log('✅ pusher-loader corrigido para static');
+            }
+            
+            // Corrigir outros elementos problemáticos
+            const problematicElements = document.querySelectorAll('[class*="pusher"], [class*="loader"], [class*="spinner"]');
+            problematicElements.forEach(element => {
+                element.style.position = 'static';
+            });
+        }
+        
+        // Executar correção quando carregar
+        document.addEventListener('DOMContentLoaded', fixPositions);
+        
+        // Executar correção novamente após um tempo (caso elementos sejam criados dinamicamente)
+        setTimeout(fixPositions, 1000);
+        setTimeout(fixPositions, 3000);
+        
         function openWhatsApp() {
             console.log('🚀 Abrindo WhatsApp Business');
+            
+            // Aplicar correção antes de abrir
+            fixPositions();
             
             const whatsappWindow = window.open(
                 'https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633',
