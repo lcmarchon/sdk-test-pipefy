@@ -5,145 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
     <style>
-        /* CORREÇÃO CRÍTICA: Spinner com position static */
-        /* Forçar spinner com position: static */
+        /* FOCO: Apenas corrigir position dos elementos problemáticos */
+        
+        /* Forçar spinner com position static */
         .spinner,
         .spinner * {
             position: static !important;
-            display: none !important; /* Esconder o spinner */
+            display: none !important;
         }
         
-        /* Forçar iframe com position: static */
+        /* Forçar todos os iframes com position static */
         iframe,
         .xcomponent-outlet iframe,
         [class*="xcomponent"] iframe {
             position: static !important;
             top: auto !important;
             left: auto !important;
-            height: auto !important;
-            min-height: 400px !important;
-            width: 100% !important;
         }
         
-        /* Garantir que o corpo seja visível */
+        /* Garantir visibilidade do container */
         html, body {
-            position: static !important;
-            overflow: visible !important;
-            width: 100% !important;
-            height: auto !important;
-            min-height: 500px !important;
-            margin: 0 !important;
-            padding: 20px !important;
-            background: white !important;
-            color: #333 !important;
-            font-family: Arial, sans-serif !important;
-            visibility: visible !important;
-            opacity: 1 !important;
+            margin: 0;
+            padding: 20px;
+            background: white;
+            color: #333;
+            font-family: Arial, sans-serif;
+            min-height: 400px;
         }
         
         .whatsapp-container {
-            position: static !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            width: 100% !important;
-            height: auto !important;
-            min-height: 450px !important;
             max-width: 600px;
             margin: 0 auto;
-            padding: 0 !important;
-            overflow: visible !important;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 24px;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #00bfa5 0%, #33ccb7 100%);
-            color: white;
-            border-radius: 8px;
-        }
-        
-        .success-message {
-            background: #f2fcfa;
-            border: 1px solid #ccf2ed;
-            border-radius: 8px;
             padding: 20px;
+            background: #f0f8ff;
+            border-radius: 8px;
             text-align: center;
-            margin: 20px 0;
         }
         
-        .success-badge {
-            display: inline-block !important;
-            background: #00bfa5;
-            color: white;
-            padding: 6px 16px;
-            border-radius: 100px;
-            font: bold 10px/12px Arial;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-        
-        .action-button {
-            background: #00bfa5;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font: 600 14px/20px Arial;
-            cursor: pointer;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .action-button:hover {
-            background: #33ccb7;
-        }
-
-        .test-info {
+        .status {
             background: #e8f5e8;
-            border-left: 4px solid #4caf50;
+            border: 1px solid #4caf50;
             padding: 15px;
-            margin: 20px 0;
             border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .status h3 {
+            color: #2e7d32;
+            margin: 0 0 10px 0;
+        }
+        
+        .correction {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <div class="whatsapp-container">
-        <div class="header">
-            <h2>📱 WhatsApp Business</h2>
-            <p>Integração carregada com sucesso!</p>
+        <h2>📱 WhatsApp Business</h2>
+        <p>Aba do WhatsApp no Pipefy</p>
+        
+        <div class="status">
+            <h3>🎯 Status das Correções</h3>
+            <div class="correction">
+                ✅ Spinner: position → static
+            </div>
+            <div class="correction">
+                ✅ Iframe: position → static
+            </div>
         </div>
         
-        <div class="success-message">
-            <div class="success-badge">✅ Funcionando</div>
-            <p class="success-text">WhatsApp Business ativo e funcionando no Pipefy!</p>
-            
-            <button onclick="openWhatsApp()" class="action-button">
-                🚀 Abrir WhatsApp Business
-            </button>
-            <button onclick="testIntegration()" class="action-button">
-                🔧 Testar Integração
-            </button>
-        </div>
-
-        <div class="test-info">
-            <h4>🎯 Status do Teste:</h4>
-            <p>✅ Spinner position: static aplicado<br>
-            ✅ Iframe position: static aplicado<br>
-            ✅ Container visível<br>
-            ✅ Ambas correções ativas</p>
-        </div>
+        <p><strong>📋 Objetivo:</strong> Corrigir apenas os position dos elementos problemáticos</p>
     </div>
 
     <script>
-        console.log('🚀 WhatsApp Card Tab carregado - versão simplificada');
+        console.log('🚀 WhatsApp Card Tab - versão limpa');
         
-        // Aplicar correções via JavaScript também
-        function applyStaticFixes() {
+        // Função simples para aplicar correções de position
+        function applyPositionFixes() {
             try {
-                // Corrigir spinner
+                // Corrigir spinners
                 const spinners = document.querySelectorAll('.spinner');
                 spinners.forEach(spinner => {
                     spinner.style.position = 'static';
@@ -158,35 +104,19 @@
                     iframe.style.left = 'auto';
                 });
                 
-                console.log('✅ Correções JavaScript aplicadas');
+                console.log('✅ Correções position aplicadas');
             } catch (error) {
-                console.log('⚠️ Erro ao aplicar correções JS:', error);
+                console.log('⚠️ Erro nas correções:', error);
             }
         }
         
-        function openWhatsApp() {
-            console.log('🚀 Abrindo WhatsApp Business');
-            
-            const whatsappWindow = window.open(
-                'https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633',
-                'whatsapp-business',
-                'width=1200,height=800,scrollbars=yes,resizable=yes'
-            );
-            
-            if (!whatsappWindow) {
-                alert('📱 WhatsApp Business\n\n✅ Integração funcionando!\n\nPermita pop-ups para abrir o WhatsApp.');
-            }
-        }
+        // Aplicar correções imediatamente
+        applyPositionFixes();
         
-        function testIntegration() {
-            console.log('🔧 Testando integração');
-            alert('🎯 TESTE DE INTEGRAÇÃO\n\n✅ WhatsApp Business App funcionando!\n\n📱 Aba carregada\n🔧 JavaScript executando\n🎯 Spinner: position static\n🎯 Iframe: position static\n\n✅ AMBOS CORRIGIDOS!');
-        }
+        // Aplicar novamente após um delay
+        setTimeout(applyPositionFixes, 1000);
         
-        // Executar correções
-        applyStaticFixes();
-        
-        console.log('✅ WhatsApp Card Tab - JavaScript carregado (foco: spinner static)!');
+        console.log('✅ Card Tab carregado - foco em position fixes');
     </script>
 </body>
 </html>
