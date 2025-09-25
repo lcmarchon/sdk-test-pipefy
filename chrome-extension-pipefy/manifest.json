@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Pipefy WhatsApp Fix",
+  "version": "1.0",
+  "description": "Corrige a visibilidade e o tamanho do iframe do WhatsApp no Pipefy.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://app.pipefy.com/*", "https://*.pipefy.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://app.pipefy.com/*", "https://*.pipefy.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "images/icon16.png", 
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Pipefy WhatsApp Fix"
+  }
+}
