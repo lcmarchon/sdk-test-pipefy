@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>WhatsApp</title>
+    <!-- Pipefy Client SDK -->
+    <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
     <style>
         body {
             background: red; /* Fundo vermelho para fácil identificação */
@@ -31,7 +33,21 @@
     
     <script>
         console.log('🔥 CARD-TAB CARREGADO E RENDERIZADO!');
-        // alert removido para não bloquear a visualização do conteúdo
+        
+        // Redimensionar o iframe para o tamanho do body
+        if (typeof PipefyApp !== 'undefined') {
+            PipefyApp.resizeTo('body');
+            console.log('✅ PipefyApp.resizeTo aplicado!');
+        } else {
+            console.log('⚠️ PipefyApp não encontrado - pode estar carregando...');
+            // Tentar novamente após um pequeno delay
+            setTimeout(() => {
+                if (typeof PipefyApp !== 'undefined') {
+                    PipefyApp.resizeTo('body');
+                    console.log('✅ PipefyApp.resizeTo aplicado (segunda tentativa)!');
+                }
+            }, 1000);
+        }
     </script>
 </body>
 </html>
