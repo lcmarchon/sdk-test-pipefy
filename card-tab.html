@@ -1,37 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR" style="position: static !important; height: auto !important; min-height: 400px !important; overflow: visible !important; margin: 0 !important; padding: 0 !important;">
+<html lang="pt-BR" style="position: static !important; height: auto !important; overflow: visible !important; margin: 0 !important; padding: 0 !important;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
     <style>
-        /* SOBRESCREVER TODO CSS DO PIPEFY COM !important */
-        *, *::before, *::after {
-            position: static !important;
-            visibility: visible !important;
-            display: block !important;
-            opacity: 1 !important;
-            overflow: visible !important;
-            max-height: none !important;
-            max-width: none !important;
-        }
-        
+        /* ⚡ ANULAR CSS ESPECÍFICO DO PIPEFY COM !important */
         html, body {
+            /* Forçar posicionamento estático */
             position: static !important;
-            margin: 0 !important;
-            padding: 20px !important;
+            /* Anular overflow hidden do Pipefy */
+            overflow: visible !important;
+            /* Anular dimensões fixas */
+            width: 100% !important;
             height: auto !important;
             min-height: 500px !important;
             max-height: none !important;
-            overflow: visible !important;
+            /* Anular posicionamento absoluto */
+            top: auto !important;
+            left: auto !important;
+            /* Garantir visibilidade */
             visibility: visible !important;
             opacity: 1 !important;
-            z-index: 999999 !important;
+            /* Limpar margens e padding */
+            margin: 0 !important;
+            padding: 20px !important;
+            /* Anular text-align center */
+            text-align: left !important;
+            /* Background e fonte */
             background: var(--white, #fff) !important;
             color: var(--text-base, #101820) !important;
             font-family: var(--font-family, Inter, sans-serif) !important;
             box-sizing: border-box !important;
-            width: 100% !important;
+        }
+        
+        /* Forçar todos os elementos filhos a serem visíveis */
+        *, *::before, *::after {
+            position: static !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            overflow: visible !important;
+            max-height: none !important;
+            max-width: none !important;
+            display: block !important;
+        }
+        
+        /* Esconder spinner se existir */
+        .spinner, .loader, #loader {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
         }
         
         .container {
@@ -326,43 +344,60 @@
     </div>
 
     <script>
-        console.log('✅ WhatsApp Card Tab carregado com CSS EXTREMO SOBRESCRITO');
+        console.log('✅ WhatsApp Card Tab carregado - ANULANDO CSS PIPEFY ESPECÍFICO');
         
-        // FUNÇÃO EXTREMA DE FORÇAR POSICIONAMENTO
-        function forcePositionAggressive() {
-            // Forçar no HTML e BODY
-            const elements = [document.documentElement, document.body, ...document.querySelectorAll('*')];
-            elements.forEach(el => {
+        // FUNÇÃO ULTRA AGRESSIVA para anular CSS específico do Pipefy
+        function forceStaticPositionAggressive() {
+            // Forçar no HTML e BODY especificamente
+            [document.documentElement, document.body].forEach(el => {
                 if (el && el.style) {
+                    // Anular CSS específico visto no DevTools
                     el.style.setProperty('position', 'static', 'important');
-                    el.style.setProperty('display', 'block', 'important');
+                    el.style.setProperty('overflow', 'visible', 'important');
+                    el.style.setProperty('width', '100%', 'important');
+                    el.style.setProperty('height', 'auto', 'important');
+                    el.style.setProperty('min-height', '500px', 'important');
+                    el.style.setProperty('max-height', 'none', 'important');
+                    el.style.setProperty('top', 'auto', 'important');
+                    el.style.setProperty('left', 'auto', 'important');
+                    el.style.setProperty('margin', '0', 'important');
+                    el.style.setProperty('text-align', 'left', 'important');
                     el.style.setProperty('visibility', 'visible', 'important');
                     el.style.setProperty('opacity', '1', 'important');
-                    el.style.setProperty('overflow', 'visible', 'important');
+                    
+                    if (el === document.body) {
+                        el.style.setProperty('padding', '20px', 'important');
+                    }
                 }
             });
             
-            // Forçar altura específica no body
-            document.body.style.setProperty('height', 'auto', 'important');
-            document.body.style.setProperty('min-height', '500px', 'important');
-            document.body.style.setProperty('max-height', 'none', 'important');
+            // Esconder spinner se existir
+            const spinners = document.querySelectorAll('.spinner, .loader, #loader');
+            spinners.forEach(spinner => {
+                if (spinner && spinner.style) {
+                    spinner.style.setProperty('display', 'none', 'important');
+                    spinner.style.setProperty('opacity', '0', 'important');
+                    spinner.style.setProperty('visibility', 'hidden', 'important');
+                }
+            });
             
-            console.log('🔧 Posicionamento AGRESSIVO forçado via JavaScript');
+            console.log('🔧 CSS do Pipefy ANULADO agressivamente');
             console.log('📏 Altura do body:', document.body.offsetHeight + 'px');
         }
         
-        // Forçar IMEDIATAMENTE e múltiplas vezes
-        forcePositionAggressive();
-        setTimeout(forcePositionAggressive, 50);
-        setTimeout(forcePositionAggressive, 100);
-        setTimeout(forcePositionAggressive, 250);
-        setTimeout(forcePositionAggressive, 500);
-        setTimeout(forcePositionAggressive, 1000);
-        setTimeout(forcePositionAggressive, 2000);
+        // Executar IMEDIATAMENTE e múltiplas vezes
+        forceStaticPositionAggressive();
+        setTimeout(forceStaticPositionAggressive, 10);
+        setTimeout(forceStaticPositionAggressive, 50);
+        setTimeout(forceStaticPositionAggressive, 100);
+        setTimeout(forceStaticPositionAggressive, 250);
+        setTimeout(forceStaticPositionAggressive, 500);
+        setTimeout(forceStaticPositionAggressive, 1000);
+        setTimeout(forceStaticPositionAggressive, 2000);
         
-        // Monitorar mudanças e reforçar AGRESSIVAMENTE
+        // Monitorar mudanças e reforçar ULTRA AGRESSIVAMENTE
         const observer = new MutationObserver(() => {
-            setTimeout(forcePositionAggressive, 10);
+            setTimeout(forceStaticPositionAggressive, 5);
         });
         observer.observe(document.documentElement, {
             attributes: true,
@@ -388,12 +423,12 @@
         // Verificar carregamento final
         window.addEventListener('load', () => {
             setTimeout(() => {
-                forcePositionAggressive();
+                forceStaticPositionAggressive();
                 console.log('🎯 Carregamento final - altura body:', document.body.offsetHeight + 'px');
             }, 100);
         });
         
-        console.log('📱 WhatsApp Card Tab com OVERRIDE COMPLETO do CSS Pipefy carregado');
+        console.log('📱 WhatsApp Card Tab - CSS PIPEFY ESPECÍFICO ANULADO');
     </script>
 </body>
 </html>
