@@ -267,6 +267,7 @@
             position: static !important;
             visibility: visible !important;
             opacity: 1 !important;
+            sandbox: allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox;
         }
         
         @media (max-width: 480px) {
@@ -335,7 +336,9 @@
                     width="100%"
                     height="650"
                     scrolling="yes"
-                    allow="camera; microphone"
+                    allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *"
+                    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals"
+                    referrerpolicy="no-referrer-when-downgrade"
                     onload="console.log('✅ WhatsApp iframe carregado')"
                     onerror="console.log('❌ Erro ao carregar WhatsApp iframe')"
                 ></iframe>
@@ -408,6 +411,18 @@
         
         function openWhatsApp() {
             console.log('🚀 Abrindo WhatsApp Business da aba');
+            
+            // Tentar iframe primeiro, depois popup
+            const iframe = document.querySelector('iframe');
+            if (iframe && iframe.contentWindow) {
+                try {
+                    iframe.contentWindow.focus();
+                    console.log('📱 WhatsApp iframe focado');
+                    return;
+                } catch(e) {
+                    console.log('⚠️ Iframe sem acesso, abrindo popup');
+                }
+            }
             
             const whatsappWindow = window.open(
                 'https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633',
