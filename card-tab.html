@@ -1,216 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
-    <style>
-        body {
-            margin: 0;
-            padding: var(--open-card-spacing-default, 28px);
-            font-family: var(--font-family, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-            background: var(--white, #fff);
-            color: var(--text-base, #101820);
-            min-height: 200px;
-            box-sizing: border-box;
-        }
-        
-        .whatsapp-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        
-        .header h2 {
-            color: var(--green-base, #00bfa5);
-            font: var(--font-2, bold 18px/24px var(--font-family));
-            margin: 0 0 8px 0;
-        }
-        
-        .header p {
-            color: var(--text-500, #48626f);
-            font: var(--font-7, 14px/20px var(--font-family));
-            margin: 0;
-        }
-        
-        .status-card {
-            background: var(--light-1000, #f9fcfe);
-            border: 1px solid var(--neutral-400, #e8e8e8);
-            border-radius: var(--radius-medium, 8px);
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 24px;
-            box-shadow: var(--lt-shadowDefault, 0 2px 6px -1px rgba(0, 0, 0, 0.16));
-        }
-        
-        .status-badge {
-            display: inline-block;
-            background: var(--green-base, #00bfa5);
-            color: var(--white, #fff);
-            padding: 4px 12px;
-            border-radius: var(--radius-xlarge, 100vw);
-            font: var(--font-6, 600 12px/16px var(--font-family));
-            margin-bottom: 12px;
-        }
-        
-        .status-text {
-            color: var(--text-base, #101820);
-            font: var(--font-4, 500 14px/20px var(--font-family));
-            margin: 0;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .feature-item {
-            background: var(--white, #fff);
-            border: 1px solid var(--neutral-300, #eff0f1);
-            border-radius: var(--radius-default, 4px);
-            padding: 16px;
-            text-align: center;
-            transition: all var(--productive, 0.125s) var(--ease-out);
-        }
-        
-        .feature-item:hover {
-            border-color: var(--green-base, #00bfa5);
-            box-shadow: var(--lt-shadowActive, 0 0 8px -2px rgba(0, 0, 0, 0.1));
-            transform: translateY(-2px);
-        }
-        
-        .feature-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .feature-title {
-            color: var(--text-base, #101820);
-            font: var(--font-5, 600 13px/16px var(--font-family));
-            margin: 0 0 4px 0;
-        }
-        
-        .feature-desc {
-            color: var(--text-500, #48626f);
-            font: var(--font-8, 12px/16px var(--font-family));
-            margin: 0;
-        }
-        
-        .action-panel {
-            background: var(--green-100, #f2fcfa);
-            border: 1px solid var(--green-300, #ccf2ed);
-            border-radius: var(--radius-medium, 8px);
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .action-title {
-            color: var(--green-base, #00bfa5);
-            font: var(--font-3, bold 16px/24px var(--font-family));
-            margin: 0 0 8px 0;
-        }
-        
-        .action-desc {
-            color: var(--text-500, #48626f);
-            font: var(--font-7, 14px/20px var(--font-family));
-            margin: 0 0 16px 0;
-        }
-        
-        .integration-btn {
-            background: var(--green-base, #00bfa5);
-            color: var(--white, #fff);
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--radius-default, 4px);
-            font: var(--font-9, 600 14px/20px var(--font-family));
-            cursor: pointer;
-            transition: all var(--productive, 0.125s) var(--ease-out);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .integration-btn:hover {
-            background: var(--green-900, #33ccb7);
-            transform: translateY(-1px);
-            box-shadow: var(--lt-shadowActive, 0 0 8px -2px rgba(0, 0, 0, 0.1));
-        }
-        
-        .integration-btn:active {
-            transform: translateY(0);
-        }
-        
-        @media (max-width: 600px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            body {
-                padding: 16px;
-            }
-        }
-    </style>
 </head>
-<body>
-    <div class="whatsapp-container">
-        <div class="header">
-            <h2>📱 WhatsApp Business</h2>
-            <p>Integração ativa com Pipefy</p>
+<body style="
+    margin: 0;
+    padding: 20px;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #fff;
+    color: #101820;
+    min-height: 400px;
+    height: auto;
+    overflow: visible;
+">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 24px;">
+            <h2 style="color: #00bfa5; font-size: 18px; font-weight: bold; margin: 0 0 8px 0;">📱 WhatsApp Business</h2>
+            <p style="color: #48626f; font-size: 14px; margin: 0;">Integração ativa com Pipefy</p>
         </div>
         
-        <div class="status-card">
-            <div class="status-badge">✅ Conectado</div>
-            <p class="status-text">WhatsApp Business configurado e funcionando</p>
+        <!-- Status Card -->
+        <div style="
+            background: #f9fcfe;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.16);
+        ">
+            <div style="
+                display: inline-block;
+                background: #00bfa5;
+                color: #fff;
+                padding: 4px 12px;
+                border-radius: 100px;
+                font-size: 12px;
+                font-weight: 600;
+                margin-bottom: 12px;
+            ">✅ Conectado</div>
+            <p style="color: #101820; font-size: 14px; font-weight: 500; margin: 0;">WhatsApp Business configurado e funcionando</p>
         </div>
         
-        <div class="features-grid">
-            <div class="feature-item">
-                <span class="feature-icon">💬</span>
-                <h3 class="feature-title">Mensagens</h3>
-                <p class="feature-desc">Envie mensagens automáticas</p>
+        <!-- Features Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div style="
+                background: #fff;
+                border: 1px solid #eff0f1;
+                border-radius: 4px;
+                padding: 16px;
+                text-align: center;
+                transition: all 0.125s ease;
+            ">
+                <span style="font-size: 24px; display: block; margin-bottom: 8px;">💬</span>
+                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Mensagens</h3>
+                <p style="color: #48626f; font-size: 12px; margin: 0;">Envie mensagens automáticas</p>
             </div>
             
-            <div class="feature-item">
-                <span class="feature-icon">📞</span>
-                <h3 class="feature-title">Chamadas</h3>
-                <p class="feature-desc">Inicie chamadas diretas</p>
+            <div style="
+                background: #fff;
+                border: 1px solid #eff0f1;
+                border-radius: 4px;
+                padding: 16px;
+                text-align: center;
+                transition: all 0.125s ease;
+            ">
+                <span style="font-size: 24px; display: block; margin-bottom: 8px;">📞</span>
+                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Chamadas</h3>
+                <p style="color: #48626f; font-size: 12px; margin: 0;">Inicie chamadas diretas</p>
             </div>
             
-            <div class="feature-item">
-                <span class="feature-icon">👥</span>
-                <h3 class="feature-title">Contatos</h3>
-                <p class="feature-desc">Gerencie seus contatos</p>
+            <div style="
+                background: #fff;
+                border: 1px solid #eff0f1;
+                border-radius: 4px;
+                padding: 16px;
+                text-align: center;
+                transition: all 0.125s ease;
+            ">
+                <span style="font-size: 24px; display: block; margin-bottom: 8px;">👥</span>
+                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Contatos</h3>
+                <p style="color: #48626f; font-size: 12px; margin: 0;">Gerencie seus contatos</p>
             </div>
             
-            <div class="feature-item">
-                <span class="feature-icon">📊</span>
-                <h3 class="feature-title">Relatórios</h3>
-                <p class="feature-desc">Analise conversas</p>
+            <div style="
+                background: #fff;
+                border: 1px solid #eff0f1;
+                border-radius: 4px;
+                padding: 16px;
+                text-align: center;
+                transition: all 0.125s ease;
+            ">
+                <span style="font-size: 24px; display: block; margin-bottom: 8px;">📊</span>
+                <h3 style="color: #101820; font-size: 13px; font-weight: 600; margin: 0 0 4px 0;">Relatórios</h3>
+                <p style="color: #48626f; font-size: 12px; margin: 0;">Analise conversas</p>
             </div>
         </div>
         
-        <div class="action-panel">
-            <h3 class="action-title">Central WhatsApp</h3>
-            <p class="action-desc">Acesse sua central de mensagens completa</p>
-            <button class="integration-btn" onclick="openWhatsApp()">
-                🚀 Abrir WhatsApp Business
-            </button>
+        <!-- Action Panel -->
+        <div style="
+            background: #f2fcfa;
+            border: 1px solid #ccf2ed;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        ">
+            <h3 style="color: #00bfa5; font-size: 16px; font-weight: bold; margin: 0 0 8px 0;">Central WhatsApp</h3>
+            <p style="color: #48626f; font-size: 14px; margin: 0 0 16px 0;">Acesse sua central de mensagens completa</p>
+            <button onclick="openWhatsApp()" style="
+                background: #00bfa5;
+                color: #fff;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 4px;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.125s ease;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            ">🚀 Abrir WhatsApp Business</button>
         </div>
     </div>
 
     <script>
-        console.log('✅ WhatsApp Card Tab carregado com design Pipefy integrado');
+        console.log('✅ WhatsApp Card Tab carregado - versão simplificada inline');
         
         function openWhatsApp() {
-            console.log('🚀 Abrindo WhatsApp Business');
+            console.log('🚀 Abrindo WhatsApp Business da aba');
             
-            // Tentar abrir em nova janela
             const whatsappWindow = window.open(
                 'https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633',
                 'whatsapp-business',
@@ -221,6 +143,12 @@
                 alert('📱 WhatsApp Business\n\n✅ Integração funcionando!\n\nPor favor, permita pop-ups para abrir o WhatsApp em nova janela.');
             }
         }
+        
+        // Forçar altura mínima
+        document.body.style.height = '400px';
+        document.body.style.minHeight = '400px';
+        
+        console.log('📏 Altura do body definida:', document.body.offsetHeight);
     </script>
 </body>
 </html>
