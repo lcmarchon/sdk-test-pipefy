@@ -35,7 +35,25 @@
         console.log('🔥 CARD-TAB CARREGADO E RENDERIZADO!');
         
         // Função para tentar redimensionar com verificação de dependências
+        let attempts = 0;
+        const maxAttempts = 50; // 5 segundos máximo (50 x 100ms)
+        
         function tryResize() {
+            attempts++;
+            
+            // Se passou do limite, tenta sem verificação uma vez
+            if (attempts > maxAttempts) {
+                console.log('⏰ Limite de tentativas atingido. Tentando sem verificação...');
+                try {
+                    PipefyApp.resizeTo('#card-tab-title');
+                    console.log('✅ PipefyApp.resizeTo aplicado sem verificação!');
+                } catch (error) {
+                    console.error('❌ Falha final ao tentar resizeTo:', error);
+                    console.log('🤷 Parando tentativas. O conteúdo deve estar visível mesmo assim.');
+                }
+                return; // Para completamente
+            }
+            
             if (typeof PipefyApp !== 'undefined' && window.xchild && window.xprops) {
                 try {
                     PipefyApp.resizeTo('#card-tab-title');
@@ -46,7 +64,14 @@
                     setTimeout(tryResize, 500);
                 }
             } else {
-                console.log('⚠️ Aguardando PipefyApp, xchild ou xprops...', {
+                // Só mostrar log a cada 10 tentativas para reduzir spam
+                if (attempts % 10 === 0) {
+                    console.log(`⚠️ Tentativa ${attempts}/${maxAttempts} - Aguardando xchild/xprops...`, {
+                        PipefyApp: typeof PipefyApp !== 'undefined',
+                        xchild: !!window.xchild,
+                        xprops: !!window.xprops
+                    });
+                }
                     PipefyApp: typeof PipefyApp !== 'undefined',
                     xchild: !!window.xchild,
                     xprops: !!window.xprops
