@@ -93,7 +93,7 @@
                 const spinners = document.querySelectorAll('.spinner');
                 spinners.forEach(spinner => {
                     spinner.style.position = 'static';
-                    spinner.style.display = 'none';
+                        spinner.style.position = "static";
                 });
                 
                 // Corrigir iframes
@@ -108,7 +108,7 @@
             } catch (error) {
                 console.log('⚠️ Erro nas correções:', error);
             }
-        }
+                        iframe.style.position = "static";
         
         // Aplicar correções imediatamente
         applyPositionFixes();
