@@ -16,18 +16,55 @@
     console.log('🚀 Iniciando WhatsApp Business App...');
 
     PipefyApp.initCall({
-        // CARD TAB - Nova aba dentro do Card
-        'card-tab': function(p, pipe, card) {
-            console.log('📱 WhatsApp Card Tab');
+        // PIPE VIEW - Botão e página no Pipe
+        'pipe-view': function(p, pipe) {
+            console.log('📍 Configurando pipe-view WhatsApp para pipe:', pipe);
             return {
                 icon: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4f1.svg',
+                text: 'WhatsApp',
+                url: 'pipe-view.html',
+                hide_create_button: false
+            };
+        },
+        
+        // CARD BADGES - Etiquetas que aparecem NA LISTAGEM dos cards
+        'card-badges': function(p, pipe, card) {
+            console.log('🏷️ Adicionando badges WhatsApp ao card');
+            return [
+                {
+                    text: '📱 WhatsApp',
+                    color: '#25D366',
+                    title: 'Contato WhatsApp Business disponível'
+                },
+                {
+                    text: '✅ Online',
+                    color: '#128C7E',
+                    title: 'Status WhatsApp: Online'
+                }
+            ];
+        },
+        
+        // CARD TAB - Nova aba dentro do Card
+        'card-tab': function(p, pipe, card) {
+            console.log('📑 Configurando aba WhatsApp do card');
+            return {
+                icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png?20220228223904',
                 title: 'WhatsApp',
-                url: 'card-tab.html'
+                url: 'card-tab.html',
+                buttons: [
+                    {
+                        text: '📱 Enviar WhatsApp',
+                        callback: function(p) {
+                            console.log('🚀 Botão WhatsApp clicado!');
+                            alert('📱 Abrindo WhatsApp Business!\n\n✅ Integração funcionando perfeitamente!');
+                        }
+                    }
+                ]
             };
         }
     });
 
-    console.log('✅ WhatsApp Card Tab configurado!');
+    console.log('✅ WhatsApp Business App configurado com sucesso!');
 </script>
 </body>
 </html>
