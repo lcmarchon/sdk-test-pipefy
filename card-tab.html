@@ -29,21 +29,21 @@
     </style>
 </head>
 <body>
-    <h1>FUNCIONOU!</h1>
+    <h1 id="card-tab-title">FUNCIONOU!</h1>
     
     <script>
         console.log('🔥 CARD-TAB CARREGADO E RENDERIZADO!');
         
         // Redimensionar o iframe para o tamanho do body
         if (typeof PipefyApp !== 'undefined') {
-            PipefyApp.resizeTo('h1');
+            PipefyApp.resizeTo('#card-tab-title');
             console.log('✅ PipefyApp.resizeTo aplicado!');
         } else {
             console.log('⚠️ PipefyApp não encontrado - pode estar carregando...');
             // Tentar novamente após um pequeno delay
             setTimeout(() => {
                 if (typeof PipefyApp !== 'undefined') {
-                    PipefyApp.resizeTo('h1');
+                    PipefyApp.resizeTo('#card-tab-title');
                     console.log('✅ PipefyApp.resizeTo aplicado (segunda tentativa)!');
                 }
             }, 1000);
