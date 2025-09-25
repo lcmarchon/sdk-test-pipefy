@@ -234,6 +234,28 @@
                 🚀 Abrir WhatsApp Business
             </button>
         </div>
+        
+        <!-- WhatsApp Embed -->
+        <div style="width: 510px; margin: 20px auto;">
+            <h3 style="text-align: center; color: var(--green-base); margin-bottom: 16px;">💬 WhatsApp Business Integrado</h3>
+            <div style="
+                border: 1px solid #ccd1d7;
+                border-radius: 5px;
+                overflow: hidden;
+                box-shadow: 0 0 0 rgba(0,0,0,0);
+            ">
+                <iframe
+                    src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
+                    width="100%"
+                    height="650"
+                    style="display:block; border:0;"
+                    scrolling="yes"
+                    allow="camera; microphone"
+                    onload="console.log('✅ WhatsApp iframe carregado')"
+                    onerror="console.log('❌ Erro ao carregar WhatsApp iframe')"
+                ></iframe>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -285,6 +307,9 @@
                 alert('📱 WhatsApp Business\n\n✅ Integração funcionando!\n\nPor favor, permita pop-ups para abrir o WhatsApp em nova janela.');
             }
         }
+        
+        // Log para debug do iframe
+        console.log('📱 WhatsApp Card Tab com iframe integrado carregado');
     </script>
 </body>
 </html>
