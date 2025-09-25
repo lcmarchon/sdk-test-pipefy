@@ -3,126 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Card Tab</title>
+    <title>WhatsApp</title>
     <style>
-        /* CORREÇÃO CRÍTICA: position static */
-        .spinner,
-        .spinner * {
-            position: static !important;
-            display: none !important;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        iframe,
-        .xcomponent-outlet iframe,
-        [class*="xcomponent"] iframe {
-            position: static !important;
-            top: auto !important;
-            left: auto !important;
-            height: auto !important;
-            min-height: 400px !important;
-            width: 100% !important;
-        }
-        
-        /* Layout limpo */
         html, body {
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background: white;
-            font-family: Arial, sans-serif;
+            overflow: hidden;
         }
         
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
+        .iframe-container {
+            width: 510px;
+            height: 650px;
+            margin: 0;
+            padding: 0;
         }
         
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 20px;
-            background: #25D366;
-            color: white;
-            border-radius: 8px;
-        }
-        
-        .action-button {
-            background: #25D366;
-            color: white;
+        iframe {
+            width: 100%;
+            height: 100%;
             border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font: bold 14px Arial;
-            cursor: pointer;
-            margin: 10px;
+            display: block;
+        }
+        
+        /* Ocultar qualquer elemento de loading/spinner */
+        .spinner,
+        .loading,
+        [class*="loader"],
+        [class*="spinner"],
+        [class*="loading"] {
+            display: none !important;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>📱 WhatsApp Business</h2>
-            <p>Integração ativa!</p>
-        </div>
-        
-        <button onclick="openWhatsApp()" class="action-button">
-            🚀 Abrir WhatsApp Business
-        </button>
+    <div class="iframe-container">
+        <iframe
+            src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
+            scrolling="yes"
+            allow="microphone; autoplay">
+        </iframe>
     </div>
-
-    <script>
-        // Aplicar correção testada no console
-        function fixPositions() {
-            // Corrigir pusher-loader
-            const pusherLoader = document.querySelector('div.pusher-loader');
-            if (pusherLoader) {
-                pusherLoader.style.position = 'static';
-                console.log('✅ pusher-loader corrigido para static');
-            }
-            
-            // Corrigir outros elementos problemáticos
-            const problematicElements = document.querySelectorAll('[class*="pusher"], [class*="loader"], [class*="spinner"]');
-            problematicElements.forEach(element => {
-                element.style.position = 'static';
-            });
-        }
-        
-        // Executar correção quando carregar
-        document.addEventListener('DOMContentLoaded', fixPositions);
-        
-        // Executar correção novamente após um tempo (caso elementos sejam criados dinamicamente)
-        setTimeout(fixPositions, 1000);
-        setTimeout(fixPositions, 3000);
-        
-        // Aplicar correção testada no console
-        function fixPositions() {
-            // Corrigir pusher-loader
-            const pusherLoader = document.querySelector('div.pusher-loader');
-            if (pusherLoader) {
-                pusherLoader.style.position = 'static';
-                console.log('✅ pusher-loader corrigido para static');
-            }
-            
-            // Corrigir outros elementos problemáticos
-            const problematicElements = document.querySelectorAll('[class*="pusher"], [class*="loader"], [class*="spinner"]');
-            problematicElements.forEach(element => {
-                element.style.position = 'static';
-            });
-        }
-        
-        // Executar correção quando carregar
-        document.addEventListener('DOMContentLoaded', fixPositions);
-        
-        // Executar correção novamente após um tempo (caso elementos sejam criados dinamicamente)
-        setTimeout(fixPositions, 1000);
-        setTimeout(fixPositions, 3000);
-        
-        function openWhatsApp() {
-            console.log('🚀 Abrindo WhatsApp Business');
-            
-            // Aplicar correção antes de abrir
-            fixPositions();
-        
-        console.log('✅ WhatsApp Card Tab - versão limpa carregada!');
-    </script>
 </body>
 </html>
