@@ -1,6 +1,6 @@
 /*
   Permissions-Policy: autoplay=*, camera=*, microphone=*, encrypted-media=*, fullscreen=*
   X-Frame-Options: SAMEORIGIN
-  Content-Security-Policy: frame-ancestors 'self' https://app.pipefy.com https://*.pipefy.com https://whats.stegia.com.br https://*.whats.stegia.com.br; frame-src 'self' https://whats.stegia.com.br https://*.whats.stegia.com.br https://web.whatsapp.com https://*.whatsapp.com https://*.whatsapp.net
+  Content-Security-Policy: frame-ancestors 'self' https://app.pipefy.com https://*.pipefy.com https://whats.stegia.com.br https://*.whats.stegia.com.br; frame-src 'self' https://whats.stegia.com.br https://*.whats.stegia.com.br https://web.whatsapp.com https://*.whatsapp.com https://*.whatsapp.net; script-src 'self' 'unsafe-inline' https://platform.staticpipefy.com
   Cross-Origin-Embedder-Policy: unsafe-none
   Cross-Origin-Opener-Policy: unsafe-none
