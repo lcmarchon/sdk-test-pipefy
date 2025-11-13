@@ -3,92 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp</title>
-    <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
+    <title>WhatsApp Card Tab</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* CORREÇÃO CRÍTICA: position static */
+        .spinner,
+        .spinner * {
+            position: static !important;
+            display: none !important;
         }
         
+        iframe,
+        .xcomponent-outlet iframe,
+        [class*="xcomponent"] iframe {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            height: auto !important;
+            min-height: 400px !important;
+            width: 100% !important;
+        }
+        
+        /* Layout limpo */
         html, body {
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background: white;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
         
-        #whatsapp-container {
-            width: 100%;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            position: relative;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            min-height: 650px;
-        }
-        
-        .loading-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
             background: #25D366;
             color: white;
-            padding: 20px;
             border-radius: 8px;
-            font-family: Arial, sans-serif;
-            z-index: 10;
+        }
+        
+        .action-button {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font: bold 14px Arial;
+            cursor: pointer;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
-    <div id="whatsapp-container">
-        <div id="loading" class="loading-message">
-            📱 Carregando WhatsApp...
+    <div class="container">
+        <div class="header">
+            <h2>📱 WhatsApp Business</h2>
+            <p>Integração ativa!</p>
         </div>
-        <iframe
-            id="whatsapp-iframe"
-            src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
-            scrolling="yes"
-            allow="microphone; autoplay"
-            onload="hideLoading()"
-            onerror="showError()">
-        </iframe>
+        
+        <button onclick="openWhatsApp()" class="action-button">
+            🚀 Abrir WhatsApp Business
+        </button>
     </div>
 
     <script>
-        // Inicializar cliente Pipefy
-        var p = PipefyApp.init();
-        
-        function hideLoading() {
-            const loading = document.getElementById('loading');
-            if (loading) {
-                loading.style.display = 'none';
-            }
-            console.log('📱 WhatsApp iframe carregado');
+        function openWhatsApp() {
+            console.log('🚀 Abrindo WhatsApp Business');
+            
+            const whatsappWindow = window.open(
+                'https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633',
+                'whatsapp-business',
+                'width=1200,height=800,scrollbars=yes,resizable=yes'
+            );
         }
         
-        function showError() {
-            const loading = document.getElementById('loading');
-            if (loading) {
-                loading.innerHTML = '❌ Erro ao carregar';
-                loading.style.background = '#e74c3c';
-            }
-            console.log('❌ Erro ao carregar WhatsApp');
-        }
-        
-        // Timeout de 5 segundos para ocultar loading
-        setTimeout(hideLoading, 5000);
-        
-        console.log('✅ Card-tab WhatsApp carregado');
+        console.log('✅ WhatsApp Card Tab - versão limpa carregada!');
     </script>
 </body>
 </html>
