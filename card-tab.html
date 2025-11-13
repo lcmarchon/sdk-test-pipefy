@@ -5,22 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Card Tab</title>
     <style>
-        /* CORREÇÃO CRÍTICA: position static */
-        .spinner,
-        .spinner * {
-            position: static !important;
-            display: none !important;
+        /* FORÇAR VISIBILIDADE DO XCOMPONENT */
+        [id*="xcomponent"] {
+            width: 100% !important;
+            height: 100% !important;
         }
         
-        iframe,
-        .xcomponent-outlet iframe,
-        [class*="xcomponent"] iframe {
-            position: static !important;
-            top: auto !important;
-            left: auto !important;
-            height: auto !important;
-            min-height: 400px !important;
+        [id*="xcomponent"] > .xcomponent-outlet {
+            display: inline-block !important;
+            position: absolute !important;
             width: 100% !important;
+            height: 100% !important;
+        }
+        
+        [id*="xcomponent"] > .xcomponent-outlet > iframe {
+            height: 100% !important;
+            width: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+        }
+        
+        /* FORÇAR AMBAS AS CLASSES VISÍVEIS */
+        [id*="xcomponent"] > .xcomponent-outlet > iframe.xcomponent-visible,
+        [id*="xcomponent"] > .xcomponent-outlet > iframe.xcomponent-invisible {
+            opacity: 1 !important;
+        }
+        
+        /* OCULTAR SPINNERS */
+        .spinner,
+        .spinner * {
+            display: none !important;
         }
         
         /* Layout limpo */
