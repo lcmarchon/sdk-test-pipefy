@@ -45,6 +45,23 @@
             border-radius: 8px;
         }
         
+        /* FORÇAR VISIBILIDADE - Baseado no inspect do Pipefy */
+        iframe,
+        .xcomponent-outlet,
+        .xcomponent-outlet iframe,
+        [class*="xcomponent"] {
+            opacity: 1 !important;
+            position: absolute !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        /* Garantir que elementos pai também sejam visíveis */
+        .xcomponent-outlet {
+            height: 100% !important;
+            width: 100% !important;
+        }
+        
         .action-button {
             background: #25D366;
             color: white;
