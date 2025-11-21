@@ -3,38 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Business</title>
+    <title>WhatsApp Card Tab</title>
+    <style>
+        /* CSS LIMPO - SEM FORÇAR CLASSES */
+        html, body {
+            margin: 0;
+            padding: 20px;
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 8px;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+        
+        .action-button {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font: bold 14px Arial;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div id="card_tab" style="width: 100%; height: 600px;">
-        <iframe 
-            src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633?flat=1&gutter=0" 
-            width="100%" 
-            height="600" 
-            style="display:block; border:0;" 
-            scrolling="yes" 
-            allow="microphone; autoplay"
-        ></iframe>
+    <div id="card_tab" style="width: 510px;">
+        <div style="border: 1px solid #E5E7EB; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.04);">
+            <iframe 
+                src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633?flat=1&gutter=0" 
+                width="100%" 
+                height="650" 
+                style="display:block; border:0;" 
+                scrolling="yes" 
+                allow="microphone; autoplay"
+            ></iframe>
+        </div>
     </div>
 
     <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
     <script>
-        console.log('📱 Carregando WhatsApp Card Tab...');
-        
         var p = PipefyApp.init();
-        console.log('✅ PipefyApp inicializado:', p);
-        
-        setTimeout(function() {
-            try {
-                PipefyApp.render(function() {
-                    console.log('📐 Renderizando card tab...');
-                    PipefyApp.resizeTo('#card_tab');
-                    console.log('✅ Card tab configurado!');
-                });
-            } catch (error) {
-                console.error('❌ Erro:', error);
-            }
-        }, 500);
+    </script>
+    <script>
+        PipefyApp.render(function() {
+            PipefyApp.resizeTo('#card_tab');
+        });
+    </script>
+    <script>
+        console.log('✅ WhatsApp Card Tab - versão com PipefyApp.init carregada!');
+    </script>
+</body>
+</html>
+    <iframe
+        src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
+        width="100%"
+        height="600"
+        style="border: none; display: block;"
+        scrolling="yes"
+        allow="microphone; camera; autoplay; encrypted-media; fullscreen"
+        loading="lazy"
+        title="WhatsApp Business Chat"
+    ></iframe>
+
+    <script>
+        console.log('✅ WhatsApp Card Tab - versão limpa carregada!');
     </script>
 </body>
 </html>
