@@ -90,7 +90,43 @@
     </style>
 </head>
 <body>
-    <!-- IFRAME DO WHATSAPP DIRETO -->
+    <div id="card_tab">
+        <div class="header">
+            <h2>📱 WhatsApp Business</h2>
+            <p>Integração ativa!</p>
+        </div>
+        
+        <button class="action-button" onclick="alert('📱 Abrindo WhatsApp Business!')">
+            📱 Enviar WhatsApp
+        </button>
+        
+        <!-- IFRAME DO WHATSAPP DIRETO -->
+        <iframe
+            src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
+            width="510"
+            height="600"
+            style="border: none; display: block;"
+            scrolling="yes"
+            allow="microphone; camera; autoplay; encrypted-media; fullscreen"
+            loading="lazy"
+            title="WhatsApp Business Chat"
+        ></iframe>
+    </div>
+
+    <script src="https://platform.staticpipefy.com/pipefy-app.js"></script>
+    <script>
+        var p = PipefyApp.init();
+    </script>
+    <script>
+        PipefyApp.render(function() {
+            PipefyApp.resizeTo('#card_tab');
+        });
+    </script>
+    <script>
+        console.log('✅ WhatsApp Card Tab - versão com PipefyApp.init carregada!');
+    </script>
+</body>
+</html>
     <iframe
         src="https://whats.stegia.com.br/instance/3DE229304BA3B0CF5A1A625457954C63/phone/5562998362633"
         width="100%"
